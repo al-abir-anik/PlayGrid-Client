@@ -3,11 +3,11 @@ import Banner from "../Home-sections/Banner";
 
 const Home = () => {
   return (
-    <main>
-      <section>
-        <Banner />
-      </section>
-    </main>
+    <div>
+      <main>
+        <Banner></Banner>
+      </main>
+    </div>
   );
 };
 

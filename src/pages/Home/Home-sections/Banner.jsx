@@ -44,13 +44,13 @@ const Banner = () => {
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 6000, disableOnInteraction: false }}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
         loop
         className="w-full h-screen">
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="w-full h-full bg-center"
+              className="w-full h-full  bg-cover bg-center text-white"
               style={{
                 backgroundImage: `url(${slide.img})`,
               }}>

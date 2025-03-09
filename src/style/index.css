@@ -4,22 +4,10 @@
 
 :root {
   font-family: "Titillium Web", serif;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/* body {
+
 }
 
 button {
@@ -52,4 +40,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */

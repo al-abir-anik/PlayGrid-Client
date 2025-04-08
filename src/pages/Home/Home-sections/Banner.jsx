@@ -37,14 +37,14 @@ const Banner = () => {
   ];
 
   return (
-    <div className="w-full">
+    <section className="w-full">
       <Swiper
         modules={[Autoplay, Navigation]}
         spaceBetween={0}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop
         className="w-full h-screen">
         {slides.map((slide) => (
@@ -82,7 +82,7 @@ const Banner = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </section>
   );
 };
 

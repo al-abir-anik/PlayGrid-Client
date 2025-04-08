@@ -1,13 +1,16 @@
 import React from "react";
 import Banner from "../Home-sections/Banner";
+import FeaturedGames from "../Home-sections/FeaturedGames";
 
 const Home = () => {
   return (
-    <div>
-      <main>
-        <Banner></Banner>
-      </main>
-    </div>
+    <main>
+      <Banner></Banner>
+
+      <FeaturedGames></FeaturedGames>
+
+      
+    </main>
   );
 };
 

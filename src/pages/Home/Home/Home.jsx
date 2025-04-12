@@ -1,6 +1,7 @@
 import React from "react";
 import Banner from "../Home-sections/Banner";
 import FeaturedGames from "../Home-sections/FeaturedGames";
+import LatestNews from "../Home-sections/LatestNews";
 
 const Home = () => {
   return (
@@ -9,7 +10,8 @@ const Home = () => {
 
       <FeaturedGames></FeaturedGames>
 
-      
+      <LatestNews></LatestNews>
+
     </main>
   );
 };

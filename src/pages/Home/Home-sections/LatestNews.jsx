@@ -1,5 +1,5 @@
-const FeaturedGames = () => {
-  const slides2 = [
+const LatestNews = () => {
+  const slides3 = [
     {
       id: 1,
       img: "https://i.ibb.co.com/rGx7kwgF/wp12988880-call-of-duty-modern-warfare-iii-gaming-poster-wallpapers.jpg",
@@ -40,36 +40,16 @@ const FeaturedGames = () => {
       category: "FIRST PERSON SHOOTER",
       price: "29.9",
     },
-    {
-      id: 5,
-      img: "https://i.ibb.co.com/hR00yMbW/wp6072800-gaming-poster-wallpapers.jpg",
-      title: "Assassin's Creed",
-      description:
-        "London, 1868. In the heart of the Industrial Revolution, lead your underworld organization and grow your influence to fight those who exploit the less privileged in the name of progress.",
-      platform: "PLAYSTATION 5, XBOX",
-      category: "ACTION, ADVENTURE",
-      price: "29.9",
-    },
-    {
-      id: 6,
-      img: "https://i.ibb.co.com/YTjPS2GN/wp9129545-playstation-4-4k-wallpapers.jpg",
-      title: "GOD OF WAR",
-      description:
-        "God of War is an action-adventure game franchise created by David Jaffe and developed by Sony's Santa Monica Studio. It began in 2005 on the PlayStation 2 video game console and has become a flagship series for PlayStation, consisting of nine installments across multiple platforms.",
-      platform: "PLAYSTATION 2, PC",
-      category: "ROLEPLAY, ADVENTURE",
-      price: "29.9",
-    },
   ];
 
   return (
     <section className="w-2/3 mx-auto my-32">
       <h2 className="text-[#282828] font-extrabold text-4xl text-center mb-16">
-        EXPLORE <span className="text-[#FFA725]">MORE GAMES</span>
+        LATEST <span className="text-[#FFA725]">NEWS</span>
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {slides2.map((game) => (
+        {slides3.map((game) => (
           <div
             key={game.id}
             className="card group md:w-96 overflow-hidden mx-auto hover:shadow sm:max-w-sm">
@@ -81,9 +61,11 @@ const FeaturedGames = () => {
               />
             </figure>
             <div className="card-body">
-              <h5 className="card-title mb-2.5">{game.title}</h5>
-              <p className="text-sm text-gray-600 mb-1">Rating: 9.3/10</p>
-              <p className="text-lg font-bold my-2">${game.price}</p>
+              <p className="text-sm text-gray-600 mt-4">Rating: 9.3/10</p>
+              <h5 className="card-title text-2xl font-bold mb-2.5">
+                {game.title}
+              </h5>
+              <p className="text-lg my-2">${game.description}</p>
               {/* <p className="mb-6">
             Nike Air Max is a popular line of athletic shoes that feature Nike's
             signature Air cushioning technology in the sole.
@@ -98,10 +80,10 @@ const FeaturedGames = () => {
       </div>
 
       <button className="text-2xl my-5 p-3 rounded-2xl bg-amber-300">
-        View All Games
+        View All News
       </button>
     </section>
   );
 };
 
-export default FeaturedGames;
+export default LatestNews;

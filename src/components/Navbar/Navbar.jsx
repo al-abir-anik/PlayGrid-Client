@@ -1,13 +1,13 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const user = true;
 
   return (
     <nav className="w-full h-28 text-white flex items-center justify-around fixed z-10">
-      <NavLink to={"/"} className="text-4xl font-black">
+      <Link to={"/"} className="text-4xl font-black">
         PLAY<span className="text-[#45F882]">GRID</span>
-      </NavLink>
+      </Link>
       <div className="flex items-center gap-10">
         <ul className="flex gap-5 [&>li>a]:font-semibold [&>li>a]:transition [&>li>a]:duration-300 [&>li>a]:ease-in-out [&>li>a]:hover:text-[#45F882]">
           <li>

@@ -1,12 +1,14 @@
 import { Link, Navigate } from "react-router";
 import Google from "../../auth/SocialAuth/Google";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../../auth/AuthContext/AuthContext";
 import Swal from "sweetalert2";
+import Captcha from "../../components/Captcha/Captcha";
 
 const Signup = () => {
   const { createUser } = useContext(AuthContext);
+  const [generatedCaptcha, setGeneratedCaptcha] = useState("aaA56");
 
   const {
     register,
@@ -17,7 +19,12 @@ const Signup = () => {
   } = useForm();
 
   const handleSignup = (data) => {
-    const { fullname, photoUrl, email, password } = data;
+    const { fullname, photoUrl, email, password, captcha } = data;
+
+    if (captcha !== generatedCaptcha) {
+      alert("Captcha does not match!");
+      return;
+    }
 
     createUser(email, password)
       .then((result) => {
@@ -127,13 +134,21 @@ const Signup = () => {
             )}
           </div>
 
-          {/* LogIn Page Link */}
-          <p className="text-center text-gray-600 mb-6">
-            Already have an account?{" "}
-            <Link to={"/logIn"} className="text-blue-500 hover:text-blue-700">
-              Log In
-            </Link>
-          </p>
+          {/* Captcha validation */}
+          <div className="items-center gap-3">
+            <Captcha
+              generatedCaptcha={generatedCaptcha}
+              setGeneratedCaptcha={setGeneratedCaptcha}></Captcha>
+
+            <input
+              {...register("captcha", { required: "Captcha is required" })}
+              placeholder="Enter captcha"
+              className="border p-2 rounded"
+            />
+            {errors.captcha && (
+              <p className="text-red-500">{errors.captcha.message}</p>
+            )}
+          </div>
 
           {/* Submit Button */}
           <button
@@ -141,6 +156,14 @@ const Signup = () => {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline">
             Sign Up
           </button>
+
+          {/* LogIn Page Link */}
+          <p className="text-center text-gray-600 mb-6">
+            Already have an account?{" "}
+            <Link to={"/logIn"} className="text-blue-500 hover:text-blue-700">
+              Log In
+            </Link>
+          </p>
         </form>
 
         {/* Social SignUp */}

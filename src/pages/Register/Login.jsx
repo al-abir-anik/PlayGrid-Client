@@ -1,27 +1,19 @@
 import { useForm } from "react-hook-form";
 import Google from "../../auth/SocialAuth/Google";
 import { Link } from "react-router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../../auth/AuthContext/AuthContext";
-import {
-  loadCaptchaEnginge,
-  LoadCanvasTemplate,
-  validateCaptcha,
-} from "react-simple-captcha";
+import Captcha from "../../components/Captcha/Captcha";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
-  const [generatedCaptcha, setGeneratedCaptcha] = useState("7G5K9");
+  const [generatedCaptcha, setGeneratedCaptcha] = useState("aaA56");
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  // useEffect(() => {
-  //   loadCaptchaEnginge(6);
-  // }, []);
 
   const handleLogin = (data) => {
     const { email, password, captcha } = data;
@@ -30,7 +22,7 @@ const Login = () => {
       alert("Captcha does not match!");
       return;
     }
-
+    
     loginUser(email, password)
       .then((result) => {
         console.log(result.user);
@@ -90,29 +82,11 @@ const Login = () => {
         </div>
 
         {/* Captcha validation */}
-        {/* <div className="flex flex-col gap-2 w-full max-w-sm">
-          <label className="text-sm font-medium text-gray-700">
-            <LoadCanvasTemplate />
-          </label>
+        <div className="items-center gap-3">
+          <Captcha
+            generatedCaptcha={generatedCaptcha}
+            setGeneratedCaptcha={setGeneratedCaptcha}></Captcha>
 
-        
-        </div> */}
-
-        {/* Custom Captcha*/}
-        <div className="flex items-center gap-3">
-          <div className="bg-gray-200 px-4 py-2 rounded font-bold ">
-            {generatedCaptcha}
-          </div>
-          <button
-            type="button"
-            onClick={() =>
-              setGeneratedCaptcha(
-                Math.random().toString(36).substring(2, 7).toUpperCase()
-              )
-            }
-            className="text-blue-500 hover:underline text-sm">
-            Reload
-          </button>
           <input
             {...register("captcha", { required: "Captcha is required" })}
             placeholder="Enter captcha"

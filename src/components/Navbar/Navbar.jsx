@@ -1,10 +1,19 @@
-import { Link, NavLink } from "react-router";
+import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router";
+import AuthContext from "../../auth/AuthContext/AuthContext";
 
 const Navbar = () => {
-  const user = true;
+  const navigate = useNavigate();
+  const { user, signOutUser } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => navigate("/login"))
+      .catch((error) => console.log("ERROR", error.message));
+  };
 
   return (
-    <nav className="w-full h-28 text-white flex items-center justify-around fixed z-10">
+    <nav className="w-full h-28 bg-[#202020] text-white flex items-center justify-around">
       <Link to={"/"} className="text-4xl font-black">
         PLAY<span className="text-[#45F882]">GRID</span>
       </Link>
@@ -14,7 +23,7 @@ const Navbar = () => {
             <NavLink to={"/"}>Home</NavLink>
           </li>
           <li>
-            <NavLink to={"#"}>Store</NavLink>
+            <NavLink to={"/store"}>Store</NavLink>
           </li>
           <li>
             <NavLink to={"#"}>Library</NavLink>
@@ -23,19 +32,24 @@ const Navbar = () => {
             <NavLink to={"#"}>E-Sports</NavLink>
           </li>
         </ul>
-        {user && (
+        
+        {user ? (
+          <button onClick={handleSignOut} className="text-xs font-semibold space-x-2 border border-[#45F882] rounded-full py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882] cursor-pointer">
+            LOG OUT
+          </button>
+        ) : (
           <div className="inline-flex text-xs font-semibold space-x-2 border border-[#45F882] rounded-full">
-            <NavLink
-              to={"#"}
+            <Link
+              to={"/login"}
               className="py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882]">
-              LOGIN
-            </NavLink>
+              LOG IN
+            </Link>
             <span className="w-0.5 bg-[#45F882]/70"></span>
-            <NavLink
-              to={"#"}
+            <Link
+              to={"signup"}
               className="py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882]">
               SIGN UP
-            </NavLink>
+            </Link>
           </div>
         )}
       </div>

@@ -22,7 +22,7 @@ const Login = () => {
       alert("Captcha does not match!");
       return;
     }
-    
+
     loginUser(email, password)
       .then((result) => {
         console.log(result.user);
@@ -81,12 +81,12 @@ const Login = () => {
           </a>
         </div>
 
-        {/* Captcha validation */}
+        {/* Captcha Input */}
         <div className="items-center gap-3">
           <Captcha
             generatedCaptcha={generatedCaptcha}
             setGeneratedCaptcha={setGeneratedCaptcha}></Captcha>
-
+            
           <input
             {...register("captcha", { required: "Captcha is required" })}
             placeholder="Enter captcha"

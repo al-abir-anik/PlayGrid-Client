@@ -6,6 +6,10 @@ import AuthContext from "../../auth/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 import Captcha from "../../components/Captcha/Captcha";
 
+
+const imageHostingKey = import.meta.env.VITE_imagebbHostingKey;
+const imageUploadAPI = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
+
 const Signup = () => {
   const { createUser } = useContext(AuthContext);
   const [generatedCaptcha, setGeneratedCaptcha] = useState("aaA56");

@@ -1,18 +1,20 @@
 import { Link } from "react-router";
 
-const GameCard1 = () => {
+const GameCard1 = ({ game }) => {
+  const { _id, title, image, price, rating } = game;
+
   return (
     <div className="card group md:w-96 overflow-hidden mx-auto hover:shadow sm:max-w-sm">
       <figure>
         <img
-          src={imageUrl}
+          src={image}
           alt="meal image"
           className="h-60 object-cover transition-transform duration-500 group-hover:scale-110"
         />
       </figure>
       <div className="card-body">
         <h5 className="card-title mb-2.5">{title}</h5>
-        <p className="text-sm text-gray-600 mb-1">Rating: ⭐⭐⭐⭐⭐</p>
+        <p className="text-sm text-gray-600 mb-1">Rating: {rating}</p>
         <p className="text-lg font-bold my-2">${price}</p>
         {/* <p className="mb-6">
           Nike Air Max is a popular line of athletic shoes that feature Nike's

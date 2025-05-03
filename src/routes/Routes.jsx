@@ -5,6 +5,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Store from "../pages/Store/Store/Store";
 import Login from "./../pages/Register/Login";
 import Signup from "../pages/Register/Signup";
+import GameDetails from "../pages/GameDetails/GameDetails";
 
 const Routes = createBrowserRouter([
   {
@@ -27,6 +28,12 @@ const Routes = createBrowserRouter([
       {
         path: "/store",
         element: <Store></Store>,
+      },
+      {
+        path: "/game/:id",
+        element: <GameDetails></GameDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/game/${params.id}`),
       },
     ],
   },

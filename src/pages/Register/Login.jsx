@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import Google from "../../auth/SocialAuth/Google";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useContext, useState } from "react";
 import AuthContext from "../../auth/AuthContext/AuthContext";
 import Captcha from "../../components/Captcha/Captcha";
 
 const Login = () => {
+  const navigate = useNavigate();
   const { loginUser } = useContext(AuthContext);
   const [generatedCaptcha, setGeneratedCaptcha] = useState("aaA56");
 
@@ -20,12 +21,21 @@ const Login = () => {
 
     if (captcha !== generatedCaptcha) {
       alert("Captcha does not match!");
+      setGeneratedCaptcha(
+        Math.random()
+          .toString(36)
+          .substring(2, 7)
+          .split("")
+          .map((c) => (Math.random() > 0.5 ? c.toUpperCase() : c.toLowerCase()))
+          .join("")
+      );
       return;
     }
 
     loginUser(email, password)
       .then((result) => {
         console.log(result.user);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);
@@ -86,7 +96,7 @@ const Login = () => {
           <Captcha
             generatedCaptcha={generatedCaptcha}
             setGeneratedCaptcha={setGeneratedCaptcha}></Captcha>
-            
+
           <input
             {...register("captcha", { required: "Captcha is required" })}
             placeholder="Enter captcha"

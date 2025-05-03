@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import Google from "../../auth/SocialAuth/Google";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
@@ -6,11 +6,11 @@ import AuthContext from "../../auth/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 import Captcha from "../../components/Captcha/Captcha";
 
-
 const imageHostingKey = import.meta.env.VITE_imagebbHostingKey;
 const imageUploadAPI = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const Signup = () => {
+  const navigate = useNavigate();
   const { createUser } = useContext(AuthContext);
   const [generatedCaptcha, setGeneratedCaptcha] = useState("aaA56");
 
@@ -23,16 +23,25 @@ const Signup = () => {
   } = useForm();
 
   const handleSignup = (data) => {
-    const { fullname, photoUrl, email, password, captcha } = data;
+    const { fullname, image, email, password, captcha } = data;
 
     if (captcha !== generatedCaptcha) {
       alert("Captcha does not match!");
+      setGeneratedCaptcha(
+        Math.random()
+          .toString(36)
+          .substring(2, 7)
+          .split("")
+          .map((c) => (Math.random() > 0.5 ? c.toUpperCase() : c.toLowerCase()))
+          .join("")
+      );
       return;
     }
 
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);
@@ -69,23 +78,17 @@ const Signup = () => {
             )}
           </div>
 
-          {/* Photo URL */}
+          {/* Image input */}
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
-              Photo URL
+              Upload Image
             </label>
             <input
-              type="url"
-              placeholder="Enter your picture URL"
+              type="file"
+              accept="image/*"
               required
-              {...register("photoUrl", {
-                pattern: {
-                  value:
-                    /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/.*)?$/,
-                  message: "Please enter a valid URL",
-                },
-              })}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+              {...register("image")}
+              className=" border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.photoUrl && (
               <p className="text-red-500">{errors.photoUrl.message}</p>

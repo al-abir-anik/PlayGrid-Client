@@ -1,10 +1,12 @@
-import { useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router";
+import { useContext, useEffect, useState } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import AuthContext from "../../auth/AuthContext/AuthContext";
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const { user, signOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   const handleSignOut = () => {
     signOutUser()
@@ -12,9 +14,44 @@ const Navbar = () => {
       .catch((error) => console.log("ERROR", error.message));
   };
 
+  // hide on scroll navbar
+
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(window.scrollY);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      // scrolling down
+      setShowNavbar(false);
+    } else {
+      // scrolling up
+      setShowNavbar(true);
+    }
+
+    // Transparent background logic
+    setIsScrolled(currentScrollY > 50);
+
+    setLastScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lastScrollY]);
+
+  // Dynamic navbar background style
+  const bgStyle = isHome && !isScrolled ? "bg-transparent" : "bg-gray-600";
+
   return (
-    <nav className="w-full h-28 bg-[#202020] text-white flex items-center justify-around">
-      <Link to={"/"} className="text-4xl logo-font">
+    <nav
+      className={`w-full h-20 text-white flex items-center justify-around fixed top-0  transition-all duration-300 z-50 ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      } ${bgStyle}`}>
+      <Link to={"/"} className="text-4xl logo-font ">
         PLAY<span className="text-[#45F882]">GRID</span>
       </Link>
       <div className="flex items-center gap-10">
@@ -32,9 +69,11 @@ const Navbar = () => {
             <NavLink to={"#"}>E-Sports</NavLink>
           </li>
         </ul>
-        
+
         {user ? (
-          <button onClick={handleSignOut} className="text-xs font-semibold space-x-2 border border-[#45F882] rounded-full py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882] cursor-pointer">
+          <button
+            onClick={handleSignOut}
+            className="text-xs font-semibold space-x-2 border border-[#45F882] rounded-full py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882] cursor-pointer">
             LOG OUT
           </button>
         ) : (

@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full h-28 bg-[#202020] text-white flex items-center justify-around">
-      <Link to={"/"} className="text-4xl font-black">
+      <Link to={"/"} className="text-4xl logo-font">
         PLAY<span className="text-[#45F882]">GRID</span>
       </Link>
       <div className="flex items-center gap-10">

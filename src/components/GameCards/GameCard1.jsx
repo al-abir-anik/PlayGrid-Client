@@ -4,26 +4,21 @@ const GameCard1 = ({ game }) => {
   const { _id, title, image, price, rating } = game;
 
   return (
-    <div className="card group md:w-96 overflow-hidden mx-auto hover:shadow sm:max-w-sm">
-      <figure>
-        <img
-          src={image}
-          alt="meal image"
-          className="h-60 object-cover transition-transform duration-500 group-hover:scale-110"
-        />
+    <div className="w-2xs mx-auto bg-gray-200 rounded-xl overflow-hidden transition-all duration-500 hover:rounded-none hover:scale-105">
+      <figure className="">
+        <img src={image} alt="game poster" className="h-72 object-cover" />
       </figure>
-      <div className="card-body">
-        <h5 className="card-title mb-2.5">{title}</h5>
-        <p className="text-sm text-gray-600 mb-1">Rating: {rating}</p>
-        <p className="text-lg font-bold my-2">${price}</p>
-        {/* <p className="mb-6">
-          Nike Air Max is a popular line of athletic shoes that feature Nike's
-          signature Air cushioning technology in the sole.
-        </p> */}
-
-        <Link to={`/game/${_id}`}>
-          <button className="btn btn-primary mt-2">Meal Details</button>
-        </Link>
+      <div className="p-4 space-y-3 ">
+        <h5 className="text-lg font-semibold">{title}</h5>
+        <p className="text-sm text-gray-600 ">Rating: {rating}</p>
+        <div className="flex justify-between items-center">
+          <p className="text-lg ">${price}</p>
+          <Link to={`/game/${_id}`}>
+            <button className="px-6 py-2 text-sm border border-gray-600 text-gray-800 rounded-2xl hover:bg-gray-700 hover:text-white focus:scale-90 transition cursor-pointer">
+              Game Details
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

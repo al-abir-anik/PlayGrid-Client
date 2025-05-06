@@ -1,4 +1,6 @@
 /* root font */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+/* logo font */
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 /* captcha font */
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
@@ -6,8 +8,14 @@
 
 @import "tailwindcss";
 
+
 :root {
-  font-family: "Titillium Web", serif;
+  font-family: "Outfit", serif;
+}
+
+.logo-font{
+  font-family: "Titillium Web";
+  font-weight: 900;
 }
 
 .captcha-font{

@@ -5,14 +5,19 @@ import LatestNews from "../Home-sections/LatestNews";
 
 const Home = () => {
   return (
-    <main>
-      <Banner></Banner>
+    <div>
+      <section>
+        <Banner></Banner>
+      </section>
 
-      <FeaturedGames></FeaturedGames>
+      <section>
+        <FeaturedGames></FeaturedGames>
+      </section>
 
-      <LatestNews></LatestNews>
-
-    </main>
+      <section>
+        <LatestNews></LatestNews>
+      </section>
+    </div>
   );
 };
 

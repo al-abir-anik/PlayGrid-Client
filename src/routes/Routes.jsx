@@ -2,10 +2,10 @@ import { createBrowserRouter } from "react-router";
 import Root from "../layouts/Root";
 import Home from "../pages/Home/Home/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
-import Store from "../pages/Store/Store/Store";
 import Login from "./../pages/Register/Login";
 import Signup from "../pages/Register/Signup";
 import GameDetails from "../pages/GameDetails/GameDetails";
+import GameStore from "../pages/GameStore/GameStore";
 
 const Routes = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/store",
-        element: <Store></Store>,
+        element: <GameStore></GameStore>,
       },
       {
         path: "/game/:id",

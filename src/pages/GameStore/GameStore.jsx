@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import GameCard1 from "../../components/GameCards/GameCard1";
+import GameCard1 from "../../components/Cards/GameCard1";
 
 const GameStore = () => {
   const [games, setGames] = useState([]);

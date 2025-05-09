@@ -1,6 +1,6 @@
 import { FaDesktop, FaTags } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -39,21 +39,24 @@ const Banner = () => {
   return (
     <section className="w-full">
       <Swiper
-        modules={[Autoplay, Navigation]}
+        modules={[Autoplay, Navigation, EffectFade]}
+        // effect={"fade"}
         spaceBetween={0}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop
-        className="w-full h-screen">
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        loop={true}
+        className="w-full h-screen"
+      >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
               className="w-full h-full  bg-cover bg-center text-white"
               style={{
                 backgroundImage: `url(${slide.img})`,
-              }}>
+              }}
+            >
               <div className="bg-black/30 w-full h-full">
                 <div className="h-full text-center flex flex-col justify-center items-center gap-10">
                   <div className="flex gap-14 text-sm font-semibold">
@@ -66,15 +69,19 @@ const Banner = () => {
                       {slide.category}
                     </p>
                   </div>
-                  <h2 className="text-white text-8xl font-black">
+                  <h2 className="text-white text-8xl font-bold logo-font">
                     {slide.title}
                   </h2>
-                  <p className="w-1/2  text-white text-lg mb-10">
+                  <p className="w-1/2  text-white text-lg mb-5">
                     {slide.description}
                   </p>
-                  <div className="space-x-20">
-                    <button>Game Details</button>
-                    <button>Buy Now</button>
+                  <div className="space-x-16">
+                    <button className=" mt-10 px-10 py-3 border border-[#45F882] text-white rounded-3xl hover:bg-[#45F882] transition ease-in focus:scale-90 cursor-pointer ">
+                      Buy Now
+                    </button>
+                    <button className=" mt-10 px-10 py-3 border-[#45F882] text-white rounded-3xl hover:bg-[#45F882] transition ease-in focus:scale-90 cursor-pointer ">
+                      Game Details
+                    </button>
                   </div>
                 </div>
               </div>

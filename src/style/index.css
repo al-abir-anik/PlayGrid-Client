@@ -1,24 +1,33 @@
 /* root font */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 /* logo font */
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 /* captcha font */
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
 
 @import "tailwindcss";
 
-
 :root {
-  font-family: "Outfit", serif;
+  font-family: "Outfit";
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent, #45f882);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
-.logo-font{
+.logo-font {
   font-family: "Titillium Web";
   font-weight: 900;
 }
 
-.captcha-font{
+.captcha-font {
   font-family: "Fredericka the Great";
   font-size: 1.5em;
   letter-spacing: 1em;
@@ -26,11 +35,11 @@
   text-shadow: 1em;
 }
 
-/* body {
-
+body {
+  font-family: "Outfit";
 }
 
-button {
+/* button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -47,9 +56,9 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;

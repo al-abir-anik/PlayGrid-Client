@@ -40,11 +40,14 @@ const Navbar = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastScrollY]);
 
-  // Dynamic navbar background style
-  const bgStyle = isHome && !isScrolled ? "bg-transparent" : "bg-gray-600";
+  // Dynamic navbar background color
+  const bgStyle =
+    isHome && !isScrolled
+      ? "bg-transparent"
+      : "bg-black/30 backdrop-blur-lg shadow";
 
   return (
     <nav
@@ -60,10 +63,13 @@ const Navbar = () => {
             <NavLink to={"/"}>Home</NavLink>
           </li>
           <li>
-            <NavLink to={"/store"}>Store</NavLink>
+            <NavLink to={"store"}>Store</NavLink>
           </li>
           <li>
             <NavLink to={"#"}>Library</NavLink>
+          </li>
+          <li>
+            <NavLink to={"news"}>News</NavLink>
           </li>
           <li>
             <NavLink to={"#"}>E-Sports</NavLink>

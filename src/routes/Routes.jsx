@@ -6,6 +6,7 @@ import Login from "./../pages/Register/Login";
 import Signup from "../pages/Register/Signup";
 import GameDetails from "../pages/GameDetails/GameDetails";
 import GameStore from "../pages/GameStore/GameStore";
+import News from "../pages/NewsPage/News";
 
 const Routes = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const Routes = createBrowserRouter([
         element: <GameDetails></GameDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/game/${params.id}`),
+      },
+      {
+        path: "/news",
+        element: <News></News>,
       },
     ],
   },

@@ -22,29 +22,34 @@ const LatestNews = () => {
       <div className="flex justify-between">
         {latestNews[0] && (
           <div className="w-3/5 overflow-hidden">
-            <figure className="">
-              <img
-                src={latestNews[0].image}
-                alt="news poster"
-                className="mb-8 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-            </figure>
+            <img
+              src={latestNews[0].image}
+              alt="news poster"
+              className="mb-8 object-cover transition-transform duration-500 group-hover:scale-110"
+            />
             <div className="space-y-5">
               <div className="flex gap-6">
-                <p className="font-semibold opacity-80 uppercase">{latestNews[0].category}</p>
+                <p className="font-semibold opacity-80 uppercase">
+                  {latestNews[0].category}
+                </p>
                 <span className="flex gap-2 items-center">
                   <FaRegClock className="text-[#45F882] text-lg" />
                   <p>{latestNews[0].date}</p>
                 </span>
               </div>
-              <h5 className="text-2xl font-semibold tracking-wide">{latestNews[0].title}</h5>
-              <p className="text-lg opacity-70 tracking-wide whitespace-pre-line">${latestNews[0].summary}</p>
+              <h5 className="text-2xl font-semibold tracking-wide">
+                {latestNews[0].title}
+              </h5>
+              <p className="text-lg opacity-70 tracking-wide whitespace-pre-line">
+                ${latestNews[0].summary}
+              </p>
             </div>
-
-            <button className=" mt-6 flex items-end gap-1.5 group transition-all hover:text-[#45F882] duration-200 cursor-pointer">
-              <span className="text-lg font-semibold">Read More</span>{" "}
-              <IoMdArrowForward className="font-light text-2xl text-[#45F882] -rotate-45 group-hover:rotate-0 duration-200 transition-transform" />
-            </button>
+            <Link to={`/news/${latestNews[0]._id}`}>
+              <button className=" mt-6 flex items-end gap-1.5 group transition-all hover:text-[#45F882] duration-300 cursor-pointer">
+                <span className="text-lg font-semibold">Read More</span>{" "}
+                <IoMdArrowForward className="font-light text-2xl text-[#45F882] -rotate-45 group-hover:rotate-0 duration-300 transition-transform" />
+              </button>
+            </Link>
           </div>
         )}
         <div className="w-2/6 flex flex-col gap-10">

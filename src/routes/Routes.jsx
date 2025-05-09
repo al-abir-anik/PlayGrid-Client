@@ -6,7 +6,8 @@ import Login from "./../pages/Register/Login";
 import Signup from "../pages/Register/Signup";
 import GameDetails from "../pages/GameDetails/GameDetails";
 import GameStore from "../pages/GameStore/GameStore";
-import News from "../pages/NewsPage/News";
+import NewsPage from "../pages/NewsPage/NewsPage";
+import NewsDetails from "../pages/NewsPage/NewsDetails";
 
 const Routes = createBrowserRouter([
   {
@@ -38,7 +39,14 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/news",
-        element: <News></News>,
+        element: <NewsPage></NewsPage>,
+        loader: () => fetch("http://localhost:5000/upcoming-news"),
+      },
+      {
+        path: "/news/:id",
+        element: <NewsDetails></NewsDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/news/${params.id}`),
       },
     ],
   },

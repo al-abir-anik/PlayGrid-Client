@@ -1,9 +1,9 @@
 import { useLoaderData } from "react-router";
 
-const GameDetails = () => {
-  const gameDetails = useLoaderData();
-  const { _id, title, image, price, category, description, platform, rating } =
-    gameDetails;
+const NewsDetails = () => {
+  const newsDetails = useLoaderData();
+  const { _id, title, image, category, summary, date } = newsDetails;
+
 
   return (
     <div className="container mx-auto px-4 py-10">
@@ -21,7 +21,7 @@ const GameDetails = () => {
 
           <div>
             <h5 className="font-semibold my-3">ABOUT THIS GAME</h5>
-            <p className="text-gray-600 mb-8">{description}</p>
+            <p className="text-gray-600 mb-8">{summary}</p>
           </div>
         </div>
 
@@ -31,32 +31,11 @@ const GameDetails = () => {
           <p className="text-gray-500 mb-4">
             <strong>Category :</strong> {category}
           </p>
-          <p className="text-gray-500 mb-4">
-            <strong>Price :</strong> $ {price}
-          </p>
-          <p className="text-gray-500 mb-4">
-            <strong>Platform:</strong> {platform}
-          </p>
-          <p className="text-gray-500 mb-4">
-            <strong>Post Time:</strong> time here
-          </p>
-          <div className="flex items-center gap-2 mb-6">
-            <span className="text-yellow-500 font-bold text-xl">
-              rating: {rating}
-            </span>
-            <span className="text-gray-500 text-sm">(count here Reviews)</span>
-          </div>
-          <div className="flex flex-col">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Add To Wishlist</button>
-          </div>
-        </div>
-      </div>
 
-      {/* Requirement section */}
-      <div>
-        <h2 className="text-lg font-semibold">System Requirements</h2>
+          <p className="text-gray-500 mb-4">
+            <strong>Post Time:</strong> {date}
+          </p>
+        </div>
       </div>
 
       {/* Review Section */}
@@ -102,4 +81,4 @@ const GameDetails = () => {
   );
 };
 
-export default GameDetails;
+export default NewsDetails;

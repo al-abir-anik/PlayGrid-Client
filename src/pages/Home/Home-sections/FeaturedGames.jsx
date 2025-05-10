@@ -17,9 +17,10 @@ const FeaturedGames = () => {
         EXPLORE <span className="text-[#45F882]">MORE GAMES</span>
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
         {categoryGames.map((game) => (
           <GameCard1 key={game._id} game={game}></GameCard1>
+
         ))}
       </div>
 

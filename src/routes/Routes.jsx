@@ -40,7 +40,9 @@ const Routes = createBrowserRouter([
       {
         path: "/news",
         element: <NewsPage></NewsPage>,
-        loader: () => fetch("http://localhost:5000/upcoming-news"),
+        loader: () => Promise.all([fetch("http://localhost:5000/upcoming-news").then(res => res.json()),
+        fetch("http://localhost:5000/news-count").then(res => res.json())
+        ]),
       },
       {
         path: "/news/:id",

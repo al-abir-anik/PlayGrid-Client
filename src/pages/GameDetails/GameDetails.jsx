@@ -1,55 +1,80 @@
 import { useLoaderData } from "react-router";
+import ImageGallery from "./ImageGallery/ImageGallery";
 
 const GameDetails = () => {
   const gameDetails = useLoaderData();
-  const { _id, title, image, price, category, description, platform, rating } =
-    gameDetails;
+  const {
+    _id,
+    title,
+    image,
+    images,
+    genre,
+    price,
+    category,
+    description,
+    platform,
+    rating,
+  } = gameDetails;
 
   return (
-    <div className="container mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold text-gray-800 mb-10">{title}</h2>
-      <div className="flex gap-20">
-        {/* overview column */}
-        <div className="w-3/4">
+    <div className="w-3/4 mx-auto px-4 py-16">
+      <h2 className="text-4xl font-bold text-gray-800 mb-10">{title}</h2>
+      <div className="flex justify-between items-start">
+        {/* Description column */}
+        <div className="w-[70%] space-y-20">
           <div className="">
-            <img
-              src={image}
-              alt="game image"
-              className="w-full h-auto rounded-lg"
-            />
+            <ImageGallery gameImages={images}></ImageGallery>
           </div>
-
-          <div>
-            <h5 className="font-semibold my-3">ABOUT THIS GAME</h5>
-            <p className="text-gray-600 mb-8">{description}</p>
+          <div className="space-y-6">
+            <h5 className="text-2xl font-semibold">ABOUT THIS GAME</h5>
+            <p className="text-lg text-gray-600 mb-8">{description}</p>
           </div>
         </div>
 
         {/* details column */}
-        <div className="w-1/4">
-          <h3 className="text-3xl font-bold text-gray-800 mb-5">Details</h3>
-          <p className="text-gray-500 mb-4">
-            <strong>Category :</strong> {category}
+        <div className="w-1/4 space-y-4 bg-white sticky top-0">
+          <img src={image} alt="game poster" className="mb-10"/>
+          {/* <h5 className="text-2xl font-bold pb-5">GAME DETAILS</h5> */}
+          <p className="flex gap-2">
+            <span className="min-w-28 text-lg font-medium">Price</span>
+            <span>:</span>
+            <span className="pl-3">$ {price}</span>
           </p>
-          <p className="text-gray-500 mb-4">
-            <strong>Price :</strong> $ {price}
+          <p className="flex gap-2">
+            <span className="min-w-28 text-lg font-medium">Genres</span>
+            <span>:</span>
+            <span className="pl-3">{genre.join(", ")}</span>
           </p>
-          <p className="text-gray-500 mb-4">
-            <strong>Platform:</strong> {platform}
+          <p className="flex gap-2">
+            <span className="min-w-28 text-lg font-medium">Platform</span>
+            <span>:</span>
+            <span className="pl-3">{platform.join(", ")}</span>
           </p>
-          <p className="text-gray-500 mb-4">
-            <strong>Post Time:</strong> time here
+          <p className="flex gap-2">
+            <span className="min-w-28 text-lg font-medium">Developer</span>
+            <span>:</span>
+            <span className="pl-3">Rockstar Games</span>
           </p>
-          <div className="flex items-center gap-2 mb-6">
-            <span className="text-yellow-500 font-bold text-xl">
-              rating: {rating}
-            </span>
-            <span className="text-gray-500 text-sm">(count here Reviews)</span>
-          </div>
-          <div className="flex flex-col">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Add To Wishlist</button>
+          <p className="flex gap-2">
+            <span className="min-w-28 text-lg font-medium">Publisher</span>
+            <span>:</span>
+            <span className="pl-3">Rockstar Games</span>
+          </p>
+          <p className="flex gap-2">
+            <span className="min-w-28 text-lg font-medium">Release Date</span>
+            <span>:</span>
+            <span className="pl-3">11 May 2014</span>
+          </p>
+          <div className="flex flex-col gap-3 my-10">
+            <button className="grow px-10 py-3 bg-[#45F882] text-gray-700 rounded-lg hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
+              Buy Now
+            </button>
+            <button className="grow px-10 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
+              Add To Cart
+            </button>
+            <button className="grow px-10 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
+              Add To Wishlist
+            </button>
           </div>
         </div>
       </div>

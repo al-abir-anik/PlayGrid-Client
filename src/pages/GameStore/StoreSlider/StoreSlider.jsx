@@ -11,12 +11,13 @@ const StoreSlider = ({ upcomingGames }) => {
     <div>
       <Swiper
         // effect={"coverflow"}
+        fadeEffect={{ crossFade: false }}
         centeredSlides={false}
         slidesPerView={"auto"}
         spaceBetween={80} // 
         freeMode={true}
-        freeModeMomentumRatio={0.1}
-        freeModeMomentumVelocityRatio={0.1} 
+        freemodemomentumratio={0.1}
+        freemodemomentumvelocityratio={0.1} 
         // coverflowEffect={{
         //   rotate: 50,
         //   stretch: 0,

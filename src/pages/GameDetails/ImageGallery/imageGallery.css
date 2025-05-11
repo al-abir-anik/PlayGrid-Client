@@ -1,0 +1,23 @@
+
+
+.p-galleria-thumbnail-items-container {
+  height: 4rem !important; /* Smaller thumbnail section height */
+  padding: 3px !important;
+}
+
+.p-galleria-thumbnail-item {
+  margin-right: 0.1rem !important; 
+}
+
+/* imageGallery.css */
+.galleria-image-fade img {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: all 0.5s ease-in-out;
+}
+
+.galleria-image-fade.p-galleria-item-wrapper-active img {
+  opacity: 1;
+  transform: scale(1);
+}
+

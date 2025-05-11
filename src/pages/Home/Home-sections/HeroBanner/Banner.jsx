@@ -1,9 +1,11 @@
 import { FaDesktop, FaTags } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation } from "swiper/modules";
+import "../HeroBanner/banner.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 const Banner = () => {
   const slides = [
@@ -40,19 +42,21 @@ const Banner = () => {
     <section className="w-full">
       <Swiper
         modules={[Autoplay, Navigation, EffectFade]}
-        // effect={"fade"}
+        effect={"fade"}
+        fadeEffect={{ crossFade: true }}
+        speed={1000}
         spaceBetween={0}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop={true}
         className="w-full h-screen"
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="w-full h-full  bg-cover bg-center text-white"
+              className="w-full h-full bg-cover bg-center text-white"
               style={{
                 backgroundImage: `url(${slide.img})`,
               }}

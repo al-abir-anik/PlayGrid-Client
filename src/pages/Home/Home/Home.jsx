@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "../Home-sections/Banner";
+import Banner from "../Home-sections/HeroBanner/Banner";
 import FeaturedGames from "../Home-sections/FeaturedGames";
 import LatestNews from "../Home-sections/LatestNews";
 
@@ -10,7 +10,7 @@ const Home = () => {
         <Banner></Banner>
       </section>
 
-      <section className="p-">
+      <section className="">
         <FeaturedGames></FeaturedGames>
       </section>
 

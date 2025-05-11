@@ -15,7 +15,6 @@ const Navbar = () => {
   };
 
   // hide on scroll navbar
-
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,17 +42,16 @@ const Navbar = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastScrollY]);
 
-  // Dynamic navbar background color
-  const bgStyle =
-    isHome && !isScrolled
-      ? "bg-transparent"
-      : "bg-black/30 backdrop-blur-lg shadow";
-
   return (
     <nav
       className={`w-full h-20 text-white flex items-center justify-around fixed top-0  transition-all duration-300 z-50 ${
         showNavbar ? "translate-y-0" : "-translate-y-full"
-      } ${bgStyle}`}>
+      } ${
+        isHome && !isScrolled
+          ? "bg-transparent"
+          : "bg-black/30 backdrop-blur-lg shadow"
+      }`}
+    >
       <Link to={"/"} className="text-4xl logo-font ">
         PLAY<span className="text-[#45F882]">GRID</span>
       </Link>
@@ -79,20 +77,23 @@ const Navbar = () => {
         {user ? (
           <button
             onClick={handleSignOut}
-            className="text-xs font-semibold space-x-2 border border-[#45F882] rounded-full py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882] cursor-pointer">
+            className="text-xs font-semibold space-x-2 border border-[#45F882] rounded-full py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882] cursor-pointer"
+          >
             LOG OUT
           </button>
         ) : (
           <div className="inline-flex text-xs font-semibold space-x-2 border border-[#45F882] rounded-full">
             <Link
               to={"/login"}
-              className="py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882]">
+              className="py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882]"
+            >
               LOG IN
             </Link>
             <span className="w-0.5 bg-[#45F882]/70"></span>
             <Link
               to={"signup"}
-              className="py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882]">
+              className="py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882]"
+            >
               SIGN UP
             </Link>
           </div>

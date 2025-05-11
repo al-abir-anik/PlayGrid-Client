@@ -30,6 +30,7 @@ const Routes = createBrowserRouter([
       {
         path: "/store",
         element: <GameStore></GameStore>,
+        loader: () => fetch("http://localhost:5000/upcoming-games"),
       },
       {
         path: "/game/:id",
@@ -40,9 +41,13 @@ const Routes = createBrowserRouter([
       {
         path: "/news",
         element: <NewsPage></NewsPage>,
-        loader: () => Promise.all([fetch("http://localhost:5000/upcoming-news").then(res => res.json()),
-        fetch("http://localhost:5000/news-count").then(res => res.json())
-        ]),
+        loader: () =>
+          Promise.all([
+            fetch("http://localhost:5000/upcoming-news").then((res) =>
+              res.json()
+            ),
+            fetch("http://localhost:5000/news-count").then((res) => res.json()),
+          ]),
       },
       {
         path: "/news/:id",

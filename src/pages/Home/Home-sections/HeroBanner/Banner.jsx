@@ -43,7 +43,7 @@ const Banner = () => {
       <Swiper
         modules={[Autoplay, Navigation, EffectFade]}
         effect={"fade"}
-        fadeEffect={{ crossFade: true }}
+        // fadeEffect={{ crossFade: true }}
         speed={1000}
         spaceBetween={0}
         slidesPerView={1}
@@ -73,17 +73,15 @@ const Banner = () => {
                       {slide.category}
                     </p>
                   </div>
-                  <h2 className="text-white text-8xl font-bold logo-font">
+                  <h2 className=" text-8xl font-bold logo-font">
                     {slide.title}
                   </h2>
-                  <p className="w-1/2  text-white text-lg mb-5">
-                    {slide.description}
-                  </p>
+                  <p className="w-1/2 text-lg mb-5">{slide.description}</p>
                   <div className="space-x-16">
-                    <button className=" mt-10 px-10 py-3 border border-[#45F882] text-white rounded-3xl hover:bg-[#45F882] transition ease-in focus:scale-90 cursor-pointer ">
+                    <button className=" mt-10 px-10 py-3 border border-[#45F882] rounded-3xl hover:bg-[#45F882] transition ease-in focus:scale-90 cursor-pointer ">
                       Buy Now
                     </button>
-                    <button className=" mt-10 px-10 py-3 border-[#45F882] text-white rounded-3xl hover:bg-[#45F882] transition ease-in focus:scale-90 cursor-pointer ">
+                    <button className=" mt-10 px-10 py-3 border-[#45F882] rounded-3xl hover:bg-[#45F882] transition ease-in focus:scale-90 cursor-pointer ">
                       Game Details
                     </button>
                   </div>

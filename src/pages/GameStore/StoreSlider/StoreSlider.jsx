@@ -1,30 +1,34 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow } from "swiper/modules";
+import { EffectCoverflow, FreeMode } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/effect-coverflow";
+// import "swiper/css/effect-coverflow";
+import 'swiper/css/free-mode';
 import UpcomingGameCard from "../../../components/Cards/UpcomingGameCard";
 
 const StoreSlider = ({ upcomingGames }) => {
   return (
     <div>
       <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
+        // effect={"coverflow"}
+        centeredSlides={false}
         slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        modules={[EffectCoverflow]}
+        spaceBetween={80} // 
+        freeMode={true}
+        freeModeMomentumRatio={0.1}
+        freeModeMomentumVelocityRatio={0.1} 
+        // coverflowEffect={{
+        //   rotate: 50,
+        //   stretch: 0,
+        //   depth: 100,
+        //   modifier: 1,
+        //   slideShadows: true,
+        // }}
+        modules={[FreeMode]}
         className="mySwiper"
       >
         {upcomingGames.map((g) => (
-          <SwiperSlide key={g._id} className="!w-3/4">
+          <SwiperSlide key={g._id} className="!w-3/5">
             <UpcomingGameCard key={g._id} upcomingGame={g}></UpcomingGameCard>
           </SwiperSlide>
         ))}

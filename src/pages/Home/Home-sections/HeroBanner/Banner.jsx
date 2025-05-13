@@ -43,13 +43,13 @@ const Banner = () => {
       <Swiper
         modules={[Autoplay, Navigation, EffectFade]}
         effect={"fade"}
-        // fadeEffect={{ crossFade: true }}
-        speed={1000}
+        fadeEffect={{ crossFade: true }}
+        speed={1500}
         spaceBetween={0}
         slidesPerView={1}
-        navigation
+        // navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}
         className="w-full h-screen"
       >
@@ -78,10 +78,10 @@ const Banner = () => {
                   </h2>
                   <p className="w-1/2 text-lg mb-5">{slide.description}</p>
                   <div className="space-x-16">
-                    <button className=" mt-10 px-10 py-3 border border-[#45F882] rounded-3xl hover:bg-[#45F882] transition ease-in focus:scale-90 cursor-pointer ">
+                    <button className="grow px-10 py-3 bg-[#45F882] text-gray-700 rounded-xl hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
                       Buy Now
                     </button>
-                    <button className=" mt-10 px-10 py-3 border-[#45F882] rounded-3xl hover:bg-[#45F882] transition ease-in focus:scale-90 cursor-pointer ">
+                    <button className="grow px-10 py-3 border border-[#45F882] text-white rounded-xl hover:border-transparent hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
                       Game Details
                     </button>
                   </div>

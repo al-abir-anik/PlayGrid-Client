@@ -26,8 +26,6 @@ const NewsPage = () => {
       .catch((error) => console.log(error.message));
   }, [currentPage]); //?search=${search}&category=${category}
 
-  console.log(allNews);
-
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -49,7 +47,7 @@ const NewsPage = () => {
           <div ref={newsSectionRef} className="flex justify-between gap-6">
             {upcomingNews.map((news) => (
               <div key={news._id} className="w-1/4 space-y-3">
-                <p className="font-medium">{news.publisher}</p>
+                <p className="font-medium text-black/80">{news.publisher}</p>
                 <h3 className="text-lg font-semibold">{news.title}</h3>
                 <p className="text-sm">
                   <span>{news.releaseDate}</span>

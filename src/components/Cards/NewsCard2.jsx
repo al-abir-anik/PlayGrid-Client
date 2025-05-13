@@ -7,7 +7,11 @@ const NewsCard2 = ({ news }) => {
 
   return (
     <div className="h-60 overflow-hidden flex gap-10">
-      <img src={image} alt="news poster" className="w-1/3 object-cover" />
+      <img
+        src="https://i.ibb.co/RkRqhP7C/wp9129545-playstation-4-4k-wallpapers.jpg"
+        alt="news poster"
+        className="w-1/3 object-cover"
+      />
       <div className="flex flex-col justify-center gap-4">
         <div className="text-sm flex gap-5">
           <p className="font-semibold opacity-80 uppercase">{category}</p>

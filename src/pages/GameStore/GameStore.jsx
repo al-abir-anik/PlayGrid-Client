@@ -65,20 +65,23 @@ const GameStore = () => {
           </div>
           <div>
             <h4 className="text-2xl mb-5 tracking-wide">PRICE</h4>
-            <select
-              // onChange={(e) => setPriceRange(e.target.value)}
-              className="select max-w-sm appearance-none border-gray-300 shadow-sm"
-              defaultValue=""
-              aria-label="select"
-            >
-              <option value="" disabled>
-                Filter by Price Range
-              </option>
-              <option value="0-50">$0 - $50</option>
-              <option value="51-100">$51 - $100</option>
-              <option value="101-200">$101 - $200</option>
-              <option value="201+">$201+</option>
-            </select>
+            <div className="flex flex-col">
+              <button className="text-left py-4 text-gray-800 hover:text-[#45F882] border-b border-b-gray-300 hover:border-b-[#45F882] cursor-pointer">
+                Free
+              </button>
+              <button className="text-left py-4 text-gray-800 hover:text-[#45F882] border-b border-b-gray-300 hover:border-b-[#45F882] cursor-pointer">
+                Under $10.00
+              </button>
+              <button className="text-left py-4 text-gray-800 hover:text-[#45F882] border-b border-b-gray-300 hover:border-b-[#45F882] cursor-pointer">
+                Under $20.00
+              </button>
+              <button className="text-left py-4 text-gray-800 hover:text-[#45F882] border-b border-b-gray-300 hover:border-b-[#45F882] cursor-pointer">
+                Under $30.00
+              </button>
+              <button className="text-left py-4 text-gray-800 hover:text-[#45F882] border-b border-b-gray-300 hover:border-b-[#45F882] cursor-pointer">
+                $30.01 and above
+              </button>
+            </div>
           </div>
         </div>
 
@@ -89,23 +92,24 @@ const GameStore = () => {
               <input
                 type="search"
                 placeholder="search news"
-                className="w-full p-2 border border-fuchsia-200"
+                className="w-full p-2 border border-gray-200"
               />
             </div>
             <div className="pr-5 flex items-center relative">
-              <h5 className="text-lg">Sort By :</h5>
+              <h5 className="w-auto text-lg">Sort By :</h5>
               <select
                 // onChange={(e) => setPriceRange(e.target.value)}
-                className=" bg-white text-sky-500 py-2 px-10 appearance-none rounded focus:outline-none"
+                className=" bg-white text-blue-500 py-2 px-8 appearance-none rounded focus:outline-none"
                 defaultValue=""
                 aria-label="select"
               >
-                <option value="0-50">$0 - $50</option>
-                <option value="51-100">$51 - $100</option>
-                <option value="101-200">$101 - $200</option>
-                <option value="201+">$201+</option>
+                <option value="" selected disabled>
+                  Default
+                </option>
+                <option value="51-100">Low to high</option>
+                <option value="0-50">High to low</option>
               </select>
-              <IoIosArrowDown className="absolute right-7 top-1/2 transform -translate-y-1/2 pointer-events-none text-sky-500" />
+              <IoIosArrowDown className="absolute right-7 top-[55%] transform -translate-y-1/2 pointer-events-none text-blue-500" />
             </div>
           </div>
 

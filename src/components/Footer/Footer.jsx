@@ -1,15 +1,14 @@
 const Footer = () => {
   return (
     <div className="w-full bg-[#202020] text-white">
-      <div className="w-2/3 h-96 mx-auto py-14 flex justify-around">
+      <div className="w-3/4 mx-auto py-16 flex justify-around">
         <div className="space-y-5">
           <p className="text-3xl font-black ">
             PLAY<span className="text-[#45F882]">GRID</span>
           </p>
           <p className="w-80">
-            Unlock exclusive gear, rare skins, and powerful upgrades. Enhance
-            your gaming experience with premium items available right in the
-            game store.
+            Enhance your gaming experience with premium games available right in
+            the game store.
           </p>
         </div>
         <nav className="flex flex-col text-[#ADB0BC] font-semibold space-y-2">

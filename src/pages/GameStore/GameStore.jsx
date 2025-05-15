@@ -34,7 +34,7 @@ const GameStore = () => {
     <div className="">
       {/* Coming Soon */}
       <div className="w-3/4  mx-auto py-8 space-y-6">
-        <h2 className="  text-3xl font-medium tracking-wide">
+        <h2 className="  text-4xl font-medium heading-font ">
           Popular Upcoming Releases
         </h2>
         <hr className="opacity-10" />

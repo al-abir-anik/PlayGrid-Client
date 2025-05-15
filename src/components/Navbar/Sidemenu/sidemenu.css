@@ -1,0 +1,74 @@
+/* Sidebar Root */
+.custom-sidebar {
+  width: 22rem;
+  height: 100svh;
+  background: #f2f3f8;
+  backdrop-filter: blur(20px);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: "Outfit";
+}
+
+/* Sidebar Header */
+.custom-sidebar-header {
+  /* background: linear-gradient(to right, #4f46e5, #3b82f6); */
+  color: white;
+  font-size: 1.2rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Sidebar Close Button */
+.custom-close-button {
+  color: black;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.custom-close-button:hover {
+  background-color: var(--color-primary) / 20;
+  color: var(--color-primary);
+}
+
+/* Sidebar Content */
+.custom-sidebar-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2rem;
+  color: #1f2937;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Sidebar Title */
+.custom-title {
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* Sidebar Menu */
+.custom-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-menu li {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.custom-menu li:hover {
+  color: #3b82f6;
+}

@@ -1,4 +1,3 @@
-import React from "react";
 import Banner from "../Home-sections/HeroBanner/Banner";
 import FeaturedGames from "../Home-sections/FeaturedGames";
 import LatestNews from "../Home-sections/LatestNews";
@@ -9,10 +8,11 @@ const Home = () => {
       <section>
         <Banner></Banner>
       </section>
-
       <section className="">
         <FeaturedGames></FeaturedGames>
       </section>
+
+      <section className="w-full h-[40rem] bg-cover bg-no-repeat bg-[url('/images/valorant-bg.avif')]"></section>
 
       <section>
         <LatestNews></LatestNews>

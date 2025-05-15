@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+import { Link } from "react-router";
 
 const Banner = () => {
   const slides = [
@@ -14,7 +15,7 @@ const Banner = () => {
       img: "https://i.ibb.co.com/rGx7kwgF/wp12988880-call-of-duty-modern-warfare-iii-gaming-poster-wallpapers.jpg",
       title: "Modern Warfare III",
       description:
-        "Call of Duty: Modern Warfare III is a 2023 first-person shooter game developed by Sledgehammer Games and published by Activision. It is the twentieth installment of the Call of Duty series and is the third entry in the rebooted Modern Warfare sub-series, following Call of Duty: Modern Warfare II.",
+        "Call of Duty: Modern Warfare III is the twentieth installment of the Call of Duty series and is the third entry in the rebooted Modern Warfare sub-series, following Call of Duty: Modern Warfare II.",
       platform: "PLAYSTATION 4, XBOX, PC",
       category: "FIRST PERSON SHOOTER",
     },
@@ -29,10 +30,10 @@ const Banner = () => {
     },
     {
       id: 3,
-      img: "https://i.ibb.co.com/YTjPS2GN/wp9129545-playstation-4-4k-wallpapers.jpg",
+      img: "https://i.ibb.co/RkRqhP7C/wp9129545-playstation-4-4k-wallpapers.jpg",
       title: "GOD OF WAR",
       description:
-        "God of War is an action-adventure game franchise created by David Jaffe and developed by Sony's Santa Monica Studio. It began in 2005 on the PlayStation 2 video game console and has become a flagship series for PlayStation, consisting of nine installments across multiple platforms.",
+        "God of War is an action-adventure game franchise created by David Jaffe and its become a flagship series for PlayStation, consisting of nine installments across multiple platforms.",
       platform: "PLAYSTATION 2, PC",
       category: "ROLEPLAY, ADVENTURE",
     },
@@ -44,7 +45,7 @@ const Banner = () => {
         modules={[Autoplay, Navigation, EffectFade]}
         effect={"fade"}
         fadeEffect={{ crossFade: true }}
-        speed={1500}
+        speed={1000}
         spaceBetween={0}
         slidesPerView={1}
         // navigation
@@ -61,30 +62,31 @@ const Banner = () => {
                 backgroundImage: `url(${slide.img})`,
               }}
             >
-              <div className="bg-black/30 w-full h-full">
-                <div className="h-full text-center flex flex-col justify-center items-center gap-10">
-                  <div className="flex gap-14 text-sm font-semibold">
-                    <p className="flex items-center gap-2">
-                      <FaDesktop className="text-lg text-[#45F882]" />{" "}
-                      {slide.platform}
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <FaTags className="text-lg text-[#45F882]" />{" "}
-                      {slide.category}
-                    </p>
-                  </div>
-                  <h2 className=" text-8xl font-bold logo-font">
-                    {slide.title}
-                  </h2>
-                  <p className="w-1/2 text-lg mb-5">{slide.description}</p>
-                  <div className="space-x-16">
-                    <button className="grow px-10 py-3 bg-[#45F882] text-gray-700 rounded-xl hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
-                      Buy Now
-                    </button>
-                    <button className="grow px-10 py-3 border border-[#45F882] text-white rounded-xl hover:border-transparent hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
-                      Game Details
-                    </button>
-                  </div>
+              <div className="bg-black/30 w-full h-full text-center flex flex-col justify-center items-center gap-10">
+                <div className="flex gap-14 text-sm font-semibold">
+                  <p className="flex items-center gap-2">
+                    <FaDesktop className="text-lg text-primary" />{" "}
+                    {slide.platform}
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <FaTags className="text-lg text-primary" /> {slide.category}
+                  </p>
+                </div>
+                <h2 className=" text-8xl font-bold logo-font">{slide.title}</h2>
+                <p className="w-1/2 text-lg mb-5">{slide.description}</p>
+                <div className="space-x-16">
+                  <Link
+                    to={""}
+                    className="px-8 py-4 font-semibold border-b-3 hover:border-primary hover:text-primary transition duration-200 ease-in focus:scale-95 cursor-pointer "
+                  >
+                    GAME DETAILS
+                  </Link>
+                  <Link
+                    to={""}
+                    className="px-8 py-4 font-semibold border-b-3 hover:border-primary hover:text-primary transition duration-200 ease-in focus:scale-95 cursor-pointer "
+                  >
+                    BUY NOW
+                  </Link>
                 </div>
               </div>
             </div>

@@ -14,12 +14,19 @@ const LatestNews = () => {
   }, []);
 
   return (
-    <section className="w-3/4 mx-auto my-32">
-      <h2 className="text-[#282828] font-extrabold text-4xl text-center mb-20">
-        RECENT <span className="text-[#45F882]">NEWS</span>
-      </h2>
+    <section className="w-3/4 mx-auto my-32 space-y-10">
+      <div className="flex justify-between items-start">
+        <h2 className="text-black font-bold text-3xl">
+          RECENT NEWS
+        </h2>
+        <Link to={"news"} viewTransition>
+          <button className="btn-primary focus:scale-90">
+            View All News
+          </button>
+        </Link>
+      </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between text-black">
         {latestNews[0] && (
           <div className="w-3/5 overflow-hidden">
             <img
@@ -33,7 +40,7 @@ const LatestNews = () => {
                   {latestNews[0].category}
                 </p>
                 <span className="flex gap-2 items-center">
-                  <FaRegClock className="text-[#45F882] text-lg" />
+                  <FaRegClock className="text-primary text-lg" />
                   <p>{latestNews[0].date}</p>
                 </span>
               </div>
@@ -58,12 +65,6 @@ const LatestNews = () => {
           ))}
         </div>
       </div>
-
-      <Link to={"news"}>
-        <button className=" mt-14 px-10 py-4 bg-[#45F882] text-gray-700 rounded-3xl hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
-          View All News
-        </button>
-      </Link>
     </section>
   );
 };

@@ -16,16 +16,16 @@ const NewsCard2 = ({ news }) => {
         <div className="text-sm flex gap-5">
           <p className="font-semibold opacity-80 uppercase">{category}</p>
           <span className="flex gap-2 items-center">
-            <FaRegClock className="text-[#45F882] text-lg" />
+            <FaRegClock className="text-pr text-lg" />
             <p>{date}</p>
           </span>
         </div>
         <h3 className="text-2xl font-semibold ">{title}</h3>
         <p className="text-lg opacity-70">{summary}</p>
         <Link to={`/news/${_id}`}>
-          <button className="flex items-end gap-1.5 group transition-all hover:text-[#45F882] duration-300 cursor-pointer">
+          <button className="flex items-end gap-1.5 group transition-all hover:text-primary duration-300 cursor-pointer">
             <span className="text-lg font-semibold">Read More</span>{" "}
-            <IoMdArrowForward className="font-light text-2xl text-[#45F882] -rotate-45 group-hover:rotate-0 duration-300 transition-transform" />
+            <IoMdArrowForward className="font-light text-2xl text-primary -rotate-45 group-hover:rotate-0 duration-300 transition-transform" />
           </button>
         </Link>
       </div>

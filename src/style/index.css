@@ -4,8 +4,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 /* captcha font */
 @import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
+/* heading text font */
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
 @import "tailwindcss";
+
+@theme {
+  --color-*: initial;
+  --color-primary: #FF4655;
+  --color-white: #f2f3f8;
+  --color-off-white: #ECE8E1;
+  --color-black: #0F1923;
+}
+
+/*      Buttons      */
+.btn-primary{
+padding: 1rem 2.5rem;
+font-weight: 600;
+background-color: var(--color-primary);
+color: var(--color-off-white);
+transition: all 0.2s ease-in;
+cursor: pointer;
+}
+.btn-primary:hover{
+  background-color: var(--color-black);
+}
 
 :root {
   font-family: "Outfit";
@@ -15,15 +38,15 @@
   width: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background:  #45f882;
-   cursor: grab;
+  background: #45f882;
+  cursor: grab;
 }
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
 .primary-font {
-  font-family: "Outfit";
+  font-family: "Outfit" !important;
 }
 .logo-font {
   font-family: "Titillium Web";
@@ -36,12 +59,17 @@
   text-decoration: line-through;
   text-shadow: 1em;
 }
+.heading-font {
+  font-family: "Anton";
+}
 
 body {
   font-family: "Outfit";
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+
+  background-color: #f2f3f8;
+  /* background-color: #0B1014; */
 }
 
 /* button {

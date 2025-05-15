@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router";
-import AuthContext from "../../auth/AuthContext/AuthContext";
+import AuthContext from "../../../auth/AuthContext/AuthContext";
+import Sidemenu from "../Sidemenu/Sidemenu";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -18,7 +19,6 @@ const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
   const [isScrolled, setIsScrolled] = useState(false);
-
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
 
@@ -35,7 +35,6 @@ const Navbar = () => {
 
     setLastScrollY(currentScrollY);
   };
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -55,8 +54,8 @@ const Navbar = () => {
       <Link to={"/"} className="text-4xl logo-font ">
         PLAY<span className="text-[#45F882]">GRID</span>
       </Link>
-      <div className="flex items-center gap-10">
-        <ul className="flex gap-5 [&>li>a]:font-semibold [&>li>a]:transition [&>li>a]:duration-300 [&>li>a]:ease-in-out [&>li>a]:hover:text-[#45F882]">
+      <div className="text-lg flex items-center gap-10">
+        <ul className="flex gap-5 [&>li>a]:font-medium [&>li>a]:transition [&>li>a]:duration-300 [&>li>a]:ease-in-out [&>li>a]:hover:text-primary">
           <li>
             <NavLink to={"/"}>Home</NavLink>
           </li>
@@ -69,30 +68,22 @@ const Navbar = () => {
           <li>
             <NavLink to={"news"}>News</NavLink>
           </li>
-          <li>
-            <NavLink to={"#"}>E-Sports</NavLink>
-          </li>
         </ul>
 
         {user ? (
-          <button
-            onClick={handleSignOut}
-            className="text-xs font-semibold space-x-2 border border-[#45F882] rounded-full py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882] cursor-pointer"
-          >
-            LOG OUT
-          </button>
+          <Sidemenu handleSignOut={handleSignOut}></Sidemenu>
         ) : (
-          <div className="inline-flex text-xs font-semibold space-x-2 border border-[#45F882] rounded-full">
+          <div className="inline-flex text-xs font-semibold space-x-2 border border-primary rounded-full">
             <Link
               to={"/login"}
-              className="py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882]"
+              className="py-2 px-4 transition duration-300 ease-in-out hover:text-primary"
             >
               LOG IN
             </Link>
-            <span className="w-0.5 bg-[#45F882]/70"></span>
+            <span className="w-0.5 bg-primary/70"></span>
             <Link
               to={"signup"}
-              className="py-2 px-4 transition duration-300 ease-in-out hover:text-[#45F882]"
+              className="py-2 px-4 transition duration-300 ease-in-out hover:text-primary"
             >
               SIGN UP
             </Link>

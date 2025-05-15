@@ -10,9 +10,9 @@ const NewsCard1 = ({ news }) => {
       <img src={image} alt="news poster" className=" object-cover" />
       <div className="space-y-3 my-5">
         <div className="text-sm flex gap-5">
-          <p className="font-semibold opacity-80 uppercase">{category}</p>
+          <p className="font-semibold text-black/80 uppercase">{category}</p>
           <span className="flex gap-2 items-center">
-            <FaRegClock className="text-[#45F882] text-lg" />
+            <FaRegClock className="text-primary text-lg" />
             <p>{date}</p>
           </span>
         </div>
@@ -21,9 +21,9 @@ const NewsCard1 = ({ news }) => {
       </div>
 
       <Link to={`/news/${_id}`}>
-        <button className="flex items-end gap-1.5 group transition-all hover:text-[#45F882] duration-300 cursor-pointer">
+        <button className="flex items-end gap-1.5 group transition-all hover:text-primary duration-300 cursor-pointer">
           <span className="font-semibold">Read More</span>{" "}
-          <IoMdArrowForward className="text-xl text-[#45F882] -rotate-45 group-hover:rotate-0 duration-300 transition-transform" />
+          <IoMdArrowForward className="text-xl text-primary -rotate-45 group-hover:rotate-0 duration-300 transition-transform" />
         </button>
       </Link>
     </div>

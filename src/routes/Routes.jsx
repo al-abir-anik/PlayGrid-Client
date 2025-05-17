@@ -43,13 +43,13 @@ const Routes = createBrowserRouter([
           ]),
       },
       {
-        path: "/game/:id",
+        path: "game/:id",
         element: <GameDetails></GameDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/game/${params.id}`),
       },
       {
-        path: "/news",
+        path: "news",
         element: <NewsPage></NewsPage>,
         loader: () =>
           Promise.all([
@@ -60,13 +60,21 @@ const Routes = createBrowserRouter([
           ]),
       },
       {
-        path: "/news/:id",
+        path: "news/:id",
         element: <NewsDetails></NewsDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/news/${params.id}`),
       },
       {
-        path: "/library",
+        path: "library",
+        element: (
+          <PrivateRoute>
+            <UserLibrary></UserLibrary>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "update-profile",
         element: (
           <PrivateRoute>
             <UserLibrary></UserLibrary>

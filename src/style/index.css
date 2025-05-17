@@ -11,7 +11,8 @@
 
 @theme {
   --color-*: initial;
-  --color-primary: #FF4655;
+  --color-primary: #45F882;
+  --color-red: #FF4655;
   --color-white: #f2f3f8;
   --color-off-white: #ECE8E1;
   --color-black: #0F1923;
@@ -33,16 +34,6 @@ cursor: pointer;
 :root {
   font-family: "Outfit";
   box-sizing: border-box;
-}
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-thumb {
-  background: #45f882;
-  cursor: grab;
-}
-::-webkit-scrollbar-track {
-  background-color: transparent;
 }
 
 .primary-font {
@@ -68,8 +59,27 @@ body {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 
-  background-color: #f2f3f8;
-  /* background-color: #0B1014; */
+  /* background-color: #f2f3f8; */
+  background-color: #0B1014;
+}
+
+
+
+
+
+
+
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #45f882;
+  cursor: grab;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 /* button {
@@ -90,6 +100,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 } */
+
 
 /* @media (prefers-color-scheme: light) {
   :root {

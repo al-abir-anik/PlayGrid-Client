@@ -3,6 +3,7 @@ import { Sidebar } from "primereact/sidebar";
 import "../Sidemenu/sidemenu.css";
 import Logout from "./Logout/Logout";
 import AuthContext from "../../../auth/AuthContext/AuthContext";
+import { Link } from "react-router";
 
 const Sidemenu = ({ handleSignOut }) => {
   const { user } = useContext(AuthContext);
@@ -25,11 +26,10 @@ const Sidemenu = ({ handleSignOut }) => {
           </p>
         }
       >
-        <ul className="custom-menu">
-          <li>Dashboard</li>
-          <li>Profile</li>
-          <li>Settings</li>
-        </ul>
+        <div>
+          <Link to={"update-profile"}>UPDATE PROFILE</Link>
+          <Link>DASHBOARD</Link>
+        </div>
         <div className="mt-auto space-y-3">
           <hr className="border text-black/10" />
           <Logout handleSignOut={handleSignOut}></Logout>
@@ -40,7 +40,7 @@ const Sidemenu = ({ handleSignOut }) => {
         onClick={() => setVisibleRight(true)}
         className="w-10 h-10 rounded-full hover:outline-4 outline-primary/30 transition-all duration-200 cursor-pointer overflow-hidden"
       >
-        <img src={user?.photoURL} />
+        <img src={user?.photoURL} />l
       </button>
     </>
   );

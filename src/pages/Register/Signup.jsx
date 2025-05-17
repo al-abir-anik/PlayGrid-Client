@@ -5,26 +5,25 @@ import { useContext, useState } from "react";
 import AuthContext from "../../auth/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 import Captcha from "../../components/Captcha/Captcha";
+import axios from "axios";
 
 const imageHostingKey = import.meta.env.VITE_imagebbHostingKey;
 const imageUploadAPI = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { createUser } = useContext(AuthContext);
+  const { setUser, createUser, updateUserProfile } = useContext(AuthContext);
   const [generatedCaptcha, setGeneratedCaptcha] = useState("aaA56");
-
   const {
     register,
     handleSubmit,
-    reset,
-    watch,
     formState: { errors },
   } = useForm();
 
-  const handleSignup = (data) => {
-    const { fullname, image, email, password, captcha } = data;
+  const handleSignup = async (data) => {
+    const { fullname, imageFile, email, password, captcha } = data;
 
+    // handle captcha
     if (captcha !== generatedCaptcha) {
       alert("Captcha does not match!");
       setGeneratedCaptcha(
@@ -37,10 +36,32 @@ const Signup = () => {
       );
       return;
     }
+    // host image file
+    const image = imageFile[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const imageBbRes = await axios.post(imageUploadAPI, formData, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
 
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        setUser(result.user);
+        updateUserProfile({
+          displayName: fullname,
+          photoURL: imageBbRes.data.data.display_url,
+        }).then(() => {
+          const newUser = {
+            fullname,
+            email,
+            role: "user",
+          };
+          axios.post("/users", newUser).then((res) => {
+            console.log(res.data);
+          });
+        });
         navigate("/");
       })
       .catch((error) => {
@@ -87,7 +108,7 @@ const Signup = () => {
               type="file"
               accept="image/*"
               required
-              {...register("image")}
+              {...register("imageFile")}
               className=" border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.photoUrl && (
@@ -145,7 +166,8 @@ const Signup = () => {
           <div className="items-center gap-3">
             <Captcha
               generatedCaptcha={generatedCaptcha}
-              setGeneratedCaptcha={setGeneratedCaptcha}></Captcha>
+              setGeneratedCaptcha={setGeneratedCaptcha}
+            ></Captcha>
 
             <input
               {...register("captcha", { required: "Captcha is required" })}
@@ -160,7 +182,8 @@ const Signup = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline">
+            className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline"
+          >
             Sign Up
           </button>
 

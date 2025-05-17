@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Sidebar } from "primereact/sidebar";
 import "../Sidemenu/sidemenu.css";
 import Logout from "./Logout/Logout";
+import AuthContext from "../../../auth/AuthContext/AuthContext";
 
 const Sidemenu = ({ handleSignOut }) => {
+  const { user } = useContext(AuthContext);
   const [visibleRight, setVisibleRight] = useState(false);
   return (
     <>
@@ -36,9 +38,9 @@ const Sidemenu = ({ handleSignOut }) => {
 
       <button
         onClick={() => setVisibleRight(true)}
-        className="open-sidebar-btn"
-      >k
-        <img src=""/>
+        className="w-10 h-10 rounded-full hover:outline-4 outline-primary/30 transition-all duration-200 cursor-pointer overflow-hidden"
+      >
+        <img src={user?.photoURL} />
       </button>
     </>
   );

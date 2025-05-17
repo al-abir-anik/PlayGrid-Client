@@ -9,6 +9,8 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
+  console.log(user);
+
   const handleSignOut = () => {
     signOutUser()
       .then(() => navigate("/login"))
@@ -63,7 +65,7 @@ const Navbar = () => {
             <NavLink to={"store"}>Store</NavLink>
           </li>
           <li>
-            <NavLink to={"#"}>Library</NavLink>
+            <NavLink to={"library"}>Library</NavLink>
           </li>
           <li>
             <NavLink to={"news"}>News</NavLink>

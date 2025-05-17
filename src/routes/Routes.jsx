@@ -8,6 +8,8 @@ import GameDetails from "../pages/GameDetails/GameDetails";
 import GameStore from "../pages/GameStore/GameStore";
 import NewsPage from "../pages/NewsPage/NewsPage";
 import NewsDetails from "../pages/NewsPage/NewsDetails";
+import UserLibrary from "../pages/Library/UserLibrary";
+import PrivateRoute from "./PrivateRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -35,7 +37,9 @@ const Routes = createBrowserRouter([
             fetch("http://localhost:5000/upcoming-games").then((res) =>
               res.json()
             ),
-            fetch("http://localhost:5000/games-count").then((res) => res.json()),
+            fetch("http://localhost:5000/games-count").then((res) =>
+              res.json()
+            ),
           ]),
       },
       {
@@ -60,6 +64,14 @@ const Routes = createBrowserRouter([
         element: <NewsDetails></NewsDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/news/${params.id}`),
+      },
+      {
+        path: "/library",
+        element: (
+          <PrivateRoute>
+            <UserLibrary></UserLibrary>
+          </PrivateRoute>
+        ),
       },
     ],
   },

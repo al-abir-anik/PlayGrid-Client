@@ -8,7 +8,7 @@ const Root = () => {
   const isHome = location.pathname === "/";
 
   return (
-    <div className="flex flex-col min-h-screen antialiased">
+    <div className="flex flex-col antialiased">
       <header className="">
         <Navbar />
       </header>

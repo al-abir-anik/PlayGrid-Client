@@ -56,7 +56,7 @@ const Navbar = () => {
       <Link to={"/"} className="text-4xl logo-font ">
         PLAY<span className="text-[#45F882]">GRID</span>
       </Link>
-      <div className="text-lg flex items-center gap-10">
+      <div className="text-blue100 flex items-center gap-10">
         <ul className="flex gap-5 [&>li>a]:font-medium [&>li>a]:transition [&>li>a]:duration-300 [&>li>a]:ease-in-out [&>li>a]:hover:text-primary">
           <li>
             <NavLink to={"/"}>Home</NavLink>

@@ -72,7 +72,7 @@ const Banner = () => {
                     <FaTags className="text-lg text-primary" /> {slide.category}
                   </p>
                 </div>
-                <h2 className=" text-8xl font-bold logo-font">{slide.title}</h2>
+                <h2 className="text-8xl font-bold logo-font">{slide.title}</h2>
                 <p className="w-1/2 text-lg mb-5">{slide.description}</p>
                 <div className="space-x-16">
                   <Link

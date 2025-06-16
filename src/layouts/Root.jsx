@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router";
 
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar/Navbar";
+import Music from "../components/Music";
 
 const Root = () => {
   const location = useLocation();
@@ -9,7 +10,7 @@ const Root = () => {
 
   return (
     <div className="flex flex-col antialiased">
-      <header className="">
+      <header>
         <Navbar />
       </header>
 
@@ -20,6 +21,9 @@ const Root = () => {
       <footer className="">
         <Footer />
       </footer>
+
+      {/* Fixed Elements */}
+      <Music />
     </div>
   );
 };

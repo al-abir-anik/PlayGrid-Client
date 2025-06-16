@@ -9,8 +9,6 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  console.log(user);
-
   const handleSignOut = () => {
     signOutUser()
       .then(() => navigate("/login"))
@@ -42,57 +40,59 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastScrollY]);
-
+  
   return (
-    <nav
-      className={`w-full h-20 text-white flex items-center justify-around fixed top-0  transition-all duration-300 z-50 ${
+    <div
+      className={`w-full h-24 fixed top-0  transition-all duration-300 z-[101] ${
         showNavbar ? "translate-y-0" : "-translate-y-full"
       } ${
         isHome && !isScrolled
           ? "bg-transparent"
-          : "bg-black/30 backdrop-blur-lg shadow"
+          : "bg-black/40 backdrop-blur-lg shadow"
       }`}
     >
-      <Link to={"/"} className="text-4xl logo-font ">
-        PLAY<span className="text-[#45F882]">GRID</span>
-      </Link>
-      <div className="text-blue100 flex items-center gap-10">
-        <ul className="flex gap-5 [&>li>a]:font-medium [&>li>a]:transition [&>li>a]:duration-300 [&>li>a]:ease-in-out [&>li>a]:hover:text-primary">
-          <li>
-            <NavLink to={"/"}>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to={"store"}>Store</NavLink>
-          </li>
-          <li>
-            <NavLink to={"library"}>Library</NavLink>
-          </li>
-          <li>
-            <NavLink to={"news"}>News</NavLink>
-          </li>
-        </ul>
+      <nav className="w-11/12 h-full mx-auto text-white flex items-center justify-between ">
+        <Link to={"/"} className="text-4xl logo-font ">
+          PLAY<span className="text-violet300">GRID</span>
+        </Link>
+        <div className="text-blue100 flex items-center gap-10">
+          <ul className="flex gap-5 [&>li>a]:font-medium [&>li>a]:transition [&>li>a]:duration-300 [&>li>a]:ease-in-out [&>li>a]:hover:text-primary">
+            <li>
+              <NavLink to={"/"}>Home</NavLink>
+            </li>
+            <li>
+              <NavLink to={"store"}>Store</NavLink>
+            </li>
+            <li>
+              <NavLink to={"library"}>Library</NavLink>
+            </li>
+            <li>
+              <NavLink to={"news"}>News</NavLink>
+            </li>
+          </ul>
 
-        {user ? (
-          <Sidemenu handleSignOut={handleSignOut}></Sidemenu>
-        ) : (
-          <div className="inline-flex text-xs font-semibold space-x-2 border border-primary rounded-full">
-            <Link
-              to={"/login"}
-              className="py-2 px-4 transition duration-300 ease-in-out hover:text-primary"
-            >
-              LOG IN
-            </Link>
-            <span className="w-0.5 bg-primary/70"></span>
-            <Link
-              to={"signup"}
-              className="py-2 px-4 transition duration-300 ease-in-out hover:text-primary"
-            >
-              SIGN UP
-            </Link>
-          </div>
-        )}
-      </div>
-    </nav>
+          {user ? (
+            <Sidemenu handleSignOut={handleSignOut}></Sidemenu>
+          ) : (
+            <div className="inline-flex text-xs font-semibold space-x-2 border border-primary rounded-full">
+              <Link
+                to={"/login"}
+                className="py-2 px-4 transition duration-300 ease-in-out hover:text-primary"
+              >
+                LOG IN
+              </Link>
+              <span className="w-0.5 bg-primary/70"></span>
+              <Link
+                to={"signup"}
+                className="py-2 px-4 transition duration-300 ease-in-out hover:text-primary"
+              >
+                SIGN UP
+              </Link>
+            </div>
+          )}
+        </div>
+      </nav>
+    </div>
   );
 };
 

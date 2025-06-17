@@ -93,7 +93,7 @@ const Hero = () => {
         className="relative z-10 h-dvh w-screen overflow-hidden bg-blue75"
       >
         <div>
-          <div className="mask-clip-path absolute bottom-20 right-10 z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
+          <div className="mask-clip-path absolute bottom-20 right-10 z-50 size-64 cursor-pointer overflow-hidden">
             <div
               onClick={handleMiniVdClick}
               className="origin-center scale-50 opacity-50 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
@@ -104,7 +104,7 @@ const Hero = () => {
                 loop
                 muted
                 id="current-video"
-                className="size-64 origin-center scale-150 object-cover object-center"
+                className="size-64 rounded-sm origin-center scale-150 object-cover object-center"
                 onLoadedData={handleVideoLoad}
               />
             </div>

@@ -22,7 +22,7 @@ const Navbar = () => {
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
 
-    if (currentScrollY > lastScrollY && currentScrollY > 50) {
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
       // scrolling down
       setShowNavbar(false);
     } else {
@@ -48,12 +48,12 @@ const Navbar = () => {
       } ${
         isHome && !isScrolled
           ? "bg-transparent"
-          : "bg-black/40 backdrop-blur-lg shadow"
+          : "bg-blue200/80 backdrop-blur-lg shadow"
       }`}
     >
-      <nav className="w-11/12 h-full mx-auto text-white flex items-center justify-between ">
+      <nav className="w-5/6 h-full mx-auto text-white flex items-center justify-between ">
         <Link to={"/"} className="text-4xl logo-font ">
-          PLAY<span className="text-violet300">GRID</span>
+          PLAY<span className="text-yellow300">GRID</span>
         </Link>
         <div className="text-blue100 flex items-center gap-10">
           <ul className="flex gap-5 [&>li>a]:font-medium [&>li>a]:transition [&>li>a]:duration-300 [&>li>a]:ease-in-out [&>li>a]:hover:text-primary">

@@ -4,9 +4,8 @@ import MostPopular from "./Home-sections/MostPopular";
 import Hero from "./Home-sections/HeroBanner/Hero";
 import About from "./Home-sections/About/About";
 import Features from "./Home-sections/Features/Features";
-import DownloadApp from "./Home-sections/DownloadApp";
 import LatestNews from "./Home-sections/LatestNews";
-
+import JoinApp from "./Home-sections/JoinApp";
 
 const Home = () => {
   return (
@@ -16,7 +15,7 @@ const Home = () => {
         <About />
         <Features />
         <LatestNews />
-        <DownloadApp />
+        <JoinApp />
       </div>
 
       <div>
@@ -30,8 +29,6 @@ const Home = () => {
         <section>
           <MostPopular></MostPopular>
         </section> */}
-
-        <section className="w-full h-[40rem] bg-cover bg-no-repeat bg-[url('/images/valorant-bg.avif')]"></section>
       </div>
     </div>
   );

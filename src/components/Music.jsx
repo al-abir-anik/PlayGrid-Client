@@ -34,10 +34,10 @@ const Music = () => {
   }, [isAudioPlaying]);
 
   return (
-    <div className="fixed right-6 bottom-4 z-[100] bg-blue200/30 backdrop-blur-lg shadow rounded-sm">
+    <div className="w-10 h-10 p-1 bg-blue200/80 backdrop-blur-lg shadow rounded-sm">
       <button
         onClick={toggleAudioIndicator}
-        className="w-10 h-10 flex items-center justify-center space-x-1 m-1 border border-blue50 hover:border-blue50/60 transition-all duration-200 rounded-xs cursor-pointer"
+        className="w-full h-full flex items-center justify-center space-x-1 border border-blue50 hover:border-blue50/30 transition-all duration-200 rounded-xs cursor-pointer"
       >
         <audio
           ref={audioElementRef}

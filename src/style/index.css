@@ -77,13 +77,12 @@ body {
   }
 
   .border-hsla {
-    @apply border ;
-    /* border-white/20 */
+    @apply border border-white/20;
   }
 
   .nav-hover-btn {
     @apply relative ms-10 font-general text-xs uppercase  after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 dark:after:bg-white cursor-pointer;
-  /* text-blue-50 */
+    /* text-blue-50 */
   }
 
   .floating-nav {
@@ -120,11 +119,11 @@ body {
   }
 
   .animated-title {
-    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white md:text-[6rem];
+    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white md:text-8xl;
   }
 
   .animated-word {
-    @apply  font-zentry font-black opacity-0;
+    @apply font-zentry font-black opacity-0;
     transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
     transform-origin: 50% 50% -150px !important;
     will-change: opacity, transform;
@@ -133,7 +132,7 @@ body {
 
   .bento-tilt_1 {
     @apply relative  col-span-2 overflow-hidden rounded-md transition-transform duration-300 ease-out;
-  /* border-hsla */
+    /* border-hsla */
   }
 
   .bento-tilt_2 {
@@ -171,16 +170,19 @@ body {
     @apply sm:size-80 md:h-96 md:w-[25rem] rounded-lg;
   }
 
-  .sword-man-clip-path {
-    clip-path: polygon(16% 0, 89% 15%, 75% 100%, 0 97%);
+  .swordman-clip-path {
+    clip-path: polygon(26% 14%, 84% 22%, 72% 86%, 20% 84%);
+    overflow: hidden;
   }
 
   .contact-clip-path-1 {
     clip-path: polygon(25% 0%, 74% 0, 69% 64%, 34% 73%);
+    overflow: hidden;
   }
 
   .contact-clip-path-2 {
-    clip-path: polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%);
+    clip-path: polygon(29% 15%, 70% 26%, 50% 100%, 20% 72%);
+    overflow: hidden;
   }
 }
 
@@ -209,10 +211,11 @@ body {
   }
 }
 
-/* From Uiverse.io by G4b413l */
-/* https://uiverse.io/G4b413l/tidy-walrus-92 */
-.about-body {
-  --uib-size: 35px;
+
+/*       Loader      */
+
+.three-body {
+  --uib-size: 50px;
   --uib-speed: 0.8s;
   --uib-color: #5d3fd3;
   position: relative;
@@ -274,32 +277,27 @@ body {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
 }
-
 @keyframes wobble1 {
   0%,
   100% {
     transform: translateY(0%) scale(1);
     opacity: 1;
   }
-
   50% {
     transform: translateY(-66%) scale(0.65);
     opacity: 0.8;
   }
 }
-
 @keyframes wobble2 {
   0%,
   100% {
     transform: translateY(0%) scale(1);
     opacity: 1;
   }
-
   50% {
     transform: translateY(66%) scale(0.65);
     opacity: 0.8;
@@ -326,16 +324,25 @@ body {
 }
 
 /*      Buttons      */
-.btn-primary {
-  padding: 1rem 2.5rem;
-  font-weight: 600;
-  background-color: var(--color-primary);
-  color: var(--color-off-white);
-  transition: all 0.2s ease-in;
-  cursor: pointer;
+.button-primary > span {
+  position: relative;
+  overflow: hidden;
 }
-.btn-primary:hover {
-  background-color: var(--color-black);
+.button-primary:hover > span > p {
+  animation: MoveUpInitial 0.2s forwards, MoveUpEnd 0.2s forwards 0.2s;
+}
+@keyframes MoveUpInitial {
+  to {
+    transform: translate3d(0, -105%, 0);
+  }
+}
+@keyframes MoveUpEnd {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* ::-webkit-scrollbar {

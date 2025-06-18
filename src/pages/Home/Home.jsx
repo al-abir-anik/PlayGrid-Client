@@ -2,10 +2,10 @@ import Banner from "./Home-sections/HeroBanner/Banner";
 import FeaturedGames from "./Home-sections/FeaturedGames";
 import MostPopular from "./Home-sections/MostPopular";
 import Hero from "./Home-sections/HeroBanner/Hero";
-import About from "./Home-sections/About/About";
 import Features from "./Home-sections/Features/Features";
 import LatestNews from "./Home-sections/LatestNews";
 import JoinApp from "./Home-sections/JoinApp";
+import About from "./Home-sections/About";
 
 const Home = () => {
   return (

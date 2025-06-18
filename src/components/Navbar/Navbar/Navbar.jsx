@@ -42,7 +42,7 @@ const Navbar = () => {
   }, [lastScrollY]);
   
   return (
-    <div
+    <header
       className={`w-full h-24 fixed top-0  transition-all duration-300 z-[101] ${
         showNavbar ? "translate-y-0" : "-translate-y-full"
       } ${
@@ -92,7 +92,7 @@ const Navbar = () => {
           )}
         </div>
       </nav>
-    </div>
+    </header>
   );
 };
 

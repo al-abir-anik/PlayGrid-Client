@@ -41,7 +41,7 @@ const Features = () => {
             src="videos/feature-1.mp4"
             title={
               <>
-                radi<b>n</b>t
+                v<b>a</b>lora<b>n</b>t
               </>
             }
             description="The game of games app transforming moments across Web2 & Web3 titles into rewards"
@@ -65,10 +65,10 @@ const Features = () => {
               src="videos/feature-3.mp4"
               title={
                 <>
-                  csg<b>o</b>
+                  wil<b>d</b> rift
                 </>
               }
-              description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
+              description="Team up with friends and test your skills in 5v5 MOBA combat."
             />
           </div>
 
@@ -85,16 +85,19 @@ const Features = () => {
             />
           </div>
 
-          <div className="bento-tilt_2">
-            <video
+          <div className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+            <BentoCard
               src="videos/feature-5.mp4"
-              loop
-              muted
-              autoPlay
-              className="size-full object-cover object-center"
+              title={
+                <>
+                  r<b>o</b>cket leag<b>u</b>e
+                </>
+              }
+              description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
+              isComingSoon
             />
           </div>
-          
+
           <div className="bento-tilt_2">
             <div className="flex size-full flex-col justify-between bg-violet300 p-5">
               <h1 className="bento-title special-font max-w-64 text-black">

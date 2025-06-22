@@ -6,10 +6,15 @@ const GameCard1 = ({ game }) => {
   return (
     <>
       <Link to={`/game/${_id}`} className="cursor-pointer">
-        <div className="w-2xs mx-auto bg-gray-200 rounded-xl overflow-hidden transition-all duration-500 hover:rounded-none hover:scale-105">
-          <figure className="">
-            <img src={image} alt="game poster" className="h-72 object-cover" />
-          </figure>
+        <div className="group w-2xs mx-auto bg-gray-200 rounded-xl overflow-hidden transition-all ">
+          <div className="h-80 overflow-hidden">
+            <img
+            src={image}
+            alt="game poster"
+            className="w-full h-full object-cover transform transition-transform ease-in duration-300 group-hover:scale-110"
+          />
+          </div>
+
           <div className="p-4 space-y-3">
             <h5 className="text-lg font-semibold h-14">{title}</h5>
             <p className="text-sm text-gray-600 ">Rating: {rating}</p>

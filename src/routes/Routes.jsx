@@ -8,8 +8,10 @@ import GameDetails from "../pages/GameDetails/GameDetails";
 import GameStore from "../pages/GameStore/GameStore";
 import NewsPage from "../pages/NewsPage/NewsPage";
 import NewsDetails from "../pages/NewsPage/NewsDetails";
-import UserLibrary from "../pages/Library/UserLibrary";
 import PrivateRoute from "./PrivateRoute";
+import Library from "../pages/UserLibrary/Library";
+import UpdateProfile from "../pages/Profile/UpdateProfile";
+import AllGames from "../pages/AllGames/AllGames";
 
 const Routes = createBrowserRouter([
   {
@@ -43,6 +45,11 @@ const Routes = createBrowserRouter([
           ]),
       },
       {
+        path: "/all-games",
+        element: <AllGames />,
+        loader: () => fetch("http://localhost:5000/games-count"),
+      },
+      {
         path: "game/:id",
         element: <GameDetails></GameDetails>,
         loader: ({ params }) =>
@@ -69,7 +76,7 @@ const Routes = createBrowserRouter([
         path: "library",
         element: (
           <PrivateRoute>
-            <UserLibrary></UserLibrary>
+            <Library />
           </PrivateRoute>
         ),
       },
@@ -77,7 +84,7 @@ const Routes = createBrowserRouter([
         path: "update-profile",
         element: (
           <PrivateRoute>
-            <UserLibrary></UserLibrary>
+            <UpdateProfile />
           </PrivateRoute>
         ),
       },

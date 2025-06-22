@@ -18,7 +18,7 @@ const ScrollToTop = () => {
 
   return (
     <div
-      className={`w-10 h-10 p-1  bg-blue200/80 backdrop-blur-lg shadow rounded-sm transition-all duration-200 ease-in-out 
+      className={`w-10 h-10 p-1  bg-blue200/30 hover:bg-blue200/80 backdrop-blur-lg shadow rounded-sm transition-all duration-200 ease-in-out 
        ${
          isVisible
            ? "translate-x-0 opacity-100"

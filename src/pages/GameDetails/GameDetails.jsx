@@ -5,6 +5,10 @@ import Requirements from "./SystemRequirements/Requirements";
 
 const GameDetails = () => {
   const gameDetails = useLoaderData();
+
+console.log(gameDetails);
+
+
   const {
     _id,
     title,
@@ -44,6 +48,7 @@ const GameDetails = () => {
 
   return (
     <div className="w-3/4 mx-auto px-4 py-12 mb-20">
+      {/* Header */}
       <div className="space-y-5 mb-10">
         <h2 className="text-4xl font-bold text-gray-800">{title}</h2>
         <span className="flex items-center gap-3">
@@ -52,11 +57,12 @@ const GameDetails = () => {
           <p className="text-black/80">( 3 Player Review )</p>
         </span>
       </div>
+
       <div className="flex justify-between items-start">
         {/* Description column */}
         <div className="w-[70%] space-y-14">
           <div className="">
-            <ImageGallery gameImages={images}></ImageGallery>
+            {/* <ImageGallery gameImages={images}></ImageGallery> */}
           </div>
           <div className="space-y-6">
             <h5 className="text-xl font-semibold">ABOUT THIS GAME</h5>
@@ -100,8 +106,8 @@ const GameDetails = () => {
               </div>
               <div className="bg-white rounded-lg p-4">
                 <p className="text-gray-600 mb-2">
-                  <strong>User2:</strong> All gamer should experience this. Highly
-                  recommend!
+                  <strong>User2:</strong> All gamer should experience this.
+                  Highly recommend!
                 </p>
                 <p className="text-sm text-gray-400">
                   Posted on January 11, 2025
@@ -121,16 +127,16 @@ const GameDetails = () => {
             <span>:</span>
             <span className="pl-3">$ {price}</span>
           </p>
-          <p className="flex gap-2">
+          {/* <p className="flex gap-2">
             <span className="min-w-28 text-lg font-medium">Genres</span>
             <span>:</span>
-            <span className="pl-3">{genre.join(", ")}</span>
+            <span className="pl-3">{genre.join(", ") || []}</span>
           </p>
           <p className="flex gap-2">
             <span className="min-w-28 text-lg font-medium">Platform</span>
             <span>:</span>
-            <span className="pl-3">{platform.join(", ")}</span>
-          </p>
+            <span className="pl-3">{platform.join(", ") || []}</span>
+          </p> */}
           <p className="flex gap-2">
             <span className="min-w-28 text-lg font-medium">Developer</span>
             <span>:</span>

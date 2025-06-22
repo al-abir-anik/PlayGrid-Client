@@ -48,7 +48,7 @@ const Navbar = () => {
       } ${
         isHome && !isScrolled
           ? "bg-transparent"
-          : "bg-blue200/80 backdrop-blur-lg shadow"
+          : "bg-blue200/40 backdrop-blur-lg shadow"
       }`}
     >
       <nav className="w-5/6 h-full mx-auto text-white flex items-center justify-between ">
@@ -56,7 +56,7 @@ const Navbar = () => {
           PLAY<span className="text-yellow300">GRID</span>
         </Link>
         <div className="text-blue100 flex items-center gap-10">
-          <ul className="flex gap-5 [&>li>a]:font-medium [&>li>a]:transition [&>li>a]:duration-300 [&>li>a]:ease-in-out [&>li>a]:hover:text-primary">
+          <ul className="flex gap-10 [&>li>a]:font-medium [&>li>a]:transition [&>li>a]:duration-300 [&>li>a]:ease-in-out [&>li>a]:hover:text-primary">
             <li>
               <NavLink to={"/"}>Home</NavLink>
             </li>
@@ -64,10 +64,13 @@ const Navbar = () => {
               <NavLink to={"store"}>Store</NavLink>
             </li>
             <li>
-              <NavLink to={"library"}>Library</NavLink>
+              <NavLink to={"all-games"}>All Games</NavLink>
             </li>
             <li>
               <NavLink to={"news"}>News</NavLink>
+            </li>
+            <li>
+              <NavLink to={"library"}>Library</NavLink>
             </li>
           </ul>
 

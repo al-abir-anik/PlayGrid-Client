@@ -1,6 +1,6 @@
 
 
-const UserLibrary = () => {
+const Library = () => {
     return (
         <div>
             library
@@ -8,4 +8,4 @@ const UserLibrary = () => {
     );
 };
 
-export default UserLibrary;
+export default Library;

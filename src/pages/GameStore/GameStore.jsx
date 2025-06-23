@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router";
 import StoreSlider from "./StoreSlider/StoreSlider";
 
 const GameStore = () => {
-  const [upcomingGames] = useLoaderData();
+  const upcomingGames = useLoaderData();
 
   return (
     <div className="">

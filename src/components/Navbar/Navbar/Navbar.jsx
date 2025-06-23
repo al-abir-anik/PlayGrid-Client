@@ -40,10 +40,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastScrollY]);
-  
+
   return (
     <header
-      className={`w-full h-24 fixed top-0  transition-all duration-300 z-[101] ${
+      className={`w-full h-20 fixed top-0  transition-all duration-300 z-[101] ${
         showNavbar ? "translate-y-0" : "-translate-y-full"
       } ${
         isHome && !isScrolled
@@ -69,9 +69,11 @@ const Navbar = () => {
             <li>
               <NavLink to={"news"}>News</NavLink>
             </li>
-            <li>
-              <NavLink to={"library"}>Library</NavLink>
-            </li>
+            {user && (
+              <li>
+                <NavLink to={"library"}>Library</NavLink>
+              </li>
+            )}
           </ul>
 
           {user ? (
@@ -79,7 +81,7 @@ const Navbar = () => {
           ) : (
             <div className="inline-flex text-xs font-semibold space-x-2 border border-primary rounded-full">
               <Link
-                to={"/login"}
+                to={"login"}
                 className="py-2 px-4 transition duration-300 ease-in-out hover:text-primary"
               >
                 LOG IN

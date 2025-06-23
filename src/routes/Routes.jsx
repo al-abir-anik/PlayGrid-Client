@@ -34,20 +34,11 @@ const Routes = createBrowserRouter([
       {
         path: "/store",
         element: <GameStore></GameStore>,
-        loader: () =>
-          Promise.all([
-            fetch("http://localhost:5000/upcoming-games").then((res) =>
-              res.json()
-            ),
-            fetch("http://localhost:5000/games-count").then((res) =>
-              res.json()
-            ),
-          ]),
+        loader: () => fetch("http://localhost:5000/upcoming-games"),
       },
       {
         path: "/all-games",
         element: <AllGames />,
-        loader: () => fetch("http://localhost:5000/games-count"),
       },
       {
         path: "game/:id",
@@ -79,6 +70,7 @@ const Routes = createBrowserRouter([
             <Library />
           </PrivateRoute>
         ),
+        // loader: () => fetch("http://localhost:5000/user-gamelist"),
       },
       {
         path: "update-profile",

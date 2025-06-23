@@ -6,7 +6,7 @@ const GameCard1 = ({ game }) => {
   return (
     <>
       <Link to={`/game/${_id}`} className="cursor-pointer">
-        <div className="group w-2xs mx-auto bg-gray-200 rounded-xl overflow-hidden transition-all ">
+        <div className="group w-2xs bg-gray-200 rounded-xl overflow-hidden transition-all ">
           <div className="h-80 overflow-hidden">
             <img
             src={image}

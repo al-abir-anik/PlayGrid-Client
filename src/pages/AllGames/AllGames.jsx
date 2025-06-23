@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import { useLoaderData } from "react-router";
-import GameCard1 from "../../components/Cards/GameCard1";
 import { LuSearch } from "react-icons/lu";
 import { GiCrossedSwords } from "react-icons/gi";
+import GameCard1 from "../../components/Cards/GameCard1";
+import AuthContext from "../../auth/AuthContext/AuthContext";
 
 const AllGames = () => {
-  const totalGamesCount = useLoaderData();
+  const { loading, setLoading } = useContext(AuthContext);
   const [games, setGames] = useState([]);
   const [search, setSearch] = useState("");
   const [priceOrder, setPriceOrder] = useState("");
@@ -20,9 +20,15 @@ const AllGames = () => {
       `http://localhost:5000/all-games?search=${search}&priceOrder=${priceOrder}&${genreParam}&priceRange=${priceRange}`
     )
       .then((res) => res.json())
-      .then((data) => setGames(data))
-      .catch((error) => console.log(error.message));
-  }, [search, priceOrder, genres, priceRange]);
+      .then((data) => {
+        setGames(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoading(false);
+      });
+  }, [setLoading, search, priceOrder, genres, priceRange]);
 
   const toggleGenre = (g) => {
     setGenres((prev) =>
@@ -68,19 +74,19 @@ const AllGames = () => {
   // };
 
   return (
-    <div className="w-5/6 mx-auto my-16 flex justify-between items-start ">
+    <div className="w-5/6 mx-auto my-12 flex justify-between items-start ">
       {/* Side Filters */}
       <div className="w-1/6 space-y-10 sticky top-0 ">
         <div>
-          <h4 className="text-2xl mb-3 tracking-wide">GAMES</h4>
-          <p className="text-xl">
-            {totalGamesCount.count} <span className="text-base">results</span>
+          <h4 className="text-2xl mb-4 tracking-wide">GAMES</h4>
+          <p className="text-xl pl-4">
+            {games.length} <span className="text-base">results</span>
           </p>
         </div>
 
         {/* Genre */}
         <div>
-          <h4 className="text-2xl mb-5 tracking-wide">GENRE</h4>
+          <h4 className="text-2xl mb-4 tracking-wide">GENRE</h4>
           <div className="space-y-3">
             {genreFilter.map((btn) => {
               const selected = genres.includes(btn);
@@ -102,13 +108,19 @@ const AllGames = () => {
 
         {/* Price Range */}
         <div>
-          <h4 className="text-2xl mb-5 tracking-wide">PRICE</h4>
+          <h4 className="text-2xl mb-4 tracking-wide">PRICE</h4>
           <div className="">
             {priceRangeFilter.map((range) => (
               <button
-                onClick={() => setPriceRange(range)}
+                onClick={() =>
+                  setPriceRange((prev) => (prev === range ? "" : range))
+                }
                 key={range}
-                className="w-full py-3 px-4 text-left hover:text-[#45F882] border-b border-b-gray-300 hover:border-b-[#45F882] cursor-pointer"
+                className={`w-full py-3 px-4 text-left border-b border-b-gray-300 hover:border-b-white cursor-pointer ${
+                  priceRange === range
+                    ? "text-[#45F882] border-b-[#45F882]"
+                    : ""
+                }`}
               >
                 {range}
               </button>
@@ -148,11 +160,27 @@ const AllGames = () => {
         </div>
 
         {/* Games */}
-        <div className="flex justify-between flex-wrap space-y-10">
-          {games.map((game) => (
-            <GameCard1 key={game._id} game={game} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="min-h-[400px] flex items-center justify-center">
+            <div className="three-body">
+              <div className="three-body__dot"></div>
+              <div className="three-body__dot"></div>
+              <div className="three-body__dot"></div>
+            </div>
+          </div>
+        ) : games.length === 0 ? (
+          <div className="min-h-[300px] flex items-center justify-center">
+            <p className="text-xl text-gray-500 font-semibold">
+              No games found
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 2xl:4 gap-6 md:gap-10 lg:gap-12 justify-center">
+            {games.map((game) => (
+              <GameCard1 key={game._id} game={game} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

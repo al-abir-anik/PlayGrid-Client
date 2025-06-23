@@ -11,7 +11,7 @@ const Root = () => {
   return (
     <div className="flex flex-col antialiased">
       <Navbar />
-      <main className={isHome ? "" : "pt-20"}>
+      <main className={isHome ? "" : "mt-20"}>
         <Outlet />
       </main>
       <Footer />

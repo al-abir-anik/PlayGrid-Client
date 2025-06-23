@@ -7,6 +7,8 @@ import 'swiper/css/free-mode';
 import UpcomingGameCard from "../../../components/Cards/UpcomingGameCard";
 
 const StoreSlider = ({ upcomingGames }) => {
+  console.log(upcomingGames);
+  
   return (
     <div>
       <Swiper

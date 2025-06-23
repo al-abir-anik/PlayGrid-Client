@@ -12,6 +12,8 @@ import PrivateRoute from "./PrivateRoute";
 import Library from "../pages/UserLibrary/Library";
 import UpdateProfile from "../pages/Profile/UpdateProfile";
 import AllGames from "../pages/AllGames/AllGames";
+import UserGames from "../pages/UserLibrary/UserGames";
+import FavouriteGames from "../pages/UserLibrary/FavouriteGames";
 
 const Routes = createBrowserRouter([
   {
@@ -70,7 +72,18 @@ const Routes = createBrowserRouter([
             <Library />
           </PrivateRoute>
         ),
-        // loader: () => fetch("http://localhost:5000/user-gamelist"),
+        children: [
+          {
+            path: "all",
+            element: <UserGames />,
+            // loader: () => fetch("http://localhost:5000/user-gamelist"),
+          },
+          {
+            path: "favourites",
+            element: <FavouriteGames />,
+            // loader: () => fetch("../productData.json"),
+          },
+        ],
       },
       {
         path: "update-profile",

@@ -32,7 +32,6 @@ const Navbar = () => {
 
     // Transparent background logic
     setIsScrolled(currentScrollY > 50);
-
     setLastScrollY(currentScrollY);
   };
   useEffect(() => {
@@ -71,7 +70,7 @@ const Navbar = () => {
             </li>
             {user && (
               <li>
-                <NavLink to={"library"}>Library</NavLink>
+                <NavLink to={"library/all"}>Library</NavLink>
               </li>
             )}
           </ul>

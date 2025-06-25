@@ -13,7 +13,8 @@ import Library from "../pages/UserLibrary/Library";
 import UpdateProfile from "../pages/Profile/UpdateProfile";
 import AllGames from "../pages/AllGames/AllGames";
 import UserGames from "../pages/UserLibrary/UserGames";
-import FavouriteGames from "../pages/UserLibrary/FavouriteGames";
+import FavouriteGames from "../pages/UserLibrary/Favourites";
+import Wishlist from "../pages/UserLibrary/Wishlist";
 
 const Routes = createBrowserRouter([
   {
@@ -76,12 +77,14 @@ const Routes = createBrowserRouter([
           {
             path: "all",
             element: <UserGames />,
-            // loader: () => fetch("http://localhost:5000/user-gamelist"),
           },
           {
             path: "favourites",
             element: <FavouriteGames />,
-            // loader: () => fetch("../productData.json"),
+          },
+          {
+            path: "wishlist",
+            element: <Wishlist />,
           },
         ],
       },

@@ -1,12 +1,12 @@
 const Footer = () => {
   return (
     <footer className="w-full bg-[#202020] text-white">
-      <div className="w-3/4 mx-auto py-16 flex justify-around">
+      <div className="w-3/4 mx-auto py-16 flex flex-col md:flex-row justify-around">
         <div className="space-y-5">
           <p className="text-3xl font-black ">
             PLAY<span className="text-[#45F882]">GRID</span>
           </p>
-          <p className="w-80">
+          <p className="max-w-80">
             Enhance your gaming experience with premium games available right in
             the game store.
           </p>

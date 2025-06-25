@@ -1,12 +1,12 @@
 import { useOutletContext } from "react-router";
 import LibraryCard from "../../components/Cards/LibraryCard";
 
-const UserGames = () => {
+const Favourites = () => {
   const { userGames, handleFavourite, favLoading } = useOutletContext();
 
   return (
     <div className="flex flex-wrap gap-12">
-      {userGames.purchasedGames?.map((g) => (
+      {userGames.favouriteGames?.map((g) => (
         <LibraryCard
           key={g._id}
           game={g}
@@ -19,4 +19,4 @@ const UserGames = () => {
   );
 };
 
-export default UserGames;
+export default Favourites;

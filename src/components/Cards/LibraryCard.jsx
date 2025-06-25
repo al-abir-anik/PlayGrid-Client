@@ -1,11 +1,11 @@
-import { Link } from "react-router";
 import Button from "../Button";
 import { IoPlay } from "react-icons/io5";
 import { GoHeartFill } from "react-icons/go";
 
-const LibraryCard = ({ game, handleFavourite, favourites }) => {
+const LibraryCard = ({ game, handleFavourite, favourites, favLoading }) => {
   const { _id, title, image } = game;
-//   const isFavourite = favourites.some((f) => f._id === _id);
+  const isFavourite = favourites?.some((f) => f._id === _id);
+  const isLoading = favLoading?.[_id];
 
   return (
     <div className="group/card w-80 bg-gray-200 rounded-xl overflow-hidden transition-all ">
@@ -16,15 +16,22 @@ const LibraryCard = ({ game, handleFavourite, favourites }) => {
           className="w-full h-full object-cover transform transition-transform ease-in-out duration-300 group-hover/card:scale-105"
         />
 
+        {/* Favourite Toggle button */}
         <button
           onClick={() => handleFavourite(_id)}
-          className="w-10 h-10 bg-blue200/50 rounded-full absolute top-3 right-3 flex justify-center items-center group cursor-pointer"
+          className="w-10 h-10 bg-white/20 rounded-full absolute top-3 right-3 flex justify-center items-center group cursor-pointer"
         >
-          {/* <GoHeartFill
-            className={`text-2xl group-hover:text-white transform group-active:scale-90 ${
-              isFavourite ? "text-white" : "text-white/40"
-            }`}
-          /> */}
+          {isLoading ? (
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          ) : (
+            <GoHeartFill
+              className={`text-2xl group-active:scale-75 ${
+                isFavourite
+                  ? "text-red-400 group-hover:text-red-400"
+                  : "text-white/60 group-hover:text-white/90"
+              }`}
+            />
+          )}
         </button>
       </div>
 

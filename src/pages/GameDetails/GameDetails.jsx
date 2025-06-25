@@ -2,13 +2,13 @@ import { useLoaderData } from "react-router";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import { Rating } from "primereact/rating";
 import Requirements from "./SystemRequirements/Requirements";
+import axios from "axios";
+import { useContext } from "react";
+import AuthContext from "../../auth/AuthContext/AuthContext";
 
 const GameDetails = () => {
+  const { user } = useContext(AuthContext);
   const gameDetails = useLoaderData();
-
-console.log(gameDetails);
-
-
   const {
     _id,
     title,
@@ -44,6 +44,20 @@ console.log(gameDetails);
       network: "Broadband Internet connection",
       soundCard: "100% DirectX 10 compatible",
     },
+  };
+
+  const handleAddWishlist = async (id) => {
+    const res = await axios.patch(`http://localhost:5000/user-wishlist/add`, {
+      email: user?.email,
+      gameId: id,
+    });
+
+    if (res.data.modifiedCount > 0) {
+      console.log("Game added to wishlist");
+      // Optional: update local wishlist or show toast
+    } else {
+      console.log("Game already in wishlist");
+    }
   };
 
   return (
@@ -153,13 +167,16 @@ console.log(gameDetails);
             <span className="pl-3">11 May 2014</span>
           </p>
           <div className="flex flex-col gap-3 my-10">
-            <button className="grow px-10 py-3 bg-[#45F882] text-gray-700 rounded-lg hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
+            <button className="grow px-10 py-3 bg-[#45F882] text-gray-700 rounded-lg hover:bg-[#ffa825]/80 active:scale-95 cursor-pointer ">
               Buy Now
             </button>
-            <button className="grow px-10 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
+            <button className="grow px-10 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-[#ffa825]/80 active:scale-95 cursor-pointer ">
               Add To Cart
             </button>
-            <button className="grow px-10 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
+            <button
+              onClick={() => handleAddWishlist(_id)}
+              className="grow px-10 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-[#ffa825]/80 active:scale-95 cursor-pointer"
+            >
               Add To Wishlist
             </button>
           </div>

@@ -1,4 +1,0 @@
-.swiper-button-next,
-.swiper-button-prev {
-  @apply text-[#45F882]  rounded-full hover:bg-[#45F882] transition;
-}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IoIosArrowUp } from "react-icons/io";
+import { GiArrowDunk } from "react-icons/gi";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,7 +29,7 @@ const ScrollToTop = () => {
         onClick={scrollToTop}
         className="w-full h-full rounded-xs text-white border border-blue50 hover:border-blue50/30 transition-all duration-200 cursor-pointer"
       >
-        <IoIosArrowUp className="mx-auto text-white" />
+        <GiArrowDunk className="mx-auto text-white rotate-180" />
       </button>
     </div>
   );

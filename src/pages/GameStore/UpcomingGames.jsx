@@ -4,11 +4,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 // import "swiper/css/effect-coverflow";
 import 'swiper/css/free-mode';
-import UpcomingGameCard from "../../../components/Cards/UpcomingGameCard";
+import UpcomingGameCard from "../../components/Cards/UpcomingGameCard";
 
-const StoreSlider = ({ upcomingGames }) => {
-  console.log(upcomingGames);
-  
+const UpcomingGames = ({ upcomingGames }) => {
   return (
     <div>
       <Swiper
@@ -32,7 +30,7 @@ const StoreSlider = ({ upcomingGames }) => {
       >
         {upcomingGames.map((g) => (
           <SwiperSlide key={g._id} className="!w-3/5">
-            <UpcomingGameCard key={g._id} upcomingGame={g}></UpcomingGameCard>
+            <UpcomingGameCard key={g._id} upcomingGame={g} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -40,4 +38,4 @@ const StoreSlider = ({ upcomingGames }) => {
   );
 };
 
-export default StoreSlider;
+export default UpcomingGames;

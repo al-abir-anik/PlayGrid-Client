@@ -37,6 +37,13 @@
   box-sizing: border-box;
 }
 
+.gaming-arrow {
+  @apply text-blue200 bg-yellow300/50 backdrop-blur
+         w-10 h-10 rounded-full flex items-center justify-center
+         hover:bg-yellow300 hover:scale-110
+         transition-all duration-300 ease-in-out cursor-pointer;
+}
+
 body {
   font-family: "General";
   /* font-family: "Outfit"; */

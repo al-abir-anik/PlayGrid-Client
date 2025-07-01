@@ -11,7 +11,7 @@ const GameCard1 = ({ game }) => {
             <img
             src={image}
             alt="game poster"
-            className="w-full h-full object-cover transform transition-transform ease-in duration-300 group-hover:scale-110"
+            className="w-full h-full object-cover transform transition-transform ease-in duration-100 group-hover:scale-110"
           />
           </div>
 

@@ -1,7 +1,4 @@
-import Banner from "./Home-sections/HeroBanner/Banner";
-import FeaturedGames from "./Home-sections/FeaturedGames";
-import MostPopular from "./Home-sections/MostPopular";
-import Hero from "./Home-sections/HeroBanner/Hero";
+import Hero from "./Home-sections/Hero";
 import Features from "./Home-sections/Features";
 import LatestNews from "./Home-sections/LatestNews";
 import JoinApp from "./Home-sections/JoinApp";
@@ -21,13 +18,6 @@ const Home = () => {
       <div>
         {/* <section>
           <Banner></Banner>
-        </section> */}
-        {/* <section className="">
-          <FeaturedGames></FeaturedGames>
-        </section> */}
-        {/* 
-        <section>
-          <MostPopular></MostPopular>
         </section> */}
       </div>
     </div>

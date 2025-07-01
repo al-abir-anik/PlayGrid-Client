@@ -1,40 +1,55 @@
 import { useEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router";
 import NewsCard2 from "../../components/Cards/NewsCard2";
-import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+import Pagination from "../../components/Pagination";
+import { GiCrossedSwords } from "react-icons/gi";
 
 const NewsPage = () => {
   const newsSectionRef = useRef(null);
-  const [upcomingNews, totalNewsCount] = useLoaderData();
-  const { count } = totalNewsCount;
+  const [upcomingNews] = useLoaderData();
   const [allNews, setAllNews] = useState([]);
+  const [searchNews, setSearchNews] = useState("");
+  const [totalCount, setTotalCount] = useState("");
+  const [newsGenres, setNewsGenres] = useState([]);
 
   const itemsPerPage = 10;
-  const numberOfPages = Math.ceil(count / itemsPerPage);
+  const numberOfPages = Math.ceil(totalCount / itemsPerPage);
   const paginationPages = [...Array(numberOfPages).keys()].map((i) => i + 1);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    const genreParam =
+      newsGenres.length > 0 ? `genre=${newsGenres.join(",")}` : "";
+
     fetch(
-      `http://localhost:5000/all-news?page=${currentPage}&size=${itemsPerPage}`
+      `http://localhost:5000/all-news?search=${searchNews}&${genreParam}&page=${currentPage}&size=${itemsPerPage}`
     )
       .then((res) => res.json())
       .then((data) => {
-        setAllNews(data);
+        setAllNews(data.news);
+        setTotalCount(data.count);
         newsSectionRef.current?.scrollIntoView({ behavior: "smooth" });
       })
       .catch((error) => console.log(error.message));
-  }, [currentPage]); //?search=${search}&category=${category}
+  }, [currentPage, searchNews, newsGenres]);
 
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-  const handleNextPage = () => {
-    if (currentPage < paginationPages.length) {
-      setCurrentPage(currentPage + 1);
-    }
+  const newsGenreFilter = [
+    "E-Sport",
+    "Game",
+    "Tournament",
+    "Dlc",
+    "Release",
+    "Leak",
+    "Community",
+    "Update",
+    "Event",
+    "Industry",
+  ];
+
+  const toggleGenre = (g) => {
+    setNewsGenres((prev) =>
+      prev.includes(g) ? prev.filter((x) => x !== g) : [...prev, g]
+    );
   };
 
   return (
@@ -61,7 +76,7 @@ const NewsPage = () => {
       </div>
 
       {/* All News with SideBar */}
-      <div className="w-3/4 mx-auto my-20 flex justify-between items-start">
+      <div className="w-4/5 mx-auto my-20 flex justify-between items-start">
         <div className="w-2/3 space-y-10">
           {allNews.slice(1).map((news) => (
             <NewsCard2 key={news._id} news={news}></NewsCard2>
@@ -71,10 +86,12 @@ const NewsPage = () => {
         {/* sidebar */}
         <div className="w-1/4 space-y-16 sticky top-0">
           <div className="flex flex-col gap-3 mt-24">
-            <label htmlFor="search" className="text-2xl">
-              SEARCH
-            </label>
+            <h3 className="text-2xl">SEARCH</h3>
             <input
+              onKeyUp={(e) => {
+                setSearchNews(e.target.value);
+                setCurrentPage(1);
+              }}
               type="search"
               placeholder="search news"
               className="p-3 border border-fuchsia-200"
@@ -83,44 +100,45 @@ const NewsPage = () => {
           <div>
             <h4 className="text-2xl mb-5">Category</h4>
             <div className="flex flex-wrap gap-3">
-              <button className="py-2 px-4 bg-gray-200 hover:bg-[#45F882] transition-colors duration-200">E-SPORTS</button>
-              <button className="py-2 px-4 bg-gray-200 hover:bg-[#45F882] transition-colors duration-200">GAMES</button>
-              <button className="py-2 px-4 bg-gray-200 hover:bg-[#45F882] transition-colors duration-200">TOURNAMENTS</button>
-              <button className="py-2 px-4 bg-gray-200 hover:bg-[#45F882] transition-colors duration-200">DLC</button>
-              <button className="py-2 px-4 bg-gray-200 hover:bg-[#45F882] transition-colors duration-200">RELEASES</button>
-              <button className="py-2 px-4 bg-gray-200 hover:bg-[#45F882] transition-colors duration-200">LEAKS</button>
-              <button className="py-2 px-4 bg-gray-200 hover:bg-[#45F882] transition-colors duration-200">COMMUNITY</button>
-              <button className="py-2 px-4 bg-gray-200 hover:bg-[#45F882] transition-colors duration-200">UPDATES</button>
+              {newsGenreFilter.map((btn) => {
+                const selected = newsGenres.includes(btn);
+                return (
+                  <button
+                    onClick={() => toggleGenre(btn)}
+                    key={btn}
+                    className={`w-fit flex justify-between items-center py-3 px-4 rounded uppercase transition-colors duration-200 cursor-pointer ${
+                      selected
+                        ? "bg-[#45F882]"
+                        : "bg-transparent hover:bg-white"
+                    }`}
+                  >
+                    {btn}
+                    {selected && <GiCrossedSwords />}
+                  </button>
+                );
+              })}
             </div>
           </div>
           <div>
             <h4 className="text-2xl mb-5">NEWSLETTER</h4>
-            <p className="text-lg mb-4">Subscribe To Our Newsletter And Get Updated News.</p>
-            <input type="email" placeholder="enter your email.." className="w-full p-3 border border-r-fuchsia-200"/>
+            <p className="text-lg mb-4">
+              Subscribe To Our Newsletter And Get Updated News.
+            </p>
+            <input
+              type="email"
+              placeholder="enter your email.."
+              className="w-full p-3 border border-r-fuchsia-200"
+            />
           </div>
         </div>
       </div>
 
       {/* Pagination */}
-      <div className="mb-20 text-center space-x-2">
-        <button onClick={handlePrevPage} className="border border-gray-500">
-          <FaAngleDoubleLeft />
-        </button>
-        {paginationPages.map((page) => (
-          <button
-            onClick={() => setCurrentPage(page)}
-            key={page}
-            className={`py-2 px-4 border border-gray-500 cursor-pointer ${
-              currentPage == page ? "bg-green-300" : ""
-            }`}
-          >
-            {page}
-          </button>
-        ))}
-        <button onClick={handleNextPage} className="border border-gray-500">
-          <FaAngleDoubleRight />
-        </button>
-      </div>
+      <Pagination
+        paginationPages={paginationPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { FaDesktop, FaTags } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation } from "swiper/modules";
-import "../HeroBanner/banner.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -48,7 +47,7 @@ const Banner = () => {
         speed={1000}
         spaceBetween={0}
         slidesPerView={1}
-        // navigation
+        navigation
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}

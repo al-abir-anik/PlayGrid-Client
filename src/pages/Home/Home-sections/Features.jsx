@@ -38,7 +38,7 @@ const Features = () => {
 
         <div className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
           <BentoCard
-            src="videos/feature-1.mp4"
+            src="videos/hero-1.mp4"
             title={
               <>
                 v<b>a</b>lora<b>n</b>t

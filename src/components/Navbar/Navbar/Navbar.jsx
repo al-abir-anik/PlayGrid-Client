@@ -47,7 +47,7 @@ const Navbar = () => {
       } ${
         isHome && !isScrolled
           ? "bg-transparent"
-          : "bg-blue200/40 backdrop-blur-lg shadow"
+          : "bg-blue200 backdrop-blur-lg shadow"
       }`}
     >
       <nav className="w-5/6 h-full mx-auto text-white flex items-center justify-between ">

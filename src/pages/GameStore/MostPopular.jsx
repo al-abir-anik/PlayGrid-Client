@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import GameCard1 from "../../components/Cards/GameCard1";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import {Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -17,13 +17,14 @@ const MostPopular = () => {
   return (
     <div className="space-y-10">
       <Swiper
-        modules={[Pagination, Autoplay, Navigation]}
-        slidesPerView={5}
-        spaceBetween={24}
+        modules={[ Autoplay, Navigation]}
         loop
+        slidesPerView={5}
+        spaceBetween={30}
         autoplay={{ delay: 1500, disableOnInteraction: false }}
-        pagination={{
-          clickable: true,
+        navigation={{
+          nextEl: ".custom-next",
+          prevEl: ".custom-prev",
         }}
         className="mySwiper"
       >

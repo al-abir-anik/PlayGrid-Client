@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation} from "swiper/modules";
 import GameCard1 from "../../components/Cards/GameCard1";
 
 const TopNewReleases = () => {
@@ -17,13 +17,10 @@ const TopNewReleases = () => {
   return (
     <>
       <Swiper
-        modules={[Pagination, Navigation]}
+        modules={[Navigation]}
         loop
         slidesPerView={5}
         spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
         navigation={{
           nextEl: ".custom-next",
           prevEl: ".custom-prev",

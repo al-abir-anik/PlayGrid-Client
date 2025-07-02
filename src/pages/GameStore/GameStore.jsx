@@ -12,7 +12,7 @@ const GameStore = () => {
   const upcomingGames = useLoaderData();
 
   return (
-    <div className="w-full min-h-screen  bg-fixed bg-no-repeat bg-cover bg-center">
+    <div className="w-full pb-20 min-h-screen bg-[url(/img/bg.jpeg)] bg-fixed bg-no-repeat bg-cover bg-center">
       <div className="w-4/5 mx-auto">
         {/* bg-[url(/img/bg.jpeg)] */}
         {/* <div>
@@ -35,16 +35,16 @@ const GameStore = () => {
         </div>
 
         {/* 2.Most Popular Games */}
-        <div className="py-8 space-y-6">
-          <div className="flex justify-between items-center">
-            <h2 className="text-4xl font-medium heading-font">Most Popular</h2>
-            <Link to={"/store"}>
-              <button className="px-10 py-4 bg-[#45F882] text-gray-700 rounded-3xl hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer ">
-                Browse All Games
-              </button>
-            </Link>
-          </div>
-          <hr className="opacity-10" />
+        <div className="py-8 space-y-6 relative">
+          <h2 className="text-4xl font-medium heading-font">Most Popular</h2>
+          {/* Custom Prev Button */}
+          <button className="custom-prev absolute top-8 right-16 z-10 gaming-arrow">
+            <TbArrowBadgeLeftFilled className="text-lg" />
+          </button>
+          <button className="custom-next absolute top-8 right-2 z-10 gaming-arrow">
+            <TbArrowBadgeRightFilled className="text-lg" />
+          </button>
+
           <MostPopular />
         </div>
 

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Sidebar } from "primereact/sidebar";
 import "../Sidemenu/sidemenu.css";
 import Logout from "./Logout/Logout";
-import AuthContext from "../../../auth/AuthContext/AuthContext";
+import AuthContext from "../../../auth/AuthContext";
 import { Link } from "react-router";
 
 const Sidemenu = ({ handleSignOut }) => {

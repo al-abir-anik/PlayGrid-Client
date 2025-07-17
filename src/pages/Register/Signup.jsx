@@ -2,10 +2,9 @@ import { Link, Navigate, useNavigate } from "react-router";
 import Google from "../../auth/SocialAuth/Google";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
-import AuthContext from "../../auth/AuthContext/AuthContext";
-import Swal from "sweetalert2";
-import Captcha from "../../components/Captcha/Captcha";
+import AuthContext from "../../auth/AuthContext";
 import axios from "axios";
+import Captcha from "../../auth/Captcha";
 
 const imageHostingKey = import.meta.env.VITE_imagebbHostingKey;
 const imageUploadAPI = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;

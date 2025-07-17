@@ -1,6 +1,6 @@
 import LibraryCard2 from "../../components/Cards/LibraryCard2";
 import { useContext, useEffect, useState } from "react";
-import AuthContext from "../../auth/AuthContext/AuthContext";
+import AuthContext from "../../auth/AuthContext";
 import axios from "axios";
 
 const Wishlist = () => {

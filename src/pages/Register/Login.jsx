@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form";
 import Google from "../../auth/SocialAuth/Google";
 import { Link, useNavigate } from "react-router";
 import { useContext, useState } from "react";
-import AuthContext from "../../auth/AuthContext/AuthContext";
-import Captcha from "../../components/Captcha/Captcha";
+import AuthContext from "../../auth/AuthContext";
+import Captcha from "../../auth/Captcha";
 
 const Login = () => {
   const navigate = useNavigate();

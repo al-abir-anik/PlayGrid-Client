@@ -1,10 +1,10 @@
 import { Outlet, useLocation } from "react-router";
-import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbar/Navbar/Navbar";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import Music from "../components/Music";
 import ScrollToTop from "../components/ScrollToTop";
 
-const Root = () => {
+const RootLayout = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -25,4 +25,4 @@ const Root = () => {
   );
 };
 
-export default Root;
+export default RootLayout;

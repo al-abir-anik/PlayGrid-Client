@@ -20,7 +20,7 @@ const NewsCard1 = ({ news }) => {
             <p>{date}</p>
           </span>
         </div>
-        <h5 className="text-2xl font-semibold tracking-wide">{title}</h5>
+        <h5 className="text-2xl font-semibold tracking-wide font-circular-web">{title}</h5>
         <p className="text-lg opacity-70 font-robert-regular">{summary}</p>
       </div>
 

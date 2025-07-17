@@ -1,24 +1,24 @@
 import { Link } from "react-router";
 
 const GameCard1 = ({ game }) => {
-  const { _id, title, image, price, rating } = game;
+  const { _id, name, poster, regularPrice, offerPrice, rating } = game;
 
   return (
     <>
       <Link to={`/game/${_id}`} className="cursor-pointer">
-        <div className="group w-2xs bg-gray-200 rounded-xl overflow-hidden transition-all ">
-          <div className="h-80 overflow-hidden">
+        <div className="w-full bg-gray-600 rounded overflow-hidden">
+          <div className="relative pb-[100%] overflow-hidden">
             <img
-            src={image}
-            alt="game poster"
-            className="w-full h-full object-cover transform transition-transform ease-in duration-100 group-hover:scale-110"
-          />
+              src={poster}
+              alt="game poster"
+              className="absolute top-0 left-0 w-full h-full object-cover"
+            />
           </div>
 
-          <div className="p-4 space-y-3">
-            <h5 className="text-lg font-semibold h-14">{title}</h5>
-            <p className="text-sm text-gray-600 ">Rating: {rating}</p>
-            <p className="text-lg ">${price}</p>
+          <div className="py-2 space-y-2 text-white">
+            <h5 className="text-lg font-semibold">{name}</h5>
+            <p className="text-sm">Rating: {rating}</p>
+            <p className="text-lg ">$ {offerPrice}</p>
           </div>
         </div>
       </Link>

@@ -1,7 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router";
-import AuthContext from "../../../auth/AuthContext/AuthContext";
-import Sidemenu from "../Sidemenu/Sidemenu";
+import AuthContext from "../auth/AuthContext";
+import Sidemenu from "./Navbar/Sidemenu/Sidemenu";
+import Button from "./Button";
+import { MdOutlineShoppingBag } from "react-icons/md";
+import { RiSearchLine } from "react-icons/ri";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -50,49 +53,48 @@ const Navbar = () => {
           : "bg-blue200 backdrop-blur-lg shadow"
       }`}
     >
-      <nav className="w-5/6 h-full mx-auto text-white flex items-center justify-between ">
+      <nav className="w-5/6 h-full mx-auto text-white flex items-center justify-between">
         <Link to={"/"} className="text-4xl logo-font ">
           PLAY<span className="text-yellow300">GRID</span>
         </Link>
-        <div className="text-blue100 flex items-center gap-10">
-          <ul className="flex gap-10 [&>li>a]:font-medium [&>li>a]:transition [&>li>a]:duration-300 [&>li>a]:ease-in-out [&>li>a]:hover:text-primary">
-            <li>
-              <NavLink to={"/"}>Home</NavLink>
-            </li>
-            <li>
-              <NavLink to={"store"}>Store</NavLink>
-            </li>
-            <li>
-              <NavLink to={"all-games"}>All Games</NavLink>
-            </li>
-            <li>
-              <NavLink to={"news"}>News</NavLink>
-            </li>
-            {user && (
-              <li>
-                <NavLink to={"library/all"}>Library</NavLink>
-              </li>
-            )}
-          </ul>
+        <div className="text-lg font-zentry tracking-wider flex items-center gap-10 uppercase">
+          <NavLink to={"/"}>Home</NavLink>
+          <NavLink to={"store"}>Store</NavLink>
+          <NavLink to={"all-games"}>All Games</NavLink>
+          <NavLink to={"news"}>News</NavLink>
+          {user && <NavLink to={"library/all"}>Library</NavLink>}
+        </div>
+
+        <div className="flex items-center gap-10">
+          {/* search */}
+          <div className="px-4 hidden lg:flex items-center gap-2 border-2 border-white rounded-full">
+            <input
+              // onKeyUp={(e) => setSearch(e.target.value)}
+              type="search"
+              placeholder="Search games"
+              className="p-1.5 w-full bg-transparent outline-none placeholder-gray-500"
+            />
+            <RiSearchLine className="text-2xl" />
+          </div>
+
+          {/* Cart link */}
+          <NavLink to={"/cart"} className="relative cursor-pointer">
+            <MdOutlineShoppingBag className="text-3xl" />
+            <span className="w-4 h-4 text-center absolute top-5 -right-1 text-xs text-blue200 bg-yellow300 rounded-full">
+              3
+            </span>
+          </NavLink>
 
           {user ? (
             <Sidemenu handleSignOut={handleSignOut}></Sidemenu>
           ) : (
-            <div className="inline-flex text-xs font-semibold space-x-2 border border-primary rounded-full">
-              <Link
-                to={"login"}
-                className="py-2 px-4 transition duration-300 ease-in-out hover:text-primary"
-              >
-                LOG IN
-              </Link>
-              <span className="w-0.5 bg-primary/70"></span>
-              <Link
-                to={"signup"}
-                className="py-2 px-4 transition duration-300 ease-in-out hover:text-primary"
-              >
-                SIGN UP
-              </Link>
-            </div>
+            <Link to={"login"}>
+              <Button
+                id="login"
+                title="Login"
+                containerClass="bg-yellow300 text-blue200 px-10 !py-3"
+              />
+            </Link>
           )}
         </div>
       </nav>

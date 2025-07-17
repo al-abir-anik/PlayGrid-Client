@@ -1,4 +1,4 @@
-import AuthContext from "../../auth/AuthContext/AuthContext";
+import AuthContext from "../../auth/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink, Outlet } from "react-router";

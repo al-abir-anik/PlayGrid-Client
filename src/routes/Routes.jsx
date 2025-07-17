@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
-import Root from "../layouts/Root";
+import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home/Home";
-import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import ErrorPage from "../pages/ErrorPage";
 import Login from "./../pages/Register/Login";
 import Signup from "../pages/Register/Signup";
 import GameDetails from "../pages/GameDetails/GameDetails";
@@ -10,7 +10,7 @@ import NewsDetails from "../pages/NewsPage/NewsDetails";
 import PrivateRoute from "./PrivateRoute";
 import Library from "../pages/UserLibrary/Library";
 import UpdateProfile from "../pages/Profile/UpdateProfile";
-import AllGames from "../pages/AllGames/AllGames";
+import AllGames from "../pages/AllGames";
 import UserGames from "../pages/UserLibrary/UserGames";
 import FavouriteGames from "../pages/UserLibrary/Favourites";
 import Wishlist from "../pages/UserLibrary/Wishlist";
@@ -19,20 +19,12 @@ import GameStore from "../pages/GameStore/GameStore";
 const Routes = createBrowserRouter([
   {
     path: "/",
-    element: <Root></Root>,
-    errorElement: <ErrorPage></ErrorPage>,
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home />,
-      },
-      {
-        path: "login",
-        element: <Login></Login>,
-      },
-      {
-        path: "signup",
-        element: <Signup></Signup>,
       },
       {
         path: "/store",
@@ -86,6 +78,14 @@ const Routes = createBrowserRouter([
             element: <Wishlist />,
           },
         ],
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "signup",
+        element: <Signup></Signup>,
       },
       {
         path: "update-profile",

@@ -19,7 +19,7 @@ const TopNewReleases = () => {
       <Swiper
         modules={[Navigation]}
         loop
-        slidesPerView={5}
+        slidesPerView={6}
         spaceBetween={30}
         navigation={{
           nextEl: ".custom-next",

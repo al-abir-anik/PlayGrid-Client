@@ -1,8 +1,11 @@
-import { useLoaderData } from "react-router";
-import { Rating } from "primereact/rating";
-import axios from "axios";
 import { useContext, useState } from "react";
+import { useLoaderData } from "react-router";
 import AuthContext from "../../auth/AuthContext";
+import axios from "axios";
+import { Rating } from "primereact/rating";
+import { BsWindows, BsPlaystation, BsXbox } from "react-icons/bs";
+import { IoShareSocial } from "react-icons/io5";
+import { MdOutlineReportGmailerrorred } from "react-icons/md";
 
 const GameDetails = () => {
   const { user } = useContext(AuthContext);
@@ -11,15 +14,16 @@ const GameDetails = () => {
     _id,
     name,
     developer,
+    summary,
     poster,
     screenshots,
     genres,
     features,
-    currentPrice,
+    regularPrice,
     offerPrice,
-    category,
     description,
     platform,
+    releaseDate,
     rating,
     requirement: { minimum, recommended },
   } = gameDetails;
@@ -54,7 +58,7 @@ const GameDetails = () => {
 
       {/* main */}
       <div className="flex justify-between items-start">
-        <div className="w-[70%] space-y-14">
+        <div className="w-[73%] space-y-14">
           {/* image gallery */}
           <div className="flex flex-col gap-5">
             <div className="w-full h-full rounded overflow-hidden">
@@ -81,10 +85,8 @@ const GameDetails = () => {
             </div>
           </div>
 
-          <div className="space-y-6">
-            <h5 className="text-xl font-semibold">ABOUT THIS GAME</h5>
-            <p className="text-lg text-gray-600 mb-8">{description}</p>
-          </div>
+          {/* summary */}
+          <p className="text-lg text-gray-700 mb-8">{summary}</p>
 
           {/* genre & features */}
           <div className="space-y-4">
@@ -92,7 +94,10 @@ const GameDetails = () => {
               <h5 className="text-xl font-medium mb-2">Genres</h5>
               <div className="flex gap-2">
                 {genres.map((genre) => (
-                  <p className="px-2 py-1 text-gray-600 border border-gray-500/30 rounded">
+                  <p
+                    key={genre}
+                    className="px-2 py-1 text-gray-600 border border-gray-500/30 rounded"
+                  >
                     {genre}
                   </p>
                 ))}
@@ -102,7 +107,10 @@ const GameDetails = () => {
               <h5 className="text-xl font-medium mb-2">Features</h5>
               <div className="flex gap-2">
                 {features.map((feature) => (
-                  <p className="px-2 py-1 text-gray-600 border border-gray-500/30 rounded">
+                  <p
+                    key={feature}
+                    className="px-2 py-1 text-gray-600 border border-gray-500/30 rounded"
+                  >
                     {feature}
                   </p>
                 ))}
@@ -110,28 +118,38 @@ const GameDetails = () => {
             </div>
           </div>
 
+          {/* description */}
+          <div className="w-[95%] space-y-3">
+            <h5 className="text-xl font-semibold">ABOUT THIS GAME</h5>
+            {description.split("\n").map((line, index) => (
+              <p key={index} className="text-lg text-gray-500">
+                {line}
+              </p>
+            ))}
+          </div>
+
           {/* Requirement section */}
-          <div className="space-y-6">
+          <div className="space-y-3">
             <h2 className="text-xl font-semibold">SYSTEM REQUIREMENTS</h2>
-            <div className="w-full h-fit bg-white">
-              <div>
-                <h3>Minimum</h3>
-                <ul className="list-disc list-inside text-gray-700 space-y-1">
+            <div className="w-full flex gap-20">
+              <div className="w-5/12">
+                <h3 className="mb-2 font-medium uppercase">Minimum</h3>
+                <ul className="space-y-2">
                   {Object.entries(minimum).map(([key, value]) => (
-                    <li key={key}>
-                      <strong>{key}:</strong> {value}
+                    <li key={key} className="flex flex-col ">
+                      <span className="text-gray-700/60">{key}</span>{" "}
+                      <span className="text-lg text-gray-700">{value}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
-            <div className="w-full h-fit bg-white">
-              <div>
-                <h3>Recommended</h3>
-                <ul className="list-disc list-inside text-gray-700 space-y-1">
-                  {Object.entries(minimum).map(([key, value]) => (
-                    <li key={key}>
-                      <strong>{key}:</strong> {value}
+              <div className="w-5/12">
+                <h3 className="mb-2 font-medium uppercase">Recommended</h3>
+                <ul className="space-y-2">
+                  {Object.entries(recommended).map(([key, value]) => (
+                    <li key={key} className="flex flex-col ">
+                      <span className="text-gray-700/60">{key}</span>{" "}
+                      <span className="text-lg text-gray-700">{value}</span>
                     </li>
                   ))}
                 </ul>
@@ -140,9 +158,9 @@ const GameDetails = () => {
           </div>
 
           {/* Review Section */}
-          <div className="mt-10 space-y-5">
+          <div className="mt-20 space-y-5">
             <h5 className="text-xl font-semibold">PLAYER REVIEWS</h5>
-            <div className="py-5 mb-6">
+            <div className="mb-6">
               <textarea
                 className="w-full border border-gray-300 rounded p-4 mb-4 focus:outline-none focus:ring focus:ring-blue-200"
                 rows="3"
@@ -181,33 +199,25 @@ const GameDetails = () => {
         </div>
 
         {/* details column */}
-        <div className="w-1/4 space-y-4 bg-white sticky top-0">
-          <img src={poster} alt="game poster" className="mb-10" />
-          {/* <h5 className="text-2xl font-bold pb-5">GAME DETAILS</h5> */}
-          <p className="flex gap-2">
-            <span className="min-w-28 text-lg font-medium">Price</span>
-            <span>:</span>
-            <span className="pl-3">$ {offerPrice}</span>
-          </p>
-          <p className="flex gap-2">
-            <span className="min-w-28 text-lg font-medium">Genre</span>:
-            <span className="pl-3">Action-Adventure</span>
-          </p>
-          <p className="flex gap-2">
-            <span className="min-w-28 text-lg font-medium">Developer</span>:
-            <span className="pl-3">Rockstar Games</span>
-          </p>
-          <p className="flex gap-2">
-            <span className="min-w-28 text-lg font-medium">Publisher</span>
-            <span>:</span>
-            <span className="pl-3">Rockstar Games</span>
-          </p>
-          <p className="flex gap-2">
-            <span className="min-w-28 text-lg font-medium">Release Date</span>
-            <span>:</span>
-            <span className="pl-3">11 May 2014</span>
-          </p>
-          <div className="flex flex-col gap-3 my-10">
+        <div className="w-[22%] space-y-6 sticky top-0">
+          {/* <img src={poster} alt="game poster" className="mb-8" /> */}
+          
+          {/* price */}
+          <div>
+            <div className="flex items-center gap-3">
+              <span className="px-2 py-0.5 text-sm font-medium text-white bg-blue300 rounded-full">
+                -30%
+              </span>
+              <p className="line-through">${regularPrice}</p>
+              <p className="text-xl font-medium">$ {offerPrice}</p>
+            </div>
+
+            <p className="mt-4 text-sm font-medium text-gray-500">
+              Sale ends 8/1/2025 at 12:00 AM
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-3 my-4">
             <button className="grow px-10 py-3 bg-[#45F882] text-gray-700 rounded-lg hover:bg-[#ffa825]/80 active:scale-95 cursor-pointer ">
               Buy Now
             </button>
@@ -219,6 +229,37 @@ const GameDetails = () => {
               className="grow px-10 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-[#ffa825]/80 active:scale-95 cursor-pointer"
             >
               Add To Wishlist
+            </button>
+          </div>
+
+          <div className="">
+            <p className="py-4 border-b border-gray-300 flex justify-between gap-2">
+              <span className="min-w-28 text-gray-600">Developer</span>
+              <span className="pl-3">{developer}</span>
+            </p>
+            <p className="py-4 border-b border-gray-300 flex justify-between gap-2">
+              <span className="min-w-28 text-gray-600">Refund Type</span>
+              <span className="pl-3">Refundable</span>
+            </p>
+            <p className="py-4 border-b border-gray-300 flex justify-between gap-2">
+              <span className="min-w-28 text-gray-600">Release Date</span>
+              <span className="pl-3">{releaseDate}</span>
+            </p>
+            <p className="py-4 border-b border-gray-300 flex justify-between gap-2">
+              <span className="min-w-28 text-gray-600">Platform</span>
+              {/* <span className="pl-6">{platform}</span> */}
+              <span className="pl-3 flex gap-3 text-lg">
+                <BsXbox /> <BsPlaystation /> <BsWindows />
+              </span>
+            </p>
+          </div>
+
+          <div className="w-full mt-2 flex gap-10">
+            <button className="w-full py-1.5 bg-gray-300 rounded flex items-center justify-center gap-1 cursor-pointer">
+              <IoShareSocial /> <p>Share</p>
+            </button>
+            <button className="w-full py-1 bg-gray-300 rounded flex items-center justify-center gap-1 cursor-pointer">
+              <MdOutlineReportGmailerrorred className="text-lg" /> <p>Report</p>
             </button>
           </div>
         </div>

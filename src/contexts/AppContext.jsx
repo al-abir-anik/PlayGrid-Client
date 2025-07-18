@@ -26,7 +26,8 @@ export const AppContextProvider = ({ children }) => {
   const appInfo = {
     fetchLoading,
     setFetchLoading,
-    search
+    search,
+    setSearch,
   };
 
   return (

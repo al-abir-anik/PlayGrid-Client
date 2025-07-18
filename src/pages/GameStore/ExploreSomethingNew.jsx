@@ -5,7 +5,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import GameCard1 from "../../components/Cards/GameCard1";
 
-const DiscoverSomethingNew = () => {
+const ExploreSomethingNew = () => {
   const [categoryGames, setCategoryGames] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const DiscoverSomethingNew = () => {
       <Swiper
         modules={[Pagination, Navigation]}
         loop
-        slidesPerView={5}
+        slidesPerView={6}
         spaceBetween={30}
         pagination={{
           clickable: true,
@@ -40,4 +40,4 @@ const DiscoverSomethingNew = () => {
   );
 };
 
-export default DiscoverSomethingNew;
+export default ExploreSomethingNew;

@@ -19,7 +19,7 @@ const MostPopular = () => {
       <Swiper
         modules={[ Autoplay, Navigation]}
         loop
-        slidesPerView={5}
+        slidesPerView={6}
         spaceBetween={30}
         autoplay={{ delay: 1500, disableOnInteraction: false }}
         navigation={{

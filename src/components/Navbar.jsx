@@ -4,7 +4,7 @@ import AuthContext from "../auth/AuthContext";
 import Sidemenu from "./Navbar/Sidemenu/Sidemenu";
 import Button from "./Button";
 import { MdOutlineShoppingBag } from "react-icons/md";
-import { RiSearchLine } from "react-icons/ri";
+import Search from "./Search";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -67,15 +67,7 @@ const Navbar = () => {
 
         <div className="flex items-center gap-10">
           {/* search */}
-          <div className="px-4 hidden lg:flex items-center gap-2 border-2 border-white rounded-full">
-            <input
-              // onKeyUp={(e) => setSearch(e.target.value)}
-              type="search"
-              placeholder="Search games"
-              className="p-1.5 w-full bg-transparent outline-none placeholder-gray-500"
-            />
-            <RiSearchLine className="text-2xl" />
-          </div>
+          <Search />
 
           {/* Cart link */}
           <NavLink to={"/cart"} className="relative cursor-pointer">

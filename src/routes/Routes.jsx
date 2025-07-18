@@ -10,7 +10,7 @@ import NewsDetails from "../pages/NewsPage/NewsDetails";
 import PrivateRoute from "./PrivateRoute";
 import Library from "../pages/UserLibrary/Library";
 import UpdateProfile from "../pages/Profile/UpdateProfile";
-import AllGames from "../pages/AllGames";
+import AllGames from "../pages/AllGames/AllGames";
 import UserGames from "../pages/UserLibrary/UserGames";
 import FavouriteGames from "../pages/UserLibrary/Favourites";
 import Wishlist from "../pages/UserLibrary/Wishlist";
@@ -33,6 +33,10 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/all-games",
+        element: <AllGames />,
+      },
+       {
+        path: "/all-games/:genre",
         element: <AllGames />,
       },
       {

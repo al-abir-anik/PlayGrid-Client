@@ -7,7 +7,7 @@ import About from "./Home-sections/About";
 const Home = () => {
   return (
     <div>
-      <div className="relative min-h-screen w-screen">
+      <div className="relative min-h-screen w-screen bg-blue50">
         <Hero />
         <About />
         <Features />

@@ -6,29 +6,21 @@ import {
   TbArrowBadgeLeftFilled,
   TbArrowBadgeRightFilled,
 } from "react-icons/tb";
-import DiscoverSomethingNew from "./DiscoverSomethingNew";
+import ExploreSomethingNew from "./ExploreSomethingNew";
 import PopularGenres from "./PopularGenres";
+import FeaturedStories from "./FeaturedStories";
 
 const GameStore = () => {
   const upcomingGames = useLoaderData();
 
   return (
-    <div className="w-full pb-20 min-h-screen bg-blue200">
-      <div className="w-4/5 mx-auto">
-        {/* bg-[url(/img/bg.jpeg)] */}
-        {/* <div>
-        <video
-          src="videos/store-hero.webm"
-          loop
-          muted
-          autoPlay
-          className=" object-cover object-center"
-        />
-      </div> */}
-
+    <div className="w-full py-12 min-h-screen bg-black">
+      <div className="w-4/5 mx-auto font-barlow space-y-16">
         {/* 0.Popular Genres */}
-        <div className=" py-8 space-y-6 relative">
-          <h2 className="text-4xl font-medium heading-font">Popular Genres</h2>
+        <div className="space-y-6 relative">
+          <h2 className="text-2xl font-bold text-white uppercase">
+            Popular Genres
+          </h2>
           {/* Custom Prev Button */}
           <button className="custom-prev absolute top-8 right-16 z-10 gaming-arrow">
             <TbArrowBadgeLeftFilled className="text-lg" />
@@ -40,31 +32,26 @@ const GameStore = () => {
         </div>
 
         {/* 1.Upcoming Games */}
-        <div className="py-8 space-y-6">
-          <h2 className="  text-4xl font-medium heading-font">
+        <div className="space-y-6">
+          <h2 className="text-2xl font-bold text-white uppercase">
             Upcoming Releases
           </h2>
-          <hr className="opacity-10" />
+          
           <UpcomingGames upcomingGames={upcomingGames} />
         </div>
 
         {/* 2.Most Popular Games */}
-        <div className="py-8 space-y-6 relative">
-          <h2 className="text-4xl font-medium heading-font">Most Popular</h2>
-          {/* Custom Prev Button */}
-          <button className="custom-prev absolute top-8 right-16 z-10 gaming-arrow">
-            <TbArrowBadgeLeftFilled className="text-lg" />
-          </button>
-          <button className="custom-next absolute top-8 right-2 z-10 gaming-arrow">
-            <TbArrowBadgeRightFilled className="text-lg" />
-          </button>
+        <div className="space-y-6 relative">
+          <h2 className="text-2xl font-bold text-white uppercase">
+            Most Popular
+          </h2>
 
           <MostPopular />
         </div>
 
         {/* 3.Top New Releases */}
-        <div className="py-8 space-y-6 relative">
-          <h2 className="text-4xl font-medium heading-font">
+        <div className="space-y-6 relative">
+          <h2 className="text-2xl font-bold text-white uppercase">
             Top New Releases
           </h2>
           {/* Custom Prev Button */}
@@ -78,10 +65,18 @@ const GameStore = () => {
           <TopNewReleases />
         </div>
 
-        {/* 4.Discover something New */}
-        <div className="py-8 space-y-6 relative">
-          <h2 className="text-4xl font-medium heading-font ">
-            Discover Something New
+        {/* 4. featured stories */}
+        <div className="space-y-6 relative">
+          <h2 className="text-2xl font-bold text-white uppercase">
+            Featured Stories
+          </h2>
+          <FeaturedStories />
+        </div>
+
+        {/* 5.Explore something New */}
+        <div className="space-y-6 relative">
+          <h2 className="text-2xl font-bold text-white uppercase">
+            Explore Something New
           </h2>
           {/* Custom Prev Button */}
           <button className="custom-prev absolute top-8 right-16 z-10 gaming-arrow">
@@ -91,7 +86,15 @@ const GameStore = () => {
             <TbArrowBadgeRightFilled className="text-lg" />
           </button>
 
-          <DiscoverSomethingNew />
+          <ExploreSomethingNew />
+        </div>
+
+        <div className="py-6">
+          <hr className="border-gray-500" />
+          <p className="mt-5 text-gray-400">
+            * The lowest price offered on Play Grid Store in the last 30 days
+            before discount.
+          </p>
         </div>
       </div>
     </div>

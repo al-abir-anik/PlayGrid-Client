@@ -6,6 +6,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
 /* heading text font */
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+/* heading font */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap");
+/* main font */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 
 @import "tailwindcss";
 
@@ -13,6 +17,8 @@
   --font-zentry: zentry, sans-serif;
   --font-general: general, sans-serif;
   --font-outfit: outfit, sans-serif;
+  --font-barlow: "Barlow Condensed", sans-serif;
+  --font-dmsans: "DM Sans", sans-serif;
 
   --color-blue50: #dfdff0;
   --color-blue75: #dfdff2;
@@ -22,15 +28,12 @@
   --color-violet300: #5724ff;
   --color-yellow100: #8e983f;
   --color-yellow300: #edff66;
+  --color-bg1: #181819;
+  --color-bg2: #202020;
+  --color-bd-color: #adb0bc;
 }
-/* --color-primary: #45f882;
---color-red: #ff4655;
---color-white: #f2f3f8;
---color-off-white: #ece8e1;
---color-black: #0f1923; */
 
 :root {
-  font-family: "Outfit";
   box-sizing: border-box;
 }
 
@@ -42,13 +45,11 @@
 }
 
 body {
-  /* font-family: "General"; */
-  font-family: "Outfit";
+  font-family: "DM Sans", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 
   width: 100dvw;
-  background-color: #dfdff0;
   overflow-x: hidden;
 }
 

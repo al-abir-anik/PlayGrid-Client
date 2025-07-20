@@ -29,15 +29,7 @@ const LibraryCard2 = ({ game, handleRemoveWishlist }) => {
               <IoMdArrowForward className="font-light text-2xl text-primary -rotate-45 group-hover:rotate-0 duration-300 transition-transform" />
             </button>
           </Link>
-          <span className="space-x-5">
-            <button
-              onClick={() => handleRemoveWishlist(_id)}
-              className="cursor-pointer text-red-600"
-            >
-              Remove
-            </button>
-            <button>Add To Cart</button>
-          </span>
+          
         </div>
       </div>
     </div>

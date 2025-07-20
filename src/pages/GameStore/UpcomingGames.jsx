@@ -50,9 +50,8 @@ const UpcomingGames = () => {
 
             <Button
               id="prebook"
-              title="PREBOOK"
-              leftIcon={<IoPlay />}
-              containerClass="!w-11/12 bg-yellow300 text-blue200"
+              title="Add To Wishlist"
+              containerClass="!w-fit !py-3 bg-yellow300 text-blue200"
             />
           </div>
         </div>

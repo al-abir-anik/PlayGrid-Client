@@ -15,6 +15,7 @@ import UserGames from "../pages/UserLibrary/UserGames";
 import FavouriteGames from "../pages/UserLibrary/Favourites";
 import Wishlist from "../pages/UserLibrary/Wishlist";
 import GameStore from "../pages/GameStore/GameStore";
+import Cart from "../pages/Cart";
 
 const Routes = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ const Routes = createBrowserRouter([
         path: "/all-games",
         element: <AllGames />,
       },
-       {
+      {
         path: "/all-games/:genre",
         element: <AllGames />,
       },
@@ -82,6 +83,10 @@ const Routes = createBrowserRouter([
             element: <Wishlist />,
           },
         ],
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
       {
         path: "login",

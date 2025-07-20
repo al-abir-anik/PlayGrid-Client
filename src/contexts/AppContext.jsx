@@ -9,25 +9,30 @@ export const AppContextProvider = ({ children }) => {
   const { loading, user } = useContext(AuthContext);
   const [fetchLoading, setFetchLoading] = useState(false);
   const [search, setSearch] = useState("");
+  const [showCheckout, setShowCheckout] = useState(false);
 
-  // load currentUser cart items with product details
-  //   const [cartItems, setCartItems] = useState([]);
-  //   useEffect(() => {
-  //     fetch(`http://localhost:3000/user-cart-items?email=${user?.email}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setCartItems(data);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error.message);
-  //       });
-  //   }, [user]);
+  // load user cartlist with game details
+  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/user-cartlist?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCartItems(data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, [user]);
 
   const appInfo = {
     fetchLoading,
     setFetchLoading,
     search,
     setSearch,
+    cartItems,
+    setCartItems,
+    showCheckout,
+    setShowCheckout,
   };
 
   return (

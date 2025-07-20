@@ -29,7 +29,8 @@
   --color-yellow100: #8e983f;
   --color-yellow300: #edff66;
   --color-bg1: #181819;
-  --color-bg2: #202020;
+  --color-bg2: #202024;
+  --color-bg2: #121212;
   --color-bd-color: #adb0bc;
 }
 
@@ -37,19 +38,13 @@
   box-sizing: border-box;
 }
 
-.gaming-arrow {
-  @apply text-blue200 bg-yellow300/50 backdrop-blur
-         w-10 h-10 rounded-full flex items-center justify-center
-         hover:bg-yellow300 hover:scale-110
-         transition-all duration-300 ease-in-out cursor-pointer;
-}
-
 body {
+  background-color: #121212;
   font-family: "DM Sans", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 
-  width: 100dvw;
+  /* width: 100dvw; */
   overflow-x: hidden;
 }
 
@@ -65,6 +60,13 @@ body {
 }
 
 @layer components {
+  .gaming-arrow {
+    @apply text-blue200 bg-yellow300/50 backdrop-blur
+         w-10 h-10 rounded-full flex items-center justify-center
+         hover:bg-yellow300 hover:scale-110
+         transition-all duration-300 ease-in-out cursor-pointer;
+  }
+
   .hero-heading {
     text-transform: uppercase;
     font-size: 3rem;

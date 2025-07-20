@@ -3,10 +3,14 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Music from "../components/Music";
 import ScrollToTop from "../components/ScrollToTop";
+import { useAppContext } from "../contexts/AppContext";
+import CheckOut from "../components/CheckOut";
 
 const RootLayout = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
+
+  const { showCheckout, setShowCheckout } = useAppContext();
 
   return (
     <div className="flex flex-col antialiased">
@@ -21,6 +25,9 @@ const RootLayout = () => {
         <ScrollToTop />
         <Music />
       </div>
+      
+      {/* Checkout Modal */}
+      {showCheckout && <CheckOut setShowCheckout={setShowCheckout} />}
     </div>
   );
 };

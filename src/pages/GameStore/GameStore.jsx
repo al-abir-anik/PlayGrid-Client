@@ -14,8 +14,9 @@ const GameStore = () => {
   const upcomingGames = useLoaderData();
 
   return (
-    <div className="w-full py-12 min-h-screen bg-black">
+    <div className="w-full py-12 min-h-screen bg-bg2">
       <div className="w-4/5 mx-auto font-barlow space-y-16">
+      
         {/* 0.Popular Genres */}
         <div className="space-y-6 relative">
           <h2 className="text-2xl font-bold text-white uppercase">
@@ -36,7 +37,7 @@ const GameStore = () => {
           <h2 className="text-2xl font-bold text-white uppercase">
             Upcoming Releases
           </h2>
-          
+
           <UpcomingGames upcomingGames={upcomingGames} />
         </div>
 

@@ -40,10 +40,10 @@ const AllGames = () => {
   }, [setFetchLoading, search, genre]);
 
   return (
-    <div className="w-5/6 mx-auto my-16">
+    <div className="w-5/6 mx-auto my-16 font-barlow text-white">
       <div className="flex items-baseline mb-14">
         <div className="flex flex-col items-end w-max">
-          <h2 className="text-2xl md:text-3xl font-medium uppercase flex">
+          <h2 className="text-2xl md:text-4xl font-bold uppercase flex">
             {genre ? genre + " " + "games" : "All Games"}
           </h2>
           <span className="w-20 h-0.5 bg-blue300 rounded-full"></span>
@@ -70,7 +70,7 @@ const AllGames = () => {
             </p>
           </div>
         ) : (
-          <div className="w-5/6 h-fit bg-black grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-6">
+          <div className="w-5/6 h-fit bg-black grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 md:gap-6">
             {games.map((game) => (
               <GameCard1 key={game._id} game={game} />
             ))}

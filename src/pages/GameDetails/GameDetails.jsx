@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useLoaderData } from "react-router";
 import AuthContext from "../../auth/AuthContext";
-import axios from "axios";
+import { useAppContext } from "../../contexts/AppContext";
 import { Rating } from "primereact/rating";
 import { BsWindows, BsPlaystation, BsXbox } from "react-icons/bs";
 import { IoShareSocial } from "react-icons/io5";
@@ -9,6 +9,14 @@ import { MdOutlineReportGmailerrorred } from "react-icons/md";
 
 const GameDetails = () => {
   const { user } = useContext(AuthContext);
+  const {
+    cartItems,
+    handleAddToCart,
+    cartBtnLoading,
+    wishlist,
+    handleAddToWishlist,
+    wishBtnLoading,
+  } = useAppContext();
   const gameDetails = useLoaderData();
   const {
     _id,
@@ -30,23 +38,11 @@ const GameDetails = () => {
   const [thumbnail, setThumbnail] = useState(screenshots[0]);
   // const [relatedProducts, setRelatedProducts] = useState([]);
 
-  const handleAddWishlist = async (id) => {
-    const res = await axios.patch(`http://localhost:5000/user-wishlist/add`, {
-      email: user?.email,
-      gameId: id,
-    });
-
-    if (res.data.modifiedCount > 0) {
-      console.log("Game added to wishlist");
-      // Optional: update local wishlist or show toast
-    } else {
-      console.log("Game already in wishlist");
-    }
-  };
+  const isCarted = cartItems?.some((g) => String(g._id) === String(_id));
+  const isWished = wishlist?.some((g) => String(g._id) === String(_id));
 
   return (
     <div className="w-3/4 mx-auto px-4 py-12 mb-20">
-      {/* Header */}
       <div className="space-y-5 mb-10">
         <h2 className="text-4xl font-bold text-gray-800">{name}</h2>
         <span className="flex items-center gap-3">
@@ -201,7 +197,7 @@ const GameDetails = () => {
         {/* details column */}
         <div className="w-[22%] space-y-6 sticky top-0">
           {/* <img src={poster} alt="game poster" className="mb-8" /> */}
-          
+
           {/* price */}
           <div>
             <div className="flex items-center gap-3">
@@ -217,21 +213,50 @@ const GameDetails = () => {
             </p>
           </div>
 
+          {/* buttons */}
           <div className="flex flex-col gap-3 my-4">
             <button className="grow px-10 py-3 bg-[#45F882] text-gray-700 rounded-lg hover:bg-[#ffa825]/80 active:scale-95 cursor-pointer ">
               Buy Now
             </button>
-            <button className="grow px-10 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-[#ffa825]/80 active:scale-95 cursor-pointer ">
-              Add To Cart
-            </button>
+
             <button
-              onClick={() => handleAddWishlist(_id)}
-              className="grow px-10 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-[#ffa825]/80 active:scale-95 cursor-pointer"
+              onClick={() => handleAddToCart(_id)}
+              disabled={isCarted || cartBtnLoading[_id]}
+              className={`grow px-10 py-3 bg-gray-200 text-gray-700 rounded-lg  ${
+                isCarted
+                  ? "cursor-not-allowed"
+                  : "hover:bg-[#ffa825]/80 active:scale-95  cursor-pointer"
+              }`}
             >
-              Add To Wishlist
+              {cartBtnLoading[_id] ? (
+                <div className="w-5 h-5 mx-auto border-2 border-gray-700 border-t-transparent rounded-full animate-spin"></div>
+              ) : isCarted ? (
+                "Added in cart"
+              ) : (
+                "Add to Cart"
+              )}
+            </button>
+
+            <button
+              onClick={() => handleAddToWishlist(_id)}
+              disabled={isWished || wishBtnLoading[_id]}
+              className={`grow px-10 py-3 bg-gray-200 text-gray-700 rounded-lg  ${
+                isWished
+                  ? "cursor-not-allowed"
+                  : "hover:bg-[#ffa825]/80 active:scale-95  cursor-pointer"
+              }`}
+            >
+              {wishBtnLoading[_id] ? (
+                <div className="w-5 h-5 mx-auto border-2 border-gray-700 border-t-transparent rounded-full animate-spin"></div>
+              ) : isWished ? (
+                "Added in wishlist"
+              ) : (
+                "Add to Wishlist"
+              )}
             </button>
           </div>
 
+          {/* game infos */}
           <div className="">
             <p className="py-4 border-b border-gray-300 flex justify-between gap-2">
               <span className="min-w-28 text-gray-600">Developer</span>
@@ -254,6 +279,7 @@ const GameDetails = () => {
             </p>
           </div>
 
+          {/* share & report */}
           <div className="w-full mt-2 flex gap-10">
             <button className="w-full py-1.5 bg-gray-300 rounded flex items-center justify-center gap-1 cursor-pointer">
               <IoShareSocial /> <p>Share</p>

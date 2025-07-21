@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import AuthContext from "../auth/AuthContext";
+import { useAppContext } from "../contexts/AppContext";
 import Sidemenu from "./Navbar/Sidemenu/Sidemenu";
 import Button from "./Button";
 import { MdOutlineShoppingBag } from "react-icons/md";
@@ -8,6 +9,7 @@ import Search from "./Search";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const { cartItems, wishlist } = useAppContext();
   const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -54,8 +56,8 @@ const Navbar = () => {
       }`}
     >
       <nav className="w-5/6 h-full mx-auto text-white flex items-center justify-between">
-        <Link to={"/"} className="text-4xl logo-font ">
-          PLAY<span className="text-yellow300">GRID</span>
+        <Link to={"/"} className="text-4xl logo-font text-violet-100">
+          PLAY<span className="text-blue300">GRID</span>
         </Link>
         <div className="text-lg font-zentry tracking-wider flex items-center gap-10 uppercase">
           <NavLink to={"/"}>Home</NavLink>
@@ -65,15 +67,28 @@ const Navbar = () => {
           {user && <NavLink to={"library/all"}>Library</NavLink>}
         </div>
 
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-10 text-lg font-zentry uppercase">
           {/* search */}
           <Search />
 
+          {/* wishlist link */}
+          <NavLink
+            to={"/wishlist"}
+            className="flex items-center cursor-pointer"
+          >
+            {/* <MdOutlineShoppingBag className="text-3xl" /> */}
+            Wishlist
+            <span className="px-1 ml-1 text-center text-xs text-blue200 bg-yellow300 rounded font-barlow font-semibold">
+              {wishlist.length}
+            </span>
+          </NavLink>
+
           {/* Cart link */}
-          <NavLink to={"/cart"} className="relative cursor-pointer">
-            <MdOutlineShoppingBag className="text-3xl" />
-            <span className="w-4 h-4 text-center absolute top-5 -right-1 text-xs text-blue200 bg-yellow300 rounded-full">
-              3
+          <NavLink to={"/cart"} className="flex items-center cursor-pointer">
+            {/* <MdOutlineShoppingBag className="text-3xl" /> */}
+            Cart
+            <span className="px-1 ml-1 text-center text-xs text-blue200 bg-yellow300 rounded font-barlow font-semibold">
+              {cartItems.length}
             </span>
           </NavLink>
 

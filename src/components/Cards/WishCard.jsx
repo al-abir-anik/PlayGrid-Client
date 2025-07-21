@@ -1,19 +1,30 @@
 import { Link } from "react-router";
 import { useAppContext } from "../../contexts/AppContext";
 
-const CartCard = ({ game }) => {
-  const { removeCartItem, moveToWishlist, wishBtnLoading } = useAppContext();
+const WishCard = ({ game }) => {
+  const {
+    cartItems,
+    handleAddToCart,
+    cartBtnLoading,
+    removeWishlistItem,
+    rmvBtnLoading,
+  } = useAppContext();
+
+  const isCarted = cartItems?.some((g) => String(g._id) === String(game._id));
 
   return (
     <div className="w-full p-5 flex justify-between rounded-xl text-white bg-[#202024] overflow-hidden">
-      <Link to={`/game/${game._id}`} className="w-[16%] relative rounded">
+      <Link
+        to={`/game/${game._id}`}
+        className="w-[12%] rounded overflow-hidden"
+      >
         <img
           src={game.poster}
           alt="game poster"
           className="w-full h-full object-cover"
         />
       </Link>
-      <div className="w-[81%] py-3 pr-5 flex flex-col justify-between">
+      <div className="w-[85%] py-3 pr-5 flex flex-col justify-between">
         <div className="space-y-3">
           <div className="flex justify-between items-center">
             <Link
@@ -36,20 +47,26 @@ const CartCard = ({ game }) => {
         </div>
         <div className="w-full flex justify-end gap-5">
           <button
-            onClick={() => removeCartItem(game._id)}
+            onClick={() => removeWishlistItem(game._id)}
             className="cursor-pointer"
           >
-            Remove
+            {rmvBtnLoading[game._id] ? (
+              <div className="w-3 h-3 mx-auto border-2 border-red-400 border-t-transparent rounded-full animate-spin"></div>
+            ) : (
+              "Remove"
+            )}
           </button>
           <button
-            onClick={() => moveToWishlist(game._id)}
-            disabled={wishBtnLoading[game._id]}
+            onClick={() => handleAddToCart(game._id)}
+            disabled={isCarted || cartBtnLoading?.[game._id]}
             className="text-blue300 cursor-pointer"
           >
-            {wishBtnLoading[game._id] ? (
+            {cartBtnLoading?.[game._id] ? (
               <div className="w-5 h-5 mx-auto border-2 border-gray-700 border-t-transparent rounded-full animate-spin"></div>
+            ) : isCarted ? (
+              "Added in cart"
             ) : (
-              "Move to Wishlist"
+              "Add to Cart"
             )}
           </button>
         </div>
@@ -58,4 +75,4 @@ const CartCard = ({ game }) => {
   );
 };
 
-export default CartCard;
+export default WishCard;

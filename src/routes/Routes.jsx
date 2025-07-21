@@ -13,9 +13,9 @@ import UpdateProfile from "../pages/Profile/UpdateProfile";
 import AllGames from "../pages/AllGames/AllGames";
 import UserGames from "../pages/UserLibrary/UserGames";
 import FavouriteGames from "../pages/UserLibrary/Favourites";
-import Wishlist from "../pages/UserLibrary/Wishlist";
 import GameStore from "../pages/GameStore/GameStore";
 import Cart from "../pages/Cart";
+import Wishlist from "../pages/Wishlist";
 
 const Routes = createBrowserRouter([
   {
@@ -87,6 +87,10 @@ const Routes = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "wishlist",
+        element: <Wishlist />,
       },
       {
         path: "login",

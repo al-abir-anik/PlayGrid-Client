@@ -339,16 +339,17 @@ body {
   }
 }
 
-/* ::-webkit-scrollbar {
-  width: 10px;
+::-webkit-scrollbar {
+  width: 6px;
+  
 }
 ::-webkit-scrollbar-thumb {
-  background: #45f882;
-  cursor: grab;
+  background: #4fb7dd;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-track {
   background-color: transparent;
-} */
+}
 
 /* button {
   border-radius: 8px;

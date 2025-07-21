@@ -1,30 +1,16 @@
 import { useContext } from "react";
 import AuthContext from "../auth/AuthContext";
-import { useAppContext } from "../contexts/AppContext";
 import { FaUser } from "react-icons/fa6";
 import { FcCurrencyExchange } from "react-icons/fc";
 import { IoIosCard } from "react-icons/io";
 import { SlClose } from "react-icons/sl";
+import MultiOrder from "./order/MultiOrder";
 
 const CheckOut = ({ setShowCheckout }) => {
   const { user } = useContext(AuthContext);
-  const { cartItems } = useAppContext();
-
-  // cart summary calculation
-  const totalRegularPrice = cartItems.reduce(
-    (sum, item) => sum + (item.regularPrice || 0),
-    0
-  );
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + (item.offerPrice || item.regularPrice || 0),
-    0
-  );
 
   return (
-    <div
-      //   onClick={() => setShowCheckout(false)}
-      className="fixed top-0 bottom-0 left-0 right-0 z-999 flex items-center text-gray-800 bg-black/50"
-    >
+    <div className="fixed top-0 bottom-0 left-0 right-0 z-999 flex items-center text-gray-800 bg-black/50">
       <div className="w-3/5 h-screen flex m-auto items-start shadow-xl bg-white">
         {/* left Side */}
         <div className="w-[60%] h-full px-8 py-10 flex flex-col">
@@ -104,42 +90,8 @@ const CheckOut = ({ setShowCheckout }) => {
             <hr className="border-gray-300" />
           </span>
 
-          {/* summary */}
-          <div className="px-6 pt-5 pb-10 flex-1 overflow-y-auto">
-            {/* order items */}
-            <div className="flex flex-col gap-3">
-              {cartItems.map((game) => (
-                <div key={game.name} className="flex gap-5">
-                  <img
-                    src={game.poster}
-                    alt="game poster"
-                    className="w-[20%] h-full rounded object-cover"
-                  />
-                  <div className="space-y-1.5">
-                    <p className="text-lg font-semibold">{game.name}</p>
-                    <p>{game.developer}</p>
-                    <p>$ {game.offerPrice}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            {/* price */}
-            <div className="mt-10 space-y-3">
-              <p className="flex justify-between text-gray-700">
-                <span>Price</span>
-                <span>$ {totalRegularPrice}</span>
-              </p>
-              <p className="flex justify-between text-gray-700">
-                <span>Sell Discount</span>
-                <span>- $ {(totalRegularPrice - subtotal).toFixed(2)}</span>
-              </p>
-              <hr className=" border-gray-300" />
-              <p className="flex justify-between text-lg font-medium mt-3">
-                <span>Total</span>
-                <span>$ {subtotal.toFixed(2)}</span>
-              </p>
-            </div>
-          </div>
+          {/* dynamic summary */}
+          <MultiOrder />
 
           {/* place order section */}
           <div className="px-6 py-5 mt-auto [box-shadow:0_-5px_4px_rgba(0,0,0,0.1)]">

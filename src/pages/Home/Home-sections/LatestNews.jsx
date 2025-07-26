@@ -27,14 +27,14 @@ const LatestNews = () => {
           Stay updated with the latest news, events, and updates in our
           ecosystem. Be part of our universe's growth and evolution.
         </p>
-        <Link to={"news"} viewTransition>
+        {/* <Link to={"news"} viewTransition>
           <Button
             id="read-all-news"
             title="Read All News"
             leftIcon={<IoArrowRedo />}
-            containerClass="bg-blue200 !text-blue50"
+            containerClass="bg-black200 !text-white50"
           />
-        </Link>
+        </Link> */}
       </div>
 
       <div className="w-1/2 mt-20 flex flex-col gap-10 md:gap-20">

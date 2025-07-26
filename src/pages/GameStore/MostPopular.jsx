@@ -14,6 +14,9 @@ const MostPopular = () => {
       .then((data) => setCategoryGames(data));
   }, []);
 
+  console.log(categoryGames);
+  
+
   return (
     <div className="space-y-10">
       <Swiper

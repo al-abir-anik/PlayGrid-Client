@@ -1,6 +1,52 @@
+import ScrollToTop from "./ScrollToTop";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaXTwitter, FaGithub } from "react-icons/fa6";
+
 const Footer = () => {
+  const socialLinks = [
+    {
+      href: "#facebook",
+      icon: <FaFacebookF />,
+      textColor: "hover:text-sky-400",
+    },
+    {
+      href: "#twitter",
+      icon: <FaXTwitter />,
+      textColor: "hover:text-blue-600",
+    },
+    {
+      href: "#instagram",
+      icon: <FaInstagram />,
+      textColor: "hover:text-pink-500",
+    },
+    {
+      href: "#github",
+      icon: <FaGithub />,
+      textColor: "hover:text-gray-400",
+    },
+  ];
+
+  const importantLinks = [
+    {
+      href: "#terms_of_service",
+      title: "Terms of service",
+    },
+    {
+      href: "#privacy_policy",
+      title: "Privacy policy",
+    },
+    {
+      href: "#safety_and_security",
+      title: "Safety and security",
+    },
+    {
+      href: "#refund_policy",
+      title: "Refund Policy",
+    },
+  ];
+
   return (
-    <footer className="w-full bg-[#202020] text-white">
+    <footer className="w-full py-10 text-white bg-black">
       {/* <div className="w-3/4 mx-auto py-16 flex flex-col md:flex-row justify-around">
         <div className="space-y-5">
           <p className="text-3xl font-black ">
@@ -45,60 +91,59 @@ const Footer = () => {
         </div>
       </div> */}
 
-      {/* Copyright division */}
-      {/* <div className="h-20 bg-[#070707]">
-        <p className="text-white text-center pt-5">
-          Copyright © {new Date().getFullYear()} PlayGrid - All rights reserved.
-        </p>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div> */}
+      <div className="w-10/12 mx-auto">
+        {/* top */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-left text-3xl logo-font text-violet-100">
+            PLAY<span className="text-blue300 ">GRID</span>
+          </p>
+          <div className="flex justify-center md:justify-start gap-4">
+            {socialLinks.map((link) => (
+              <a
+                key={link}
+                href={link.href}
+                target="blank"
+                rel="noopener noreferrer"
+                className={`p-3 text-lg border border-gray-700 rounded-full transition-colors duration-300 ease-in-out ${link.textColor}`}
+              >
+                {link.icon}
+              </a>
+            ))}
+          </div>
+        </div>
 
+        <hr className="my-8 opacity-30" />
 
-
-
-
-
-
-
-       <footer className="px-6 pt-8 md:px-16 lg:px-36 w-full text-gray-300">
-            <div className="flex flex-col md:flex-row justify-between w-full gap-10 border-b border-gray-500 pb-10">
-                <div className="md:max-w-96">
-                    <img alt="" className="h-11" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/prebuiltuiLogoSquareShape.svg" />
-                    <p className="mt-6 text-sm">
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
-                    <div className="flex items-center gap-2 mt-4">
-                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/refs/heads/main/assets/appDownload/googlePlayBtnBlack.svg" alt="google play" className="h-10 w-auto border border-white rounded" />
-                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/refs/heads/main/assets/appDownload/appleStoreBtnBlack.svg" alt="app store" className="h-10 w-auto border border-white rounded" />
-                    </div>
-                </div>
-                <div className="flex-1 flex items-start md:justify-end gap-20 md:gap-40">
-                    <div>
-                        <h2 className="font-semibold mb-5">Company</h2>
-                        <ul className="text-sm space-y-2">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="#">Privacy policy</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 className="font-semibold mb-5">Get in touch</h2>
-                        <div className="text-sm space-y-2">
-                            <p>+1-234-567-890</p>
-                            <p>contact@example.com</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p className="pt-4 text-center text-sm pb-5">
-                Copyright {new Date().getFullYear()} © PreBuiltUI. All Right Reserved.
+        {/* bottom */}
+        <div className="flex justify-between pb-5">
+          <div className="w-1/2 flex flex-col gap-5">
+            <p className="text-sm text-gray-400">
+              Copyright {new Date().getFullYear()} © PlayGrid. All Right
+              Reserved. Playgrid, Playgrid Games, Unreal Engine are trademarks or registered trademarks of
+              PlayGrid, Inc. in the Bangladesh and elsewhere.
+              Other brands or product names are the trademarks of their
+              respective owners. PlayGrid has no control over the contents of
+              those sites or resources, and accepts no responsibility for them
+              or for any loss or damage that may arise from your use of them.
             </p>
-        </footer>
+            <ul className="flex gap-5">
+              {importantLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold hover:underline uppercase"
+                  >
+                    {link.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <ScrollToTop />
+        </div>
+      </div>
     </footer>
   );
 };

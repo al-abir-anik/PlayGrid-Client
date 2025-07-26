@@ -83,7 +83,7 @@ const Hero = () => {
 
       <div
         id="video-frame"
-        className="relative z-10 h-dvh w-screen overflow-hidden bg-blue75"
+        className="relative z-10 h-dvh w-screen overflow-hidden bg-white75"
       >
         <div>
           <div className="mask-clip-path absolute bottom-20 right-10 z-50 size-64 cursor-pointer overflow-hidden">
@@ -115,7 +115,7 @@ const Hero = () => {
             src={getVideoSrc(
               currentIndex === totalVideos - 1 ? 1 : currentIndex
             )}
-            // autoPlay
+            autoPlay
             loop
             muted
             className="absolute left-0 top-0 size-full object-cover object-center"
@@ -123,16 +123,16 @@ const Hero = () => {
           />
         </div>
 
-        <h1 className="special-font font-zentry hero-heading top-40 left-20 text-7xl md:text-9xl lg:text-[12rem] absolute z-40 text-blue75">
+        <h1 className="special-font font-zentry hero-heading top-40 left-20 text-7xl md:text-9xl lg:text-[12rem] absolute z-40 text-white75">
           G<b>A</b>MING
         </h1>
 
         <div className="absolute left-10 top-60 z-50 size-40">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font font-zentry hero-heading text-7xl md:text-9xl lg:text-[12rem] text-blue75">
+            <h1 className="special-font font-zentry hero-heading text-7xl md:text-9xl lg:text-[12rem] text-white75">
               VALORA<b>N</b>T
             </h1>
-            <p className="mb-5 text-lg md:w-96 font-robert-regular text-blue100">
+            <p className="mb-5 text-lg md:w-96 font-robert-regular text-white100">
               Enter the Metagame Layer , Unleash the Play Economy enter the
               Metagame Layer
             </p>
@@ -140,7 +140,7 @@ const Hero = () => {
               id="watch-trailer"
               title="Watch Trailer"
               leftIcon={<TiLocationArrow className="text-lg" />}
-              containerClass="bg-yellow300 text-blue200"
+              containerClass="bg-yellow300 text-black200"
             />
           </div>
         </div>

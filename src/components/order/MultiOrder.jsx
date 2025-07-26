@@ -22,7 +22,7 @@ const MultiOrder = () => {
             <img
               src={game.poster}
               alt="game poster"
-              className="w-[20%] h-full rounded object-cover"
+              className="w-[22%] rounded object-cover"
             />
             <div className="space-y-1.5">
               <p className="text-lg font-semibold">{game.name}</p>

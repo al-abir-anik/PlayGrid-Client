@@ -187,7 +187,7 @@ const Signup = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 px-5 mt-3 border border-[rgb(76,76,76,0.2)] rounded-xs text-blue200 font-bold bg-yellow300 leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+            className="w-full py-3 px-5 mt-3 border border-[rgb(76,76,76,0.2)] rounded-xs text-black200 font-bold bg-yellow300 leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
           >
             Sign Up
           </button>

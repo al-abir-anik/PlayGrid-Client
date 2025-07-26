@@ -115,7 +115,7 @@ const Login = () => {
           <div className="flex items-center justify-between mt-4">
             <button
               type="submit"
-              className="w-full py-3 px-5 mt-3 border border-[rgb(76,76,76,0.2)] rounded-xs text-blue200 font-bold bg-yellow300 leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+              className="w-full py-3 px-5 mt-3 border border-[rgb(76,76,76,0.2)] rounded-xs text-black200 font-bold bg-yellow300 leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
             >
               Log In
             </button>

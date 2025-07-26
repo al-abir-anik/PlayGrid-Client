@@ -66,7 +66,7 @@ const Cart = () => {
             id="checkout"
             title="Check Out"
             onClickFunc={() => setShowCheckout(true)}
-            containerClass="w-full mt-5 !py-3 !rounded-lg bg-blue300 text-blue200"
+            containerClass="w-full mt-5 !py-3 !rounded-lg bg-blue300 text-black200"
           />
         </div>
       </div>

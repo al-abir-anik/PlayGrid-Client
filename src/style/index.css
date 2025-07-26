@@ -1,29 +1,26 @@
 /* root font */
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
 /* logo font */
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 /* captcha font */
 @import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
-/* heading text font */
-@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 /* heading font */
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap");
-/* main font */
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+
+
 
 @import "tailwindcss";
 
 @theme {
   --font-zentry: zentry, sans-serif;
   --font-general: general, sans-serif;
-  --font-outfit: outfit, sans-serif;
   --font-barlow: "Barlow Condensed", sans-serif;
-  --font-dmsans: "DM Sans", sans-serif;
 
-  --color-blue50: #dfdff0;
-  --color-blue75: #dfdff2;
-  --color-blue100: #f0f2fa;
-  --color-blue200: #010101;
+  --color-white50: #dfdff0;
+  --color-white75: #dfdff2;
+  --color-white100: #f0f2fa;
+  --color-black200: #010101;
   --color-blue300: #4fb7dd;
   --color-violet300: #5724ff;
   --color-yellow100: #8e983f;
@@ -61,7 +58,7 @@ body {
 
 @layer components {
   .gaming-arrow {
-    @apply text-blue200 bg-yellow300/50 backdrop-blur
+    @apply text-black200 bg-yellow300/50 backdrop-blur
          w-10 h-10 rounded-full flex items-center justify-center
          hover:bg-yellow300 hover:scale-110
          transition-all duration-300 ease-in-out cursor-pointer;
@@ -107,7 +104,7 @@ body {
   }
 
   .about-subtext {
-    @apply absolute bottom-[-84dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-outfit text-lg md:max-w-[34rem];
+    @apply absolute bottom-[-84dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center text-lg md:max-w-[34rem];
   }
 
   .about-image {
@@ -208,7 +205,6 @@ body {
 }
 
 /*       Loader      */
-
 .three-body {
   --uib-size: 50px;
   --uib-speed: 0.8s;
@@ -299,9 +295,9 @@ body {
 }
 
 /*      Fonts      */
-.primary-font {
+/* .primary-font {
   font-family: "Outfit";
-}
+} */
 .logo-font {
   font-family: "Titillium Web";
   font-weight: 900;
@@ -339,9 +335,21 @@ body {
   }
 }
 
+/* Related Products spinner */
+.marquee-inner {
+  animation: marqueeScroll linear infinite;
+}
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 ::-webkit-scrollbar {
   width: 6px;
-  
 }
 ::-webkit-scrollbar-thumb {
   background: #4fb7dd;

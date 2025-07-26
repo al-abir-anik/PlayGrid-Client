@@ -49,12 +49,12 @@ const About = () => {
             className="absolute left-0 top-0 size-full object-cover"
           /> */}
           <video
-        src= "videos/game-pages.mp4"
-        loop
-        muted
-        autoPlay
-        className="absolute left-0 top-0 size-full object-cover object-center"
-      />
+            src="https://res.cloudinary.com/dwka0ok0n/video/upload/v1753448399/game-pages_bqaw8q.mp4"
+            loop
+            muted
+            autoPlay
+            className="absolute left-0 top-0 size-full object-cover object-center"
+          />
         </div>
       </div>
     </div>

@@ -41,7 +41,7 @@ const LibraryCard = ({ game, handleFavourite, favourites, favLoading }) => {
           id="play-now"
           title="PLAY NOW"
           leftIcon={<IoPlay />}
-          containerClass="!w-full bg-yellow300 text-blue200"
+          containerClass="!w-full bg-yellow300 text-black200"
         />
       </div>
     </div>

@@ -40,33 +40,23 @@ const Library = () => {
   };
 
   return (
-    <div className="w-9/12 min-h-screen mx-auto py-12">
-      <div className="w-full flex justify-between">
-        <div className="space-x-10">
-          <NavLink
-            to={"all"}
-            className={({ isActive }) =>
-              isActive ? "text-yellow300 font-semibold" : "text-gray-500"
-            }
-          >
-            All
-          </NavLink>
-          <NavLink
-            to={"favourites"}
-            className={({ isActive }) =>
-              isActive ? "text-yellow300 font-semibold" : "text-gray-500"
-            }
-          >
-            Favourites
-          </NavLink>
-        </div>
+    <div className="w-[70%] min-h-screen mx-auto py-12">
+      <div className="w-full flex gap-14">
         <NavLink
-          to={"wishlist"}
+          to={"all"}
           className={({ isActive }) =>
             isActive ? "text-yellow300 font-semibold" : "text-gray-500"
           }
         >
-          Wishlist
+          All
+        </NavLink>
+        <NavLink
+          to={"favourites"}
+          className={({ isActive }) =>
+            isActive ? "text-yellow300 font-semibold" : "text-gray-500"
+          }
+        >
+          Favourites
         </NavLink>
       </div>
 

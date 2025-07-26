@@ -51,7 +51,7 @@ const UpcomingGames = () => {
             <Button
               id="prebook"
               title="Add To Wishlist"
-              containerClass="!w-fit !py-3 bg-yellow300 text-blue200"
+              containerClass="!w-fit !py-3 bg-yellow300 text-black200"
             />
           </div>
         </div>

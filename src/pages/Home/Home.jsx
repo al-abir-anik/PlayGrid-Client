@@ -6,20 +6,12 @@ import About from "./Home-sections/About";
 
 const Home = () => {
   return (
-    <div>
-      <div className="relative min-h-screen w-screen bg-blue50">
-        <Hero />
-        <About />
-        <Features />
-        <LatestNews />
-        <JoinApp />
-      </div>
-
-      <div>
-        {/* <section>
-          <Banner></Banner>
-        </section> */}
-      </div>
+    <div className="relative min-h-screen w-screen">
+      <Hero />
+      <About />
+      <Features />
+      <LatestNews />
+      <JoinApp />
     </div>
   );
 };

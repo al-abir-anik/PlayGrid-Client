@@ -15,13 +15,13 @@ const Search = () => {
 
   return (
     <div className="px-4 hidden lg:flex items-center gap-2 border-2 border-white rounded-full">
+      <LuSearch className="text-xl" />
       <input
         onKeyUp={(e) => setSearch(e.target.value)}
         type="search"
         placeholder="Search games"
-        className="p-1.5 w-full bg-transparent outline-none placeholder-gray-500"
+        className="p-1.5 w-full bg-transparent outline-none"
       />
-      <LuSearch className="text-xl opacity-70" />
     </div>
   );
 };

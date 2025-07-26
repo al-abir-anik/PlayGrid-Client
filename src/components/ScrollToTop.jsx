@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { GiArrowDunk } from "react-icons/gi";
+import { CgArrowTopLeftO } from "react-icons/cg";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 1000);
+      setIsVisible(window.scrollY > 100);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -18,7 +18,7 @@ const ScrollToTop = () => {
 
   return (
     <div
-      className={`w-10 h-10 p-1  bg-blue200/30 hover:bg-blue200/80 backdrop-blur-lg shadow rounded-sm transition-all duration-200 ease-in-out 
+      className={`w-fit h-fit p-1  bg-black200/30 hover:bg-black200/80 backdrop-blur-lg shadow rounded-sm transition-all duration-200 ease-in-out 
        ${
          isVisible
            ? "translate-x-0 opacity-100"
@@ -27,9 +27,10 @@ const ScrollToTop = () => {
     >
       <button
         onClick={scrollToTop}
-        className="w-full h-full rounded-xs text-white border border-blue50 hover:border-blue50/30 transition-all duration-200 cursor-pointer"
+        className="px-3 py-2 flex items-center gap-2 rounded text-white border border-white50 hover:border-white50/30 transition-all duration-200 cursor-pointer"
       >
-        <GiArrowDunk className="mx-auto text-white rotate-180" />
+        <p>Back to Top</p>
+        <CgArrowTopLeftO className="rotate-45 text-lg" />
       </button>
     </div>
   );

@@ -9,7 +9,7 @@ import Search from "./Search";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
-  const { cartItems, wishlist } = useAppContext();
+  const { cartItems } = useAppContext();
   const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -52,7 +52,7 @@ const Navbar = () => {
       } ${
         isHome && !isScrolled
           ? "bg-transparent"
-          : "bg-blue200 backdrop-blur-lg shadow"
+          : "bg-black200 backdrop-blur-lg shadow"
       }`}
     >
       <nav className="w-5/6 h-full mx-auto text-white flex items-center justify-between">
@@ -63,7 +63,7 @@ const Navbar = () => {
           <NavLink to={"/"}>Home</NavLink>
           <NavLink to={"store"}>Store</NavLink>
           <NavLink to={"all-games"}>All Games</NavLink>
-          <NavLink to={"news"}>News</NavLink>
+          {/* <NavLink to={"news"}>News</NavLink> */}
           {user && <NavLink to={"library/all"}>Library</NavLink>}
         </div>
 
@@ -78,16 +78,13 @@ const Navbar = () => {
           >
             {/* <MdOutlineShoppingBag className="text-3xl" /> */}
             Wishlist
-            <span className="px-1 ml-1 text-center text-xs text-blue200 bg-yellow300 rounded font-barlow font-semibold">
-              {wishlist.length}
-            </span>
           </NavLink>
 
           {/* Cart link */}
           <NavLink to={"/cart"} className="flex items-center cursor-pointer">
             {/* <MdOutlineShoppingBag className="text-3xl" /> */}
             Cart
-            <span className="px-1 ml-1 text-center text-xs text-blue200 bg-yellow300 rounded font-barlow font-semibold">
+            <span className="px-1 ml-1 text-center text-xs text-black200 bg-yellow300 rounded font-barlow font-semibold">
               {cartItems.length}
             </span>
           </NavLink>
@@ -99,7 +96,7 @@ const Navbar = () => {
               <Button
                 id="login"
                 title="Login"
-                containerClass="bg-yellow300 text-blue200 px-10 !py-3"
+                containerClass="bg-yellow300 text-black200 px-10 !py-3"
               />
             </Link>
           )}

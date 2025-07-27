@@ -36,10 +36,10 @@ const RelatedProducts = ({ gameId }) => {
           }}
         >
           <div className="flex gap-12">
-            {[...relatedGames, ...relatedGames].map((card) => (
+            {[...relatedGames, ...relatedGames].map((card, index) => (
               <Link
                 to={`/game/${card._id}`}
-                key={card.name}
+                key={index}
                 className="w-56 relative group hover:scale-95 transition-all duration-300"
               >
                 <img

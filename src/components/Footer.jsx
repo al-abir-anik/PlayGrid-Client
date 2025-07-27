@@ -98,9 +98,9 @@ const Footer = () => {
             PLAY<span className="text-blue300 ">GRID</span>
           </p>
           <div className="flex justify-center md:justify-start gap-4">
-            {socialLinks.map((link) => (
+            {socialLinks.map((link, index) => (
               <a
-                key={link}
+                key={index}
                 href={link.href}
                 target="blank"
                 rel="noopener noreferrer"
@@ -119,16 +119,17 @@ const Footer = () => {
           <div className="w-1/2 flex flex-col gap-5">
             <p className="text-sm text-gray-400">
               Copyright {new Date().getFullYear()} © PlayGrid. All Right
-              Reserved. Playgrid, Playgrid Games, Unreal Engine are trademarks or registered trademarks of
-              PlayGrid, Inc. in the Bangladesh and elsewhere.
-              Other brands or product names are the trademarks of their
-              respective owners. PlayGrid has no control over the contents of
-              those sites or resources, and accepts no responsibility for them
-              or for any loss or damage that may arise from your use of them.
+              Reserved. Playgrid, Playgrid Games, Unreal Engine are trademarks
+              or registered trademarks of PlayGrid, Inc. in the Bangladesh and
+              elsewhere. Other brands or product names are the trademarks of
+              their respective owners. PlayGrid has no control over the contents
+              of those sites or resources, and accepts no responsibility for
+              them or for any loss or damage that may arise from your use of
+              them.
             </p>
             <ul className="flex gap-5">
-              {importantLinks.map((link) => (
-                <li>
+              {importantLinks.map((link, index) => (
+                <li key={index}>
                   <a
                     href={link.href}
                     target="_blank"

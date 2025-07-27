@@ -70,7 +70,7 @@ const AllGames = () => {
             </p>
           </div>
         ) : (
-          <div className="w-5/6 h-fit grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 md:gap-6">
+          <div className="w-5/6 min-h-[50vh] space-y-5 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 md:gap-6">
             {games.map((game) => (
               <GameCard1 key={game._id} game={game} />
             ))}

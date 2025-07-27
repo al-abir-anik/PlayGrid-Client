@@ -1,24 +1,25 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useLoaderData } from "react-router";
-import AuthContext from "../../auth/AuthContext";
 import { useAppContext } from "../../contexts/AppContext";
 import { Rating } from "primereact/rating";
 import { BsWindows, BsPlaystation, BsXbox } from "react-icons/bs";
 import { IoShareSocial } from "react-icons/io5";
 import { MdOutlineReportGmailerrorred } from "react-icons/md";
 import RelatedProducts from "../../components/RelatedProducts";
+import UserReview from "./UserReview";
 
 const GameDetails = () => {
-  const { user } = useContext(AuthContext);
-  const {
-    cartItems,
-    handleAddToCart,
-    cartBtnLoading,
-    wishlist,
-    handleAddToWishlist,
-    wishBtnLoading,
-  } = useAppContext();
   const gameDetails = useLoaderData();
+
+  if (!gameDetails) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center text-white">
+        <div className="w-10 h-10 border-4 border-gray-300 border-t-transparent rounded-full animate-spin"></div>
+        <p className="ml-4 text-lg">Loading Game Details...</p>
+      </div>
+    );
+  }
+
   const {
     _id,
     name,
@@ -35,7 +36,16 @@ const GameDetails = () => {
     releaseDate,
     rating,
     requirement: { minimum, recommended },
-  } = gameDetails;
+    reviews,
+  } = gameDetails || {};
+  const {
+    cartItems,
+    handleAddToCart,
+    cartBtnLoading,
+    wishlist,
+    handleAddToWishlist,
+    wishBtnLoading,
+  } = useAppContext();
   const [thumbnail, setThumbnail] = useState(screenshots[0]);
 
   const isCarted = cartItems?.some((g) => String(g._id) === String(_id));
@@ -147,52 +157,16 @@ const GameDetails = () => {
               </div>
             </div>
           </div>
-          {/* Review */}
-          <div className="mt-20 space-y-5">
-            <h5 className="text-xl font-semibold">PLAYER REVIEWS</h5>
-            <div className="mb-6">
-              <textarea
-                className="w-full border border-gray-300 rounded p-4 mb-4 focus:outline-none focus:ring focus:ring-blue-200"
-                rows="3"
-                placeholder="Write your review here..."
-              ></textarea>
-              <button
-                disabled
-                className="grow px-10 py-3 bg-[#45F882] text-gray-700 rounded-lg hover:bg-[#ffa825]/80 transition ease-in focus:scale-90 cursor-pointer "
-              >
-                Submit Review
-              </button>
-            </div>
 
-            {/* Display Reviews */}
-            <div className="space-y-4">
-              <div className="bg-white rounded-lg p-4">
-                <p className="text-gray-600 mb-2">
-                  <strong>User1:</strong> gta v was absolutely fun!
-                </p>
-                <p className="text-sm text-gray-400">
-                  Posted on January 12, 2025
-                </p>
-              </div>
-              <div className="bg-white rounded-lg p-4">
-                <p className="text-gray-600 mb-2">
-                  <strong>User2:</strong> All gamer should experience this.
-                  Highly recommend!
-                </p>
-                <p className="text-sm text-gray-400">
-                  Posted on January 11, 2025
-                </p>
-              </div>
-              {/* Add more reviews here */}
-            </div>
-          </div>
+          {/* Review */}
+          <UserReview reviews={reviews} gameId={_id} />
         </div>
 
         {/* right info column */}
         <div className="w-[22%] space-y-6 sticky top-0">
           {/* <img src={poster} alt="game poster" className="mb-8" /> */}
           {/* price */}
-          <div>
+          <div className="pt-20">
             <div className="flex items-center gap-3">
               <span className="px-2 py-0.5 text-sm font-medium text-white bg-blue300 rounded-full">
                 -30%

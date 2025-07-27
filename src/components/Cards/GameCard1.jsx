@@ -7,7 +7,7 @@ const GameCard1 = ({ game }) => {
     <>
       <Link to={`/game/${_id}`} className="cursor-pointer">
         <div className="w-full bg-bg1 rounded overflow-hidden">
-          <div className="relative pb-[120%] overflow-hidden">
+          <div className="relative pb-[130%] overflow-hidden">
             <img
               src={poster}
               alt="game poster"
@@ -15,7 +15,7 @@ const GameCard1 = ({ game }) => {
             />
           </div>
 
-          <div className="p-2 space-y-2 text-white">
+          <div className="p-2 space-y-1 text-white">
             <h5 className="text-xl font-semibold">{name}</h5>
             <p className="text-lg">Rating: {rating}</p>
             <span className="flex items-center gap-2">

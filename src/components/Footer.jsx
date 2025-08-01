@@ -46,7 +46,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full py-10 text-white bg-black">
+    <footer className="w-full py-10 text-white50 bg-black">
       {/* <div className="w-3/4 mx-auto py-16 flex flex-col md:flex-row justify-around">
         <div className="space-y-5">
           <p className="text-3xl font-black ">
@@ -58,20 +58,20 @@ const Footer = () => {
           </p>
         </div>
         <nav className="flex flex-col text-[#ADB0BC] font-semibold space-y-2">
-          <h6 className="text-xl font-bold text-white mb-5">SUPPORTS</h6>
+          <h6 className="text-xl font-bold text-white50 mb-5">SUPPORTS</h6>
           <a href="#">Help & Support</a>
           <a href="#">24/7 Supports</a>
           <a href="#">Contact Us</a>
         </nav>
         <nav className="flex flex-col text-[#ADB0BC] font-semibold space-y-2">
-          <h6 className="text-xl font-bold text-white mb-5">LEGAL INFO</h6>
+          <h6 className="text-xl font-bold text-white50 mb-5">LEGAL INFO</h6>
           <a href="#">Terms of service</a>
           <a href="#">Privacy Policy</a>
           <a href="#">Cookie Policy</a>
           <a href="#">Safety & Security</a>
         </nav>
         <div className="flex flex-col text-[#ADB0BC] font-semibold space-y-2">
-          <h6 className="text-xl font-bold text-white mb-5">NEWSLETTER</h6>
+          <h6 className="text-xl font-bold text-white50 mb-5">NEWSLETTER</h6>
           <p>
             Subscribe our newsletter to get our <br /> latest update &
             newsconsectetur.

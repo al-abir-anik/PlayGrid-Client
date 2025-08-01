@@ -19,7 +19,7 @@ const GameStore = () => {
       
         {/* 0.Popular Genres */}
         <div className="space-y-6 relative">
-          <h2 className="text-2xl font-bold text-white uppercase">
+          <h2 className="text-2xl font-bold text-white50 uppercase">
             Popular Genres
           </h2>
           {/* Custom Prev Button */}
@@ -34,7 +34,7 @@ const GameStore = () => {
 
         {/* 1.Upcoming Games */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-white uppercase">
+          <h2 className="text-2xl font-bold text-white50 uppercase">
             Upcoming Releases
           </h2>
 
@@ -43,7 +43,7 @@ const GameStore = () => {
 
         {/* 2.Most Popular Games */}
         <div className="space-y-6 relative">
-          <h2 className="text-2xl font-bold text-white uppercase">
+          <h2 className="text-2xl font-bold text-white50 uppercase">
             Most Popular
           </h2>
 
@@ -52,7 +52,7 @@ const GameStore = () => {
 
         {/* 3.Top New Releases */}
         <div className="space-y-6 relative">
-          <h2 className="text-2xl font-bold text-white uppercase">
+          <h2 className="text-2xl font-bold text-white50 uppercase">
             Top New Releases
           </h2>
           {/* Custom Prev Button */}
@@ -68,7 +68,7 @@ const GameStore = () => {
 
         {/* 4. featured stories */}
         <div className="space-y-6 relative">
-          <h2 className="text-2xl font-bold text-white uppercase">
+          <h2 className="text-2xl font-bold text-white50 uppercase">
             Featured Stories
           </h2>
           <FeaturedStories />
@@ -76,7 +76,7 @@ const GameStore = () => {
 
         {/* 5.Explore something New */}
         <div className="space-y-6 relative">
-          <h2 className="text-2xl font-bold text-white uppercase">
+          <h2 className="text-2xl font-bold text-white50 uppercase">
             Explore Something New
           </h2>
           {/* Custom Prev Button */}

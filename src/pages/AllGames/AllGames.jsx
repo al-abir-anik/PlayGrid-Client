@@ -40,7 +40,7 @@ const AllGames = () => {
   }, [setFetchLoading, search, genre]);
 
   return (
-    <div className="w-5/6 mx-auto my-16 font-barlow text-white">
+    <div className="w-5/6 mx-auto my-16 font-barlow text-white50">
       <div className="flex items-baseline mb-14">
         <div className="flex flex-col items-end w-max">
           <h2 className="text-2xl md:text-4xl font-bold uppercase flex">
@@ -78,7 +78,7 @@ const AllGames = () => {
         )}
 
         {/* Side Filters */}
-        {/* <div className="w-1/7 space-y-3 sticky top-0">
+        <div className="w-1/7 space-y-3 sticky top-0">
           <Filter
             title="Genre"
             isOpen={openFilters.genre}
@@ -105,7 +105,7 @@ const AllGames = () => {
           </Filter>
 
           
-        </div> */}
+        </div>
       </div>
     </div>
   );

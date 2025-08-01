@@ -5,7 +5,7 @@ const CartCard = ({ game }) => {
   const { removeCartItem, moveToWishlist, wishBtnLoading } = useAppContext();
 
   return (
-    <div className="w-full p-5 flex justify-between rounded-xl text-white bg-[#202024] overflow-hidden">
+    <div className="w-full p-5 flex justify-between rounded-xl text-white50 bg-[#202024] overflow-hidden">
       <Link to={`/game/${game._id}`} className="w-[16%] relative rounded">
         <img
           src={game.poster}

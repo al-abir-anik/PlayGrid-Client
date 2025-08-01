@@ -39,7 +39,7 @@ const PopularGenres = () => {
                 className="absolute top-0 left-0 w-full h-full  object-cover group-hover:scale-110 transition"
               />
             </div>
-            <p className="mt-4 font-semibold text-xl text-white text-center">
+            <p className="mt-4 font-semibold text-xl text-white50 text-center">
               {genre.text}
             </p>
           </SwiperSlide>

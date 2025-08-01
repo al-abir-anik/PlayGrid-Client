@@ -45,7 +45,7 @@ const Login = () => {
   return (
     <div className="w-full h-screen bg-[url(/img/bg.jpeg)] bg-fixed bg-no-repeat bg-cover bg-center pt-20">
       <div className="max-w-xl mx-auto bg-[#121a23] py-8 px-10 rounded-lg">
-        <div className="text-white">
+        <div className="text-white50">
           <h2 className="text-5xl font-bold mb-3 font-zentry">LOG IN</h2>
           <p className="font-outfit text-[#adb0bc]">
             Welcome Back! Ready to log in? Just enter your username and password
@@ -56,7 +56,7 @@ const Login = () => {
         <form onSubmit={handleSubmit(handleLogin)} className="pt-10">
           {/* Email Input */}
           <div className="mb-4">
-            <label className="block text-white font-bold mb-2">Email</label>
+            <label className="block text-white50 font-bold mb-2">Email</label>
             <input
               type="email"
               placeholder="Enter your email"
@@ -67,7 +67,7 @@ const Login = () => {
                   message: "Movie Title should be at least 2 characters.",
                 },
               })}
-              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white50 bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
             />
           </div>
 
@@ -86,7 +86,7 @@ const Login = () => {
                   message: "Movie Title should be at least 2 characters.",
                 },
               })}
-              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white50 bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
             />
             {/* {wrongPass && <p className="text-red-600">{wrongPass}</p>} */}
             <a className="flex justify-end mt-2 font-bold text-sm text-blue-500 hover:text-blue-700">
@@ -104,7 +104,7 @@ const Login = () => {
             <input
               {...register("captcha", { required: "Captcha is required" })}
               placeholder="Enter captcha"
-              className="w-full py-3 px-5 mt-3 border border-[rgb(76,76,76,0.2)] rounded-xs text-white bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+              className="w-full py-3 px-5 mt-3 border border-[rgb(76,76,76,0.2)] rounded-xs text-white50 bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
             />
             {errors.captcha && (
               <p className="text-red-500">{errors.captcha.message}</p>
@@ -115,7 +115,7 @@ const Login = () => {
           <div className="flex items-center justify-between mt-4">
             <button
               type="submit"
-              className="w-full py-3 px-5 mt-3 border border-[rgb(76,76,76,0.2)] rounded-xs text-black200 font-bold bg-yellow300 leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+              className="w-full py-3 px-5 mt-3 border border-[rgb(76,76,76,0.2)] rounded-xs text-black500 font-bold bg-yellow300 leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
             >
               Log In
             </button>

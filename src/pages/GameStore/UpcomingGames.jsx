@@ -25,7 +25,7 @@ const UpcomingGames = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12">
       {upcomingGames.map((game) => (
-        <div className="text-white flex gap-6">
+        <div className="text-white50 flex gap-6">
           <div className="w-full relative pb-[40%] overflow-hidden">
             <img
               src={game.image}
@@ -51,7 +51,7 @@ const UpcomingGames = () => {
             <Button
               id="prebook"
               title="Add To Wishlist"
-              containerClass="!w-fit !py-3 bg-yellow300 text-black200"
+              containerClass="!w-fit !py-3 bg-yellow300 text-black500"
             />
           </div>
         </div>

@@ -16,7 +16,7 @@ const Cart = () => {
   );
 
   return (
-    <div className="w-3/4 mx-auto py-14 flex flex-col text-white">
+    <div className="w-3/4 mx-auto py-14 flex flex-col text-white50">
       <h1 className="text-3xl md:text-3xl font-bold">
         My Cart{" "}
         <span className="text-sm text-primary pl-3">
@@ -66,7 +66,7 @@ const Cart = () => {
             id="checkout"
             title="Check Out"
             onClickFunc={() => setShowCheckout(true)}
-            containerClass="w-full mt-5 !py-3 !rounded-lg bg-blue300 text-black200"
+            containerClass="w-full mt-5 !py-3 !rounded-lg bg-blue300 text-black500"
           />
         </div>
       </div>

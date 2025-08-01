@@ -52,11 +52,11 @@ const Navbar = () => {
       } ${
         isHome && !isScrolled
           ? "bg-transparent"
-          : "bg-black200 backdrop-blur-lg shadow"
+          : "bg-black500 backdrop-blur-lg shadow"
       }`}
     >
-      <nav className="w-5/6 h-full mx-auto text-white flex items-center justify-between">
-        <Link to={"/"} className="text-4xl logo-font text-violet-100">
+      <nav className="w-5/6 h-full mx-auto text-white50 flex items-center justify-between">
+        <Link to={"/"} className="text-4xl logo-font text-white5050">
           PLAY<span className="text-blue300">GRID</span>
         </Link>
         <div className="text-lg font-zentry tracking-wider flex items-center gap-10 uppercase">
@@ -84,7 +84,7 @@ const Navbar = () => {
           <NavLink to={"/cart"} className="flex items-center cursor-pointer">
             {/* <MdOutlineShoppingBag className="text-3xl" /> */}
             Cart
-            <span className="px-1 ml-1 text-center text-xs text-black200 bg-yellow300 rounded font-barlow font-semibold">
+            <span className="px-1 ml-1 text-center text-xs text-black500 bg-yellow300 rounded font-barlow font-semibold">
               {cartItems.length}
             </span>
           </NavLink>
@@ -96,7 +96,7 @@ const Navbar = () => {
               <Button
                 id="login"
                 title="Login"
-                containerClass="bg-yellow300 text-black200 px-10 !py-3"
+                containerClass="bg-yellow300 text-black500 px-10 !py-3"
               />
             </Link>
           )}

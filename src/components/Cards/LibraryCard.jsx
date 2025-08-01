@@ -28,7 +28,7 @@ const LibraryCard = ({ game, handleFavourite, favourites, favLoading }) => {
               className={`text-2xl group-active:scale-75 ${
                 isFavourite
                   ? "text-red-400 group-hover:text-red-400"
-                  : "text-white/60 group-hover:text-white/90"
+                  : "text-white50/60 group-hover:text-white50/90"
               }`}
             />
           )}
@@ -41,7 +41,7 @@ const LibraryCard = ({ game, handleFavourite, favourites, favLoading }) => {
           id="play-now"
           title="PLAY NOW"
           leftIcon={<IoPlay />}
-          containerClass="!w-full bg-yellow300 text-black200"
+          containerClass="!w-full bg-yellow300 text-black500"
         />
       </div>
     </div>

@@ -17,7 +17,7 @@ const BentoCard = ({ gameId, src, title, description }) => {
         }}
         className="absolute left-0 top-0 size-full object-cover object-center"
       />
-      <div className="relative z-10 flex size-full flex-col justify-between p-5 text-white50 pointer-events-none">
+      <div className="relative z-10 flex size-full flex-col justify-between p-5 text-white5050 pointer-events-none">
         <div>
           <h1 className="bento-title special-font hover:text-blue300">
             {title}
@@ -31,13 +31,13 @@ const BentoCard = ({ gameId, src, title, description }) => {
 
 const Features = () => {
   return (
-    <section className="bg-black200 pb-52">
+    <section className="bg-black500 pb-52">
       <div className="container mx-auto px-3 md:px-10">
         <div className="px-5 py-32">
-          <p className="font-circular-web text-lg text-white50">
+          <p className="font-circular-web text-lg text-white5050">
             Into the Metagame Layer
           </p>
-          <p className="max-w-md font-circular-web text-lg text-white50 opacity-50">
+          <p className="max-w-md font-circular-web text-lg text-white5050 opacity-50">
             Immerse yourself in an IP-rich product universe where players,
             agentic AI and blockchain lead the new economic paradigm.
           </p>
@@ -118,7 +118,7 @@ const Features = () => {
                 expl<b>o</b>re m<b>o</b>re g<b>a</b>mes.
               </h1>
 
-              <TiLocationArrow className="m-10 scale-[5] self-end group-hover:scale-[7] group-hover:rotate-12 transition-transform" />
+              <TiLocationArrow className="m-10 scale-[5] self-end group-hover:scale-[7] group-hover:rotate-12 transition-transform duration-500" />
             </div>
           </Link>
         </div>

@@ -17,14 +17,11 @@ const RelatedProducts = ({ gameId }) => {
   }, [gameId]);
 
   return (
-    <div className="flex flex-col items-center mt-28">
-      <div className="py-10 flex flex-col items-center w-max">
-        <h3 className="text-3xl font-semibold uppercase">Related Games</h3>
-        <div className="w-20 h-0.5 bg-primary rounded-full mt-2"></div>
-      </div>
+    <div className="mt-28 space-y-8">
+      <h3 className="text-2xl font-semibold uppercase">Games You Might Like</h3>
 
       <div
-        className="overflow-hidden w-full relative mx-auto"
+        className="overflow-hidden w-full relative mx-auto mb-12"
         onMouseEnter={() => setStopScroll(true)}
         onMouseLeave={() => setStopScroll(false)}
       >
@@ -35,12 +32,12 @@ const RelatedProducts = ({ gameId }) => {
             animationDuration: relatedGames.length * 3500 + "ms",
           }}
         >
-          <div className="flex gap-12">
+          <div className="flex gap-6">
             {[...relatedGames, ...relatedGames].map((card, index) => (
               <Link
                 to={`/game/${card._id}`}
                 key={index}
-                className="w-56 relative group hover:scale-95 transition-all duration-300"
+                className="w-52 relative group hover:scale-95 transition-all duration-300"
               >
                 <img
                   src={card.poster}
@@ -48,7 +45,7 @@ const RelatedProducts = ({ gameId }) => {
                   className="w-full h-full rounded object-cover"
                 />
                 <div className="flex flex-col items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-all duration-300 absolute bottom-0 backdrop-blur-md left-0 w-full h-full bg-black/30">
-                  <p className="text-white text-lg font-bold text-center uppercase">
+                  <p className="text-white50 text-lg font-bold text-center uppercase">
                     {card.name}
                   </p>
                   <p className="mt-2 text-sm text-gray-300 font-medium text-center">
@@ -63,7 +60,7 @@ const RelatedProducts = ({ gameId }) => {
 
       <Link
         to={"/all-games"}
-        className="mx-auto px-12 my-16 py-2.5 border rounded text-primary hover:bg-primary/10 transition cursor-pointer"
+        className="px-12 py-3 text-sm font-bold text-blue300 border border-blue300 rounded-2xl hover:bg-blue300 hover:text-white50 uppercase transition-colors cursor-pointer"
       >
         See more
       </Link>

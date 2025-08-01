@@ -18,7 +18,7 @@ const ScrollToTop = () => {
 
   return (
     <div
-      className={`w-fit h-fit p-1  bg-black200/30 hover:bg-black200/80 backdrop-blur-lg shadow rounded-sm transition-all duration-200 ease-in-out 
+      className={`w-fit h-fit p-1  bg-black500/30 hover:bg-black500/80 backdrop-blur-lg shadow rounded-sm transition-all duration-200 ease-in-out 
        ${
          isVisible
            ? "translate-x-0 opacity-100"
@@ -27,7 +27,7 @@ const ScrollToTop = () => {
     >
       <button
         onClick={scrollToTop}
-        className="px-3 py-2 flex items-center gap-2 rounded text-white border border-white50 hover:border-white50/30 transition-all duration-200 cursor-pointer"
+        className="px-3 py-2 flex items-center gap-2 rounded text-white50 border border-white50 hover:border-white50/30 transition-all duration-200 cursor-pointer"
       >
         <p>Back to Top</p>
         <CgArrowTopLeftO className="rotate-45 text-lg" />

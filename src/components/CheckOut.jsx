@@ -107,7 +107,7 @@ const CheckOut = ({ setShowCheckout }) => {
                 <a href="#"> End User License Agreement.</a>
               </p>
             </div>
-            <button className="w-full py-4 my-4 font-semibold text-white bg-blue300 rounded cursor-pointer">
+            <button className="w-full py-4 my-4 font-semibold text-white50 bg-blue300 rounded cursor-pointer">
               PLACE ORDER
             </button>
           </div>

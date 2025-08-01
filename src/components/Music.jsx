@@ -34,7 +34,7 @@ const Music = () => {
   }, [isAudioPlaying]);
 
   return (
-    <div className="w-10 h-10 p-1 bg-black200/30 hover:bg-black200/80 backdrop-blur-lg shadow rounded-sm">
+    <div className="w-10 h-10 p-1 bg-black500/30 hover:bg-black500/80 backdrop-blur-lg shadow rounded-sm">
       <button
         onClick={toggleAudioIndicator}
         className="w-full h-full flex items-center justify-center space-x-1 border border-white50 hover:border-white50/30 transition-all rounded-xs cursor-pointer"

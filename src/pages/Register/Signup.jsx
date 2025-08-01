@@ -71,7 +71,7 @@ const Signup = () => {
   return (
     <div className="w-full min-h-screen bg-[url(/img/bg.jpeg)] bg-fixed bg-no-repeat bg-cover bg-center pt-10">
       <div className="max-w-xl mx-auto bg-[#121a23] py-8 px-10 rounded-lg">
-        <div className="text-white">
+        <div className="text-white50">
           <h2 className="text-5xl font-bold mb-3 font-zentry">
             CREATE YOUR ACCOUNT
           </h2>
@@ -84,7 +84,7 @@ const Signup = () => {
         <form onSubmit={handleSubmit(handleSignup)}>
           {/* Fullname */}
           <div className="mb-4">
-            <label className="block text-white font-bold mb-2">
+            <label className="block text-white50 font-bold mb-2">
               Full Name
             </label>
             <input
@@ -97,7 +97,7 @@ const Signup = () => {
                   message: "FullName should be at least 4 characters.",
                 },
               })}
-              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white50 bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
             />
             {errors.fullname && (
               <p className="text-red-600">{errors.fullname.message}</p>
@@ -114,7 +114,7 @@ const Signup = () => {
               accept="image/*"
               required
               {...register("imageFile")}
-              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white50 bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
             />
             {errors.photoUrl && (
               <p className="text-red-500">{errors.photoUrl.message}</p>
@@ -136,7 +136,7 @@ const Signup = () => {
                   message: "Movie Title should be at least 2 characters.",
                 },
               })}
-              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white50 bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
             />
           </div>
 
@@ -160,7 +160,7 @@ const Signup = () => {
                     "Password must contain at least one UPPERCASE and one lowercase letter",
                 },
               })}
-              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white50 bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
             />
             {errors.password && (
               <p className="text-red-500">{errors.password.message}</p>
@@ -177,7 +177,7 @@ const Signup = () => {
             <input
               {...register("captcha", { required: "Captcha is required" })}
               placeholder="Enter captcha"
-              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+              className="w-full py-3 px-5 border border-[rgb(76,76,76,0.2)] rounded-xs text-white50 bg-[#182029] leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
             />
             {errors.captcha && (
               <p className="text-red-500">{errors.captcha.message}</p>
@@ -187,7 +187,7 @@ const Signup = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 px-5 mt-3 border border-[rgb(76,76,76,0.2)] rounded-xs text-black200 font-bold bg-yellow300 leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
+            className="w-full py-3 px-5 mt-3 border border-[rgb(76,76,76,0.2)] rounded-xs text-black500 font-bold bg-yellow300 leading-tight focus:outline-none focus:ring-1 focus:ring-yellow300"
           >
             Sign Up
           </button>

@@ -1,14 +1,11 @@
 /* root font */
-
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 /* logo font */
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 /* captcha font */
 @import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
 /* heading font */
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap");
-
-
-
 
 @import "tailwindcss";
 
@@ -18,17 +15,14 @@
   --font-barlow: "Barlow Condensed", sans-serif;
 
   --color-white50: #dfdff0;
-  --color-white75: #dfdff2;
-  --color-white100: #f0f2fa;
-  --color-black200: #010101;
-  --color-blue300: #4fb7dd;
-  --color-violet300: #5724ff;
-  --color-yellow100: #8e983f;
-  --color-yellow300: #edff66;
-  --color-bg1: #181819;
-  --color-bg2: #202024;
-  --color-bg2: #121212;
-  --color-bd-color: #adb0bc;
+  --color-offWhite50: #b5b8bf; /*Final*/
+  --color-black100: #727987; /*Final*/
+  --color-black200: #353940; /*Final*/
+  --color-black500: #1b1c20; /*Final*/
+  --color-black700: #050506; /*Final*/
+  --color-blue300: #4fb7dd; /*Final*/
+  --color-yellow100: #8e983f; /*Final*/
+  --color-yellow300: #edff66; /*Final*/
 }
 
 :root {
@@ -36,11 +30,10 @@
 }
 
 body {
-  background-color: #121212;
-  font-family: "DM Sans", sans-serif;
+  background-color: #050506;
+  font-family: "Outfit", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-
   /* width: 100dvw; */
   overflow-x: hidden;
 }
@@ -58,7 +51,7 @@ body {
 
 @layer components {
   .gaming-arrow {
-    @apply text-black200 bg-yellow300/50 backdrop-blur
+    @apply text-black500 bg-yellow300/50 backdrop-blur
          w-10 h-10 rounded-full flex items-center justify-center
          hover:bg-yellow300 hover:scale-110
          transition-all duration-300 ease-in-out cursor-pointer;
@@ -112,7 +105,7 @@ body {
   }
 
   .animated-title {
-    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white md:text-8xl;
+    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white50 md:text-8xl;
   }
 
   .animated-word {

@@ -5,10 +5,12 @@ const Button = ({
   leftIcon,
   rightIcon,
   onClickFunc,
+  disableFunc
 }) => {
   return (
     <button
       onClick={onClickFunc}
+      disabled={disableFunc}
       id={id}
       className={`button-primary group relative z-10 w-fit cursor-pointer overflow-hidden rounded-3xl px-8 py-4 ${containerClass}`}
     >

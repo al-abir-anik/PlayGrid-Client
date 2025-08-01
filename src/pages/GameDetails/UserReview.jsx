@@ -1,11 +1,15 @@
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "../../auth/AuthContext";
 import axios from "axios";
 import toast from "react-hot-toast";
-import AuthContext from "../../auth/AuthContext";
-import { useContext, useEffect, useState } from "react";
+import { FaStar } from "react-icons/fa6";
+import { motion, AnimatePresence } from "framer-motion";
 
 const UserReview = ({ reviews, gameId }) => {
   const { user } = useContext(AuthContext);
   const [comment, setComment] = useState("");
+  const [rating, setRating] = useState(0);
+  const [ratingError, setRatingError] = useState("");
   const [allReviews, setAllReviews] = useState([]);
 
   // Initialized local review state from prop
@@ -15,9 +19,15 @@ const UserReview = ({ reviews, gameId }) => {
 
   const handlePostReview = async (e) => {
     e.preventDefault();
+    if (rating === 0) {
+      setRatingError("Please select a rating.");
+      return;
+    }
+    setRatingError("");
     const newReview = {
       comment,
-      userName: user?.displayName,
+      rating,
+      username: user?.displayName,
       date: new Date().toLocaleString(),
     };
 
@@ -31,6 +41,7 @@ const UserReview = ({ reviews, gameId }) => {
         setAllReviews((prev) => [newReview, ...prev]);
         toast.success("Review Submitted.");
         setComment("");
+        setRating(0);
       } else {
         console.error("Review submit failed!");
         toast.error("Review submit failed!");
@@ -50,37 +61,101 @@ const UserReview = ({ reviews, gameId }) => {
           onChange={(e) => setComment(e.target.value)}
           rows="2"
           placeholder="Write your review here..."
-          className="w-full border border-gray-300 rounded p-4 mb-4 focus:outline-none focus:ring focus:ring-blue-200"
+          className="w-full border border-black200 rounded-xl p-4 mb-4 focus:outline-none focus:border-blue300"
         ></textarea>
-        <button
-          disabled={comment.length === 0}
-          type="submit"
-          className={`grow px-10 py-3 text-gray-700 rounded-lg active:scale-95 ${
-            comment.length === 0
-              ? "bg-blue300/50 cursor-not-allowed"
-              : "bg-blue300 cursor-pointer"
-          }`}
-        >
-          Submit Review
-        </button>
+
+        {/* rating */}
+        <AnimatePresence>
+          {comment.length > 0 && (
+            <motion.div
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="mb-6 flex items-center-safe gap-3"
+            >
+              <p className="text-offWhite50">Rate this game:</p>
+              <span className="flex gap-1">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <FaStar
+                    key={star}
+                    onClick={() => {
+                      setRating(star);
+                      setRatingError("");
+                    }}
+                    className={`text-2xl cursor-pointer ${
+                      star <= rating ? "text-yellow300" : "text-yellow100/60"
+                    }`}
+                  />
+                ))}
+              </span>
+              <p className="ml-2 text-sm font-light text-red-400">
+                {ratingError}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* cancel & submit */}
+        <div className="flex gap-3">
+          <AnimatePresence>
+            {comment.length > 0 && (
+              <motion.button
+                type="button"
+                onClick={() => {
+                  setComment("");
+                  setRating(0);
+                }}
+                initial={{ x: -40, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -40, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="px-12 py-3 text-white50 bg-black500 hover:bg-black100/30 rounded-xl active:scale-95 font-general whitespace-nowrap text-sm font-bold uppercase cursor-pointer"
+              >
+                Cancel
+              </motion.button>
+            )}
+          </AnimatePresence>
+
+          <button
+            disabled={comment.length === 0}
+            type="submit"
+            className={`px-12 py-3 text-black700 rounded-xl font-general whitespace-nowrap text-sm font-bold uppercase ${
+              comment.length === 0
+                ? "bg-blue300/50 cursor-not-allowed"
+                : "bg-blue300 hover:bg-blue300/90 active:scale-95 cursor-pointer"
+            }`}
+          >
+            Submit
+          </button>
+        </div>
       </form>
 
       {/* Display Reviews */}
-      <div className="space-y-4">
+      <div className="space-y-2">
         {reviews.length === 0 ? (
-          <p className="text-gray-400">
-            No reviews yet. Be the first to review!
+          <p className="font-medium text-lg text-offWhite50">
+            No review yet. Be the first to review!
           </p>
         ) : (
           allReviews.map((review, index) => (
             <div
               key={index}
-              className=" rounded-lg p-4 text-gray-300 bg-gray-800"
+              className="p-4 flex justify-between items-start text-offWhite50 bg-black500 rounded-lg"
             >
-              <p className="mb-2">
-                <strong>{review.userName}: </strong> {review.comment}
-              </p>
-              <p className="text-xs">{review.date}</p>
+              <div>
+                <p className="mb-2">
+                  <strong className="text-black100">{review.username}: </strong>
+                  {review.comment}
+                </p>
+                <p className="text-black100">{review.date}</p>
+              </div>
+              <div className="flex items-center gap-1 mr-3">
+                <FaStar className="text-yellow300" />
+                <p className="font-medium">
+                  {review.rating ? review.rating : 4}
+                </p>
+              </div>
             </div>
           ))
         )}

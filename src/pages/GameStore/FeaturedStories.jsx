@@ -29,7 +29,7 @@ const FeaturedStories = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6">
       {games.map((game) => (
-        <div className="text-white flex flex-col gap-3">
+        <div className="text-white50 flex flex-col gap-3">
           <div className="relative pb-[60%] overflow-hidden">
             <img
               src={game.image}

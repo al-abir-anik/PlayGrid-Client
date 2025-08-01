@@ -10,7 +10,7 @@ const JoinApp = () => {
   );
   return (
     <div id="app-poster" className="relative my-40 min-h-96 w-11/12 mx-auto">
-      <div className="relative rounded-lg bg-black pt-24 pb-32 text-white50 sm:overflow-hidden">
+      <div className="relative rounded-lg bg-black pt-24 pb-32 text-white5050 sm:overflow-hidden">
         <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-40 lg:w-96">
           <ImageClipBox
             clipClass="contact-clip-path-1 md:scale-125"
@@ -32,7 +32,7 @@ const JoinApp = () => {
             id="watch-trailer"
             title="Join PlayGrid"
             // leftIcon={<TiLocationArrow className="text-lg" />}
-            containerClass="bg-yellow300 text-black200 mt-10"
+            containerClass="bg-yellow300 text-black500 mt-10"
           />
         </div>
       </div>

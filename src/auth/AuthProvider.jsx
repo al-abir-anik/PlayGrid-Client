@@ -12,33 +12,33 @@ import Loader from "../components/Loader";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [authLoading, setAuthLoading] = useState(true);
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const updateUserProfile = async (updateData) => {
-    setLoading(true);
+    setAuthLoading(true);
     try {
       await updateProfile(auth.currentUser, updateData);
       setUser({ ...auth.currentUser });
     } finally {
-      setLoading(false);
+      setAuthLoading(false);
     }
   };
   const loginUser = (email, password) => {
-    setLoading(true);
+    setAuthLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const signOutUser = () => {
-    setLoading(true);
+    setAuthLoading(true);
     return signOut(auth);
   };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      setAuthLoading(false);
     });
     return () => {
       unSubscribe();
@@ -48,8 +48,8 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     setUser,
-    loading,
-    setLoading,
+    authLoading,
+    setAuthLoading,
     createUser,
     updateUserProfile,
     loginUser,
@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={authInfo}>
-      {loading ? <Loader /> : children}
+      {authLoading ? <Loader /> : children}
     </AuthContext.Provider>
   );
 };

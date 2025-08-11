@@ -53,15 +53,15 @@ const UserReview = ({ reviews, gameId }) => {
   };
 
   return (
-    <div className="mt-20 space-y-5">
-      <h5 className="text-xl font-semibold">PLAYER REVIEWS</h5>
+    <div className="mt-12 lg:mt-20 space-y-3 lg:space-y-5">
+      <h5 className="text-lg lg:text-xl font-semibold">PLAYER REVIEWS</h5>
       <form onSubmit={handlePostReview} className="mb-6">
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           rows="2"
           placeholder="Write your review here..."
-          className="w-full border border-black200 rounded-xl p-4 mb-4 focus:outline-none focus:border-blue300"
+          className="w-full border border-black200 rounded-xl p-4 mb-2 lg:mb-4 focus:outline-none focus:border-primary"
         ></textarea>
 
         {/* rating */}
@@ -71,8 +71,8 @@ const UserReview = ({ reviews, gameId }) => {
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="mb-6 flex items-center-safe gap-3"
+              transition={{ duration: 0.4 }}
+              className="mb-3 lg:mb-6 flex items-center-safe gap-3"
             >
               <p className="text-offWhite50">Rate this game:</p>
               <span className="flex gap-1">
@@ -109,7 +109,7 @@ const UserReview = ({ reviews, gameId }) => {
                 initial={{ x: -40, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -40, opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.4 }}
                 className="px-12 py-3 text-white50 bg-black500 hover:bg-black100/30 rounded-xl active:scale-95 font-general whitespace-nowrap text-sm font-bold uppercase cursor-pointer"
               >
                 Cancel
@@ -122,8 +122,8 @@ const UserReview = ({ reviews, gameId }) => {
             type="submit"
             className={`px-12 py-3 text-black700 rounded-xl font-general whitespace-nowrap text-sm font-bold uppercase ${
               comment.length === 0
-                ? "bg-blue300/50 cursor-not-allowed"
-                : "bg-blue300 hover:bg-blue300/90 active:scale-95 cursor-pointer"
+                ? "bg-primary/50 cursor-not-allowed"
+                : "bg-primary hover:bg-primary/90 active:scale-95 cursor-pointer"
             }`}
           >
             Submit

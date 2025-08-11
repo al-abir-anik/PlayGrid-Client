@@ -29,7 +29,7 @@ const WishCard = ({ game }) => {
           <div className="flex justify-between items-center">
             <Link
               to={`/game/${game._id}`}
-              className="text-3xl font-bold font-barlow hover:text-blue300"
+              className="text-3xl font-bold hover:text-primary"
             >
               {game.name}
             </Link>
@@ -59,7 +59,7 @@ const WishCard = ({ game }) => {
           <button
             onClick={() => handleAddToCart(game._id)}
             disabled={isCarted || cartBtnLoading?.[game._id]}
-            className="text-blue300 cursor-pointer"
+            className="text-primary cursor-pointer"
           >
             {cartBtnLoading?.[game._id] ? (
               <div className="w-5 h-5 mx-auto border-2 border-gray-700 border-t-transparent rounded-full animate-spin"></div>

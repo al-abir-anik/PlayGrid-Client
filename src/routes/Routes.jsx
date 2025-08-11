@@ -2,20 +2,19 @@ import { createBrowserRouter } from "react-router";
 import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage";
-import Login from "./../pages/Register/Login";
-import Signup from "../pages/Register/Signup";
 import GameDetails from "../pages/GameDetails/GameDetails";
 import NewsPage from "../pages/NewsPage/NewsPage";
 import NewsDetails from "../pages/NewsPage/NewsDetails";
 import PrivateRoute from "./PrivateRoute";
 import Library from "../pages/UserLibrary/Library";
-import UpdateProfile from "../pages/Profile/UpdateProfile";
 import AllGames from "../pages/AllGames/AllGames";
 import UserGames from "../pages/UserLibrary/UserGames";
 import FavouriteGames from "../pages/UserLibrary/Favourites";
 import GameStore from "../pages/GameStore/GameStore";
 import Cart from "../pages/Cart";
 import Wishlist from "../pages/Wishlist";
+import Register from "../pages/Register";
+import LockRoute from "../routes/LockRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -30,7 +29,6 @@ const Routes = createBrowserRouter([
       {
         path: "/store",
         element: <GameStore />,
-        loader: () => fetch("http://localhost:5000/upcoming-games"),
       },
       {
         path: "/all-games",
@@ -78,10 +76,6 @@ const Routes = createBrowserRouter([
             path: "favourites",
             element: <FavouriteGames />,
           },
-          {
-            path: "wishlist",
-            element: <Wishlist />,
-          },
         ],
       },
       {
@@ -93,19 +87,11 @@ const Routes = createBrowserRouter([
         element: <Wishlist />,
       },
       {
-        path: "login",
-        element: <Login></Login>,
-      },
-      {
-        path: "signup",
-        element: <Signup></Signup>,
-      },
-      {
-        path: "update-profile",
+        path: "register",
         element: (
-          <PrivateRoute>
-            <UpdateProfile />
-          </PrivateRoute>
+          <LockRoute>
+            <Register />
+          </LockRoute>
         ),
       },
     ],

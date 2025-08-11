@@ -6,9 +6,6 @@ import AuthProvider from "./auth/AuthProvider";
 import { AppContextProvider } from "./contexts/AppContext";
 import { Toaster } from "react-hot-toast";
 import "./style/index.css";
-import "primereact/resources/themes/lara-light-indigo/theme.css"; // Theme
-import "primereact/resources/primereact.min.css";
-// import "primeicons/primeicons.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

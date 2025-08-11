@@ -36,7 +36,7 @@ const Cart = () => {
           {cartItems.length > 0 && (
             <div className="py-6">
               <hr className="border-gray-500" />
-              <p className="mt-5 text-sm font-barlow text-gray-400">
+              <p className="mt-5 text-sm text-gray-400">
                 * The lowest price offered on Play Grid Store in the last 30
                 days before discount.
               </p>
@@ -66,7 +66,7 @@ const Cart = () => {
             id="checkout"
             title="Check Out"
             onClickFunc={() => setShowCheckout(true)}
-            containerClass="w-full mt-5 !py-3 !rounded-lg bg-blue300 text-black500"
+            containerClass="w-full mt-5 !py-3 !rounded-lg bg-primary text-black500"
           />
         </div>
       </div>

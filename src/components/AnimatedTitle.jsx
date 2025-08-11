@@ -39,7 +39,7 @@ const AnimatedTitle = ({ title, containerClass, titleAlignClass }) => {
         <div
           key={index}
           className={`max-w-full flex-wrap gap-2 md:gap-3 ${
-            titleAlignClass || "flex-center"
+            titleAlignClass || "flex justify-center items-center"
           }`}
         >
           {line.split(" ").map((word, idx) => (

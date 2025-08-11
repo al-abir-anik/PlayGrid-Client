@@ -5,8 +5,8 @@ const UserGames = () => {
   const { userGames, handleFavourite, favLoading } = useOutletContext();
 
   return (
-    <div className="flex flex-wrap gap-12">
-      {userGames.purchasedGames?.map((g) => (
+    <div className="flex flex-wrap gap-10">
+      {userGames.ownedGames?.map((g) => (
         <LibraryCard
           key={g._id}
           game={g}

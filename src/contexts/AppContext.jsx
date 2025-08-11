@@ -15,6 +15,7 @@ export const AppContextProvider = ({ children }) => {
   // load user cartlist with game details
   const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
+    if (!user) return;
     fetch(`http://localhost:5000/user-cartlist?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
@@ -30,6 +31,11 @@ export const AppContextProvider = ({ children }) => {
   const handleAddToCart = async (id) => {
     setCartBtnLoading((prev) => ({ ...prev, [id]: true }));
     try {
+      if (!user) {
+        toast.error("Login required!");
+        return;
+      }
+
       const res = await axios.post(`http://localhost:5000/add-to-cart`, {
         email: user?.email,
         gameId: id,
@@ -82,6 +88,7 @@ export const AppContextProvider = ({ children }) => {
   // load user wishlist with game details
   const [wishlist, setWishlist] = useState([]);
   useEffect(() => {
+    if (!user) return;
     fetch(`http://localhost:5000/user-wishlist?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
@@ -97,6 +104,11 @@ export const AppContextProvider = ({ children }) => {
   const handleAddToWishlist = async (id) => {
     setWishBtnLoading((prev) => ({ ...prev, [id]: true }));
     try {
+      if (!user) {
+        toast.error("Login required!");
+        return;
+      }
+
       const res = await axios.post(`http://localhost:5000/add-to-wishlist`, {
         email: user?.email,
         gameId: id,

@@ -32,7 +32,7 @@ const LatestNews = () => {
             id="read-all-news"
             title="Read All News"
             leftIcon={<IoArrowRedo />}
-            containerClass="bg-black500 !text-white5050"
+            containerClass="bg-black500 !text-white50"
           />
         </Link> */}
       </div>

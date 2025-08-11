@@ -46,57 +46,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full py-10 text-white50 bg-black">
-      {/* <div className="w-3/4 mx-auto py-16 flex flex-col md:flex-row justify-around">
-        <div className="space-y-5">
-          <p className="text-3xl font-black ">
-            PLAY<span className="text-[#45F882]">GRID</span>
-          </p>
-          <p className="max-w-80">
-            Enhance your gaming experience with premium games available right in
-            the game store.
-          </p>
-        </div>
-        <nav className="flex flex-col text-[#ADB0BC] font-semibold space-y-2">
-          <h6 className="text-xl font-bold text-white50 mb-5">SUPPORTS</h6>
-          <a href="#">Help & Support</a>
-          <a href="#">24/7 Supports</a>
-          <a href="#">Contact Us</a>
-        </nav>
-        <nav className="flex flex-col text-[#ADB0BC] font-semibold space-y-2">
-          <h6 className="text-xl font-bold text-white50 mb-5">LEGAL INFO</h6>
-          <a href="#">Terms of service</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Cookie Policy</a>
-          <a href="#">Safety & Security</a>
-        </nav>
-        <div className="flex flex-col text-[#ADB0BC] font-semibold space-y-2">
-          <h6 className="text-xl font-bold text-white50 mb-5">NEWSLETTER</h6>
-          <p>
-            Subscribe our newsletter to get our <br /> latest update &
-            newsconsectetur.
-          </p>
-          <form className="gap-6">
-            <fieldset>
-              <div className="flex flex-wrap sm:flex-nowrap w-full gap-1">
-                <input
-                  className="input input-sm"
-                  id="subscribeNewsletter"
-                  placeholder="johndoe@gmail.com"
-                />
-                <button className="">sUBMIT</button>
-              </div>
-            </fieldset>
-          </form>
-        </div>
-      </div> */}
-
+    <footer className="w-full py-10 text-white50 bg-black700 border-t-2 border-black500">
       <div className="w-10/12 mx-auto">
         {/* top */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-left text-3xl logo-font text-violet-100">
-            PLAY<span className="text-blue300 ">GRID</span>
-          </p>
+          <img src="/img/logo.png" alt="logo" width={130} />
           <div className="flex justify-center md:justify-start gap-4">
             {socialLinks.map((link, index) => (
               <a
@@ -112,11 +66,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr className="my-8 opacity-30" />
+        <hr className="my-6 border-black500" />
 
         {/* bottom */}
-        <div className="flex justify-between pb-5">
-          <div className="w-1/2 flex flex-col gap-5">
+        <div className="pb-5 flex flex-col lg:flex-row justify-between gap-8">
+          <div className="lg:w-1/2 flex flex-col justify-between gap-5">
             <p className="text-sm text-gray-400">
               Copyright {new Date().getFullYear()} © PlayGrid. All Right
               Reserved. Playgrid, Playgrid Games, Unreal Engine are trademarks
@@ -127,14 +81,15 @@ const Footer = () => {
               them or for any loss or damage that may arise from your use of
               them.
             </p>
-            <ul className="flex gap-5">
+
+            <ul className="flex flex-wrap space-x-5">
               {importantLinks.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold hover:underline uppercase"
+                    className="text-xs font-semibold hover:underline uppercase text-nowrap"
                   >
                     {link.title}
                   </a>

@@ -17,8 +17,8 @@ const RelatedProducts = ({ gameId }) => {
   }, [gameId]);
 
   return (
-    <div className="mt-28 space-y-8">
-      <h3 className="text-2xl font-semibold uppercase">Games You Might Like</h3>
+    <div className="mt-14 lg:mt-28 space-y-6 lg:space-y-8">
+      <h3 className="text-xl lg:text-2xl font-semibold uppercase">Games You Might Like</h3>
 
       <div
         className="overflow-hidden w-full relative mx-auto mb-12"
@@ -32,12 +32,12 @@ const RelatedProducts = ({ gameId }) => {
             animationDuration: relatedGames.length * 3500 + "ms",
           }}
         >
-          <div className="flex gap-6">
+          <div className="flex gap-3 lg:gap-6">
             {[...relatedGames, ...relatedGames].map((card, index) => (
               <Link
                 to={`/game/${card._id}`}
                 key={index}
-                className="w-52 relative group hover:scale-95 transition-all duration-300"
+                className="w-32 lg:w-52 relative group hover:scale-95 transition-all duration-300"
               >
                 <img
                   src={card.poster}
@@ -60,7 +60,7 @@ const RelatedProducts = ({ gameId }) => {
 
       <Link
         to={"/all-games"}
-        className="px-12 py-3 text-sm font-bold text-blue300 border border-blue300 rounded-2xl hover:bg-blue300 hover:text-white50 uppercase transition-colors cursor-pointer"
+        className="px-12 py-3 text-sm font-bold text-primary border border-primary rounded-2xl hover:bg-primary hover:text-white50 uppercase transition-colors cursor-pointer"
       >
         See more
       </Link>

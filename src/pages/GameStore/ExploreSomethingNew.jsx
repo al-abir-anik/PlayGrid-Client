@@ -19,8 +19,28 @@ const ExploreSomethingNew = () => {
       <Swiper
         modules={[Pagination, Navigation]}
         loop
-        slidesPerView={6}
-        spaceBetween={30}
+        breakpoints={{
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 25,
+          },
+          1280: {
+            slidesPerView: 6,
+            spaceBetween: 30,
+          },
+        }}
         pagination={{
           clickable: true,
         }}
@@ -31,7 +51,7 @@ const ExploreSomethingNew = () => {
         className="mySwiper"
       >
         {categoryGames.map((game) => (
-          <SwiperSlide>
+          <SwiperSlide key={game._id}>
             <GameCard1 key={game._id} game={game}></GameCard1>
           </SwiperSlide>
         ))}

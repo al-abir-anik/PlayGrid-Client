@@ -1,24 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import AuthContext from "../auth/AuthContext";
 import { useAppContext } from "../contexts/AppContext";
-import Sidemenu from "./Navbar/Sidemenu/Sidemenu";
 import Button from "./Button";
-import { MdOutlineShoppingBag } from "react-icons/md";
 import Search from "./Search";
+import { IoMenu } from "react-icons/io5";
 
-const Navbar = () => {
-  const { user, signOutUser } = useContext(AuthContext);
+const Navbar = ({ setShowSideMenu }) => {
+  const { user } = useContext(AuthContext);
   const { cartItems } = useAppContext();
-  const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === "/";
-
-  const handleSignOut = () => {
-    signOutUser()
-      .then(() => navigate("/login"))
-      .catch((error) => console.log("ERROR", error.message));
-  };
 
   // hide on scroll navbar
   const [showNavbar, setShowNavbar] = useState(true);
@@ -47,7 +39,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`w-full h-20 fixed top-0  transition-all duration-300 z-[101] ${
+      className={`w-full h-16 lg:h-20 fixed top-0  transition-all duration-300 z-[101] ${
         showNavbar ? "translate-y-0" : "-translate-y-full"
       } ${
         isHome && !isScrolled
@@ -55,50 +47,80 @@ const Navbar = () => {
           : "bg-black500 backdrop-blur-lg shadow"
       }`}
     >
-      <nav className="w-5/6 h-full mx-auto text-white50 flex items-center justify-between">
-        <Link to={"/"} className="text-4xl logo-font text-white5050">
-          PLAY<span className="text-blue300">GRID</span>
-        </Link>
-        <div className="text-lg font-zentry tracking-wider flex items-center gap-10 uppercase">
-          <NavLink to={"/"}>Home</NavLink>
-          <NavLink to={"store"}>Store</NavLink>
-          <NavLink to={"all-games"}>All Games</NavLink>
-          {/* <NavLink to={"news"}>News</NavLink> */}
-          {user && <NavLink to={"library/all"}>Library</NavLink>}
+      <nav className="w-5/6 h-full mx-auto flex items-center justify-between text-sm font-medium text-white50">
+        <div className="hidden lg:flex items-center gap-18">
+          <Link to={"/"} className="w-32">
+            <img src="/img/logo.png" alt="logo" />
+          </Link>
+          <span className="flex items-center gap-10 uppercase">
+            <NavLink to={"/"} className="nav-hover-btn">
+              Home
+            </NavLink>
+            <NavLink to={"store"} className="nav-hover-btn">
+              Store
+            </NavLink>
+            <NavLink to={"all-games"} className="nav-hover-btn">
+              All Games
+            </NavLink>
+            {/* <NavLink to={"news"} className="nav-hover-btn">News</NavLink> */}
+            {user && (
+              <NavLink to={"library/all"} className="nav-hover-btn">
+                Library
+              </NavLink>
+            )}
+          </span>
         </div>
 
-        <div className="flex items-center gap-10 text-lg font-zentry uppercase">
+        <div className="hidden lg:flex items-center gap-10 uppercase">
           {/* search */}
           <Search />
-
-          {/* wishlist link */}
-          <NavLink
-            to={"/wishlist"}
-            className="flex items-center cursor-pointer"
-          >
-            {/* <MdOutlineShoppingBag className="text-3xl" /> */}
+          <NavLink to={"/wishlist"} className="nav-hover-btn">
             Wishlist
           </NavLink>
-
-          {/* Cart link */}
-          <NavLink to={"/cart"} className="flex items-center cursor-pointer">
-            {/* <MdOutlineShoppingBag className="text-3xl" /> */}
-            Cart
-            <span className="px-1 ml-1 text-center text-xs text-black500 bg-yellow300 rounded font-barlow font-semibold">
+          <div className="flex items-center gap-1.5">
+            <NavLink to={"/cart"} className="nav-hover-btn">
+              Cart
+            </NavLink>
+            <span className="h-fit px-1 text-xs text-black700 bg-primary rounded font-semibold">
               {cartItems.length}
             </span>
-          </NavLink>
+          </div>
 
           {user ? (
-            <Sidemenu handleSignOut={handleSignOut}></Sidemenu>
+            <button
+              onClick={() => setShowSideMenu(true)}
+              className="w-10 h-10 text-lg text-black500 hover:text-white50 bg-primary hover:bg-black200 rounded-full transition-colors uppercase cursor-pointer"
+            >
+              {user?.displayName?.charAt(0)}
+            </button>
           ) : (
-            <Link to={"login"}>
+            <Link to={"register"}>
               <Button
                 id="login"
                 title="Login"
                 containerClass="bg-yellow300 text-black500 px-10 !py-3"
               />
             </Link>
+          )}
+        </div>
+
+        {/*------------ Navbar for small screen ---------- */}
+        <div className="w-full flex lg:hidden items-center justify-between">
+          <Link to={"/"} className="w-32">
+            <img src="/img/logo.png" alt="logo" />
+          </Link>
+
+          {user ? (
+            <button
+              onClick={() => setShowSideMenu(true)}
+              className="w-9 h-9 text-black500 hover:text-white50 bg-primary hover:bg-black200 rounded-full transition-colors uppercase cursor-pointer"
+            >
+              {user?.displayName?.charAt(0)}
+            </button>
+          ) : (
+            <button onClick={() => setShowSideMenu(true)}>
+              <IoMenu className="text-3xl" />
+            </button>
           )}
         </div>
       </nav>

@@ -13,19 +13,39 @@ const PopularGenres = () => {
       <Swiper
         modules={[Autoplay, Navigation]}
         loop
-        slidesPerView={6}
-        spaceBetween={30}
         autoplay={{ delay: 2000, disableOnInteraction: false }}
         navigation={{
           nextEl: ".custom-next",
           prevEl: ".custom-prev",
+        }}
+        breakpoints={{
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 20,
+          },
+          1280: {
+            slidesPerView: 7,
+            spaceBetween: 25,
+          },
         }}
         className="mySwiper"
       >
         {popularGenres.map((genre, index) => (
           <SwiperSlide
             key={index}
-            className="group py-4 px-2 bg-[#121a23] rounded-xl cursor-pointer"
+            className="group md:py-4 md:px-2 bg-black500 rounded-xl cursor-pointer"
             onClick={() => {
               navigate(`/all-games/${genre.path}`);
               scrollTo(0, 0);
@@ -34,12 +54,11 @@ const PopularGenres = () => {
             <div className="relative pb-[90%] rounded overflow-hidden">
               <img
                 src={genre.image}
-                // src="/public/img/contact-1.webp"
                 alt={genre.text}
-                className="absolute top-0 left-0 w-full h-full  object-cover group-hover:scale-110 transition"
+                className="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-110 transition duration-300 ease-in-out"
               />
             </div>
-            <p className="mt-4 font-semibold text-xl text-white50 text-center">
+            <p className="pb-4 md:pb-0 pt-4 lg:font-medium text-sm lg:text-base text-white50 text-center">
               {genre.text}
             </p>
           </SwiperSlide>

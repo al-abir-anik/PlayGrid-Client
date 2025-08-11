@@ -17,9 +17,9 @@ const BentoCard = ({ gameId, src, title, description }) => {
         }}
         className="absolute left-0 top-0 size-full object-cover object-center"
       />
-      <div className="relative z-10 flex size-full flex-col justify-between p-5 text-white5050 pointer-events-none">
+      <div className="relative z-10 flex size-full flex-col justify-between p-5 text-white50 pointer-events-none">
         <div>
-          <h1 className="bento-title special-font hover:text-blue300">
+          <h1 className="bento-title special-font hover:text-primary">
             {title}
           </h1>
           <p className="mt-3 max-w-64 text-xs md:text-base">{description}</p>
@@ -31,13 +31,11 @@ const BentoCard = ({ gameId, src, title, description }) => {
 
 const Features = () => {
   return (
-    <section className="bg-black500 pb-52">
+    <section className="bg-black500 pb-52 text-white50">
       <div className="container mx-auto px-3 md:px-10">
         <div className="px-5 py-32">
-          <p className="font-circular-web text-lg text-white5050">
-            Into the Metagame Layer
-          </p>
-          <p className="max-w-md font-circular-web text-lg text-white5050 opacity-50">
+          <p className="font-circular-web text-lg">Into the Metagame Layer</p>
+          <p className="max-w-md font-circular-web text-lg opacity-50">
             Immerse yourself in an IP-rich product universe where players,
             agentic AI and blockchain lead the new economic paradigm.
           </p>
@@ -113,8 +111,8 @@ const Features = () => {
           </div>
 
           <Link to={"/store"} className="bento-tilt_2 ">
-            <div className="group flex size-full flex-col justify-between bg-violet300 hover:bg-violet300/90 p-5 duration-300 ease-in-out cursor-pointer">
-              <h1 className="bento-title special-font max-w-64 text-black">
+            <div className="group p-5 flex size-full flex-col justify-between text-black500 bg-primary hover:bg-primary/90 duration-300 ease-in-out cursor-pointer">
+              <h1 className="bento-title special-font max-w-64">
                 expl<b>o</b>re m<b>o</b>re g<b>a</b>mes.
               </h1>
 

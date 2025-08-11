@@ -123,16 +123,16 @@ const Hero = () => {
           />
         </div>
 
-        <h1 className="special-font font-zentry hero-heading top-40 left-20 text-7xl md:text-9xl lg:text-[12rem] absolute z-40 text-white5075">
+        <h1 className="special-font font-zentry hero-heading top-40 left-20 text-7xl md:text-9xl lg:text-[12rem] absolute z-40 text-white50">
           G<b>A</b>MING
         </h1>
 
         <div className="absolute left-10 top-60 z-50 size-40">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font font-zentry hero-heading text-7xl md:text-9xl lg:text-[12rem] text-white5075">
+            <h1 className="special-font font-zentry hero-heading text-7xl md:text-9xl lg:text-[12rem] text-white50">
               VALORA<b>N</b>T
             </h1>
-            <p className="mb-5 text-lg md:w-96 font-robert-regular text-white50100">
+            <p className="mb-5 text-lg md:w-96 font-robert-regular text-white50">
               Enter the Metagame Layer , Unleash the Play Economy enter the
               Metagame Layer
             </p>
@@ -140,7 +140,7 @@ const Hero = () => {
               id="watch-trailer"
               title="Watch Trailer"
               leftIcon={<TiLocationArrow className="text-lg" />}
-              containerClass="bg-blue300 text-black500"
+              containerClass="bg-primary text-black500"
             />
           </div>
         </div>

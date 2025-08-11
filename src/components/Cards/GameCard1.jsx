@@ -1,12 +1,12 @@
 import { Link } from "react-router";
 
 const GameCard1 = ({ game }) => {
-  const { _id, name, poster, regularPrice, offerPrice, rating } = game;
+  const { _id, name, poster, regularPrice, offerPrice, developer } = game;
 
   return (
     <>
       <Link to={`/game/${_id}`} className="cursor-pointer">
-        <div className="group w-full border border-black500 rounded-lg overflow-hidden active:scale-95">
+        <div className="group w-full border border-black200/60 rounded-lg overflow-hidden active:scale-95">
           <div className="relative pb-[130%] overflow-hidden">
             <img
               src={poster}
@@ -15,18 +15,22 @@ const GameCard1 = ({ game }) => {
             />
           </div>
 
-          <div className="p-2 space-y-1 text-white50">
-            <h5 className="text-xl font-semibold">{name}</h5>
-            <p className="text-lg">Rating: {rating}</p>
-            <span className="flex items-center gap-2">
+          <div className="p-1 md:p-3 space-y-1.5 text-white50">
+            <h5 className="lg:text-lg font-semibold leading-5 text-white50">
+              {name}
+            </h5>
+            <p className="hidden md:block text-sm lg:text-base font-medium text-black100">
+              {developer}
+            </p>
+            <span className="flex items-center gap-2 text-offWhite50">
+              {offerPrice > 0 && <p className="font-medium">${regularPrice}</p>}
               <p
                 className={`${
-                  offerPrice === 0 ? "text-xl" : "text-lg line-through"
+                  offerPrice === 0 ? "font-medium" : "text-sm line-through"
                 }`}
               >
-                $ {offerPrice === 0 ? "Free to Play" : offerPrice}
+                $ {offerPrice === 0 ? "FREE" : offerPrice}
               </p>
-              {offerPrice > 0 && <p className="text-xl">$ {regularPrice}</p>}
             </span>
           </div>
         </div>

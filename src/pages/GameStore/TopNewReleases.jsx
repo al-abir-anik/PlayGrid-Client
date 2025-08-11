@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Navigation} from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import GameCard1 from "../../components/Cards/GameCard1";
 
 const TopNewReleases = () => {
@@ -19,8 +19,28 @@ const TopNewReleases = () => {
       <Swiper
         modules={[Navigation]}
         loop
-        slidesPerView={6}
-        spaceBetween={30}
+        breakpoints={{
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 25,
+          },
+          1280: {
+            slidesPerView: 6,
+            spaceBetween: 30,
+          },
+        }}
         navigation={{
           nextEl: ".custom-next",
           prevEl: ".custom-prev",
@@ -28,7 +48,7 @@ const TopNewReleases = () => {
         className="mySwiper"
       >
         {categoryGames.map((game) => (
-          <SwiperSlide>
+          <SwiperSlide key={game._id}>
             <GameCard1 key={game._id} game={game}></GameCard1>
           </SwiperSlide>
         ))}

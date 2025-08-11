@@ -22,7 +22,7 @@ const Library = () => {
   const handleFavourite = async (id) => {
     setFavLoading((prev) => ({ ...prev, [id]: true }));
 
-    const res = await axios.patch(`http://localhost:5000/user-gamelist`, {
+    const res = await axios.patch(`http://localhost:5000/user-favourites`, {
       email: user?.email,
       gameId: id,
     });
@@ -41,11 +41,11 @@ const Library = () => {
 
   return (
     <div className="w-[70%] min-h-screen mx-auto py-12">
-      <div className="w-full flex gap-14">
+      <div className="w-full flex gap-14 text-lg">
         <NavLink
           to={"all"}
           className={({ isActive }) =>
-            isActive ? "text-yellow300 font-semibold" : "text-gray-500"
+            isActive ? "text-yellow300 font-semibold" : "text-offWhite50"
           }
         >
           All
@@ -53,7 +53,7 @@ const Library = () => {
         <NavLink
           to={"favourites"}
           className={({ isActive }) =>
-            isActive ? "text-yellow300 font-semibold" : "text-gray-500"
+            isActive ? "text-yellow300 font-semibold" : "text-offWhite50"
           }
         >
           Favourites

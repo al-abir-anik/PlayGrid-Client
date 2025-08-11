@@ -1,7 +1,7 @@
 const Captcha = ({ generatedCaptcha, setGeneratedCaptcha }) => {
   return (
     <div className="flex items-center gap-3">
-      <div className="bg-gray-200 px-4 py-2 rounded captcha-font">
+      <div className="px-2 text-xs text-offWhite50 rounded-2xl captcha-font">
         {generatedCaptcha}
       </div>
       <button
@@ -18,7 +18,7 @@ const Captcha = ({ generatedCaptcha, setGeneratedCaptcha }) => {
               .join("")
           )
         }
-        className="text-blue-500 hover:underline text-sm"
+        className="text-offWhite50 hover:text-white50 text-sm underline cursor-pointer"
       >
         Reload
       </button>

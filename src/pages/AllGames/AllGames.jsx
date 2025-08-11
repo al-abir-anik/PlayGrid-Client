@@ -40,16 +40,16 @@ const AllGames = () => {
   }, [setFetchLoading, search, genre]);
 
   return (
-    <div className="w-5/6 mx-auto my-16 font-barlow text-white50">
-      <div className="flex items-baseline mb-14">
+    <div className="w-5/6 mx-auto my-6 lg:my-14 text-white50">
+      <div className="flex items-baseline mb-8 md:mb-14 font-general">
         <div className="flex flex-col items-end w-max">
-          <h2 className="text-2xl md:text-4xl font-bold uppercase flex">
+          <h2 className="text-xl sm:text-2xl xl:text-3xl font-bold uppercase flex">
             {genre ? genre + " " + "games" : "All Games"}
           </h2>
-          <span className="w-20 h-0.5 bg-blue300 rounded-full"></span>
+          <span className="w-20 h-0.5 bg-primary rounded-full"></span>
         </div>
-        <p className="pl-5">
-          ( {games.length} <span>results</span> )
+        <p className="text-sm xl:text-base pl-5">
+          ({games.length} <span>results</span>)
         </p>
       </div>
 
@@ -70,7 +70,7 @@ const AllGames = () => {
             </p>
           </div>
         ) : (
-          <div className="w-5/6 min-h-[50vh] space-y-5 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 md:gap-6">
+          <div className="w-full lg:w-5/6 min-h-[50vh] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 space-y-4">
             {games.map((game) => (
               <GameCard1 key={game._id} game={game} />
             ))}
@@ -78,7 +78,7 @@ const AllGames = () => {
         )}
 
         {/* Side Filters */}
-        <div className="w-1/7 space-y-3 sticky top-0">
+        <div className="hidden lg:block w-1/7 space-y-3 sticky top-0">
           <Filter
             title="Genre"
             isOpen={openFilters.genre}
@@ -103,8 +103,6 @@ const AllGames = () => {
               })}
             </ul>
           </Filter>
-
-          
         </div>
       </div>
     </div>

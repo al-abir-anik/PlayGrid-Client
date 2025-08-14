@@ -1,13 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../../auth/AuthContext";
 import { FaUser } from "react-icons/fa6";
 import { FcCurrencyExchange } from "react-icons/fc";
-import { IoIosCard } from "react-icons/io";
 import { SlClose } from "react-icons/sl";
 import MultiOrder from "./MultiOrder";
+import CardPayment from "./CardPayment";
 
 const CheckOut = ({ setShowCheckout }) => {
   const { user } = useContext(AuthContext);
+  const [addFund, setAddFund] = useState(false);
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 z-999 flex items-center text-gray-800 bg-black/50">
@@ -43,30 +44,45 @@ const CheckOut = ({ setShowCheckout }) => {
                 </p>
               </div>
             </div>
+
             {/* account balance  */}
             <div className="space-y-3">
               <p className="text-sm font-semibold uppercase">Account Balance</p>
-              <div className="w-full p-3 flex items-center gap-5 rounded-lg bg-gray-100/80">
-                <span className="py-2.5 px-4 ml-3 rounded-lg bg-white border border-gray-300">
-                  <img src="/public/img/logoDark.png" alt="logo" width={70} />
-                </span>
-                <p>
-                  Account Balance
-                  <span className="pl-2 font-semibold">{"$ 0.00"}</span>
-                </p>
+              <div className="w-full px-6 py-4 flex gap-6 rounded-lg bg-gray-100/80">
+                <input
+                  type="checkbox"
+                  onChange={() => setAddFund(!addFund)}
+                  className="w-5 h-5 mt-1 text-primary bg-white border-offWhite50 focus:ring-primary cursor-pointer"
+                />
+                <div className="flex flex-col gap-5">
+                  <div className="flex items-center gap-5">
+                    <span className="py-2.5 px-4 rounded-lg bg-white border border-gray-300">
+                      <img
+                        src="/public/img/logoDark.png"
+                        alt="logo"
+                        width={70}
+                      />
+                    </span>
+                    <p>
+                      Account Balance
+                      <span className="pl-2 font-semibold">{"$ 0.00"}</span>
+                    </p>
+                  </div>
+                  {addFund && (
+                    <button className="w-fit px-8 py-2.5 mt-8 mb-5 text-sm font-medium border hover:border-primary hover:text-primary rounded-xl cursor-pointer">
+                      ADD FUNDS
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
+
             {/* other payment  */}
             <div className="space-y-3">
               <p className="text-sm font-semibold uppercase">
                 Other payment Methods
               </p>
-              <div className="w-full p-3 flex items-center gap-5 rounded-lg bg-gray-100/80">
-                <span className="py-2 px-5 ml-3 rounded-lg bg-white border border-gray-300">
-                  <IoIosCard className="text-3xl" />
-                </span>
-                <p>Credit Card / &nbsp;Debit Card</p>
-              </div>
+              <CardPayment />
             </div>
           </div>
         </div>

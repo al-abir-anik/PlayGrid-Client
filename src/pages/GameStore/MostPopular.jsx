@@ -6,17 +6,18 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const MostPopular = () => {
-  const [categoryGames, setCategoryGames] = useState([]);
+  const [mostPopularGames, setMostPopularGames] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/category-games")
+    fetch("http://localhost:5000/most-popular-games")
       .then((res) => res.json())
-      .then((data) => setCategoryGames(data));
+      .then((data) => setMostPopularGames(data));
   }, []);
 
   return (
     <div className="space-y-10">
       <Swiper
+        key={mostPopularGames.length}
         modules={[Autoplay, Navigation]}
         loop
         breakpoints={{
@@ -43,14 +44,14 @@ const MostPopular = () => {
         }}
         autoplay={{ delay: 1500, disableOnInteraction: false }}
         navigation={{
-          nextEl: ".custom-next",
-          prevEl: ".custom-prev",
+          nextEl: ".mp-next",
+          prevEl: ".mp-prev",
         }}
         className="mySwiper"
       >
-        {categoryGames.map((game) => (
+        {mostPopularGames.map((game) => (
           <SwiperSlide key={game._id}>
-            <GameCard1 key={game._id} game={game}></GameCard1>
+            <GameCard1 game={game}></GameCard1>
           </SwiperSlide>
         ))}
       </Swiper>

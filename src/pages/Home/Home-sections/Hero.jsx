@@ -1,155 +1,164 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 import { TiLocationArrow } from "react-icons/ti";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import Loader from "../../../components/Loader";
 import Button from "../../../components/Button";
-// import { ScrollTrigger } from "gsap/all";
-// gsap.registerPlugin(ScrollTrigger);
+import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 
 const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(1);
-  const [hasClicked, setHasClicked] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [loadedVideos, setLoadedVideos] = useState(0);
-
-  const totalVideos = 4;
-  const nextVideoRef = useRef(null);
-
-  const handleVideoLoad = () => {
-    setLoadedVideos((prev) => prev + 1);
-  };
-
-  const upcomingVideoIndex = (currentIndex % totalVideos) + 1;
-
-  const handleMiniVdClick = () => {
-    setHasClicked(true);
-    setCurrentIndex(upcomingVideoIndex);
-  };
-
-  useEffect(() => {
-    if (loadedVideos >= totalVideos - 1) {
-      setLoading(false);
-    }
-  }, [loadedVideos]);
-
-  useGSAP(
-    () => {
-      if (hasClicked) {
-        gsap.set("#next-video", { visibility: "visible" });
-        gsap.from("#current-video", {
-          transformOrigin: "center center",
-          scale: 0,
-          duration: 1,
-          ease: "power1.inOut",
-        });
-        gsap.to("#next-video", {
-          transformOrigin: "center center",
-          scale: 1,
-          width: "100%",
-          height: "100%",
-          duration: 0.6,
-          ease: "power1.inOut",
-          onStart: () => nextVideoRef.current.play(),
-        });
-      }
+  const slides = [
+    {
+      id: 1,
+      img: "https://wallpapercave.com/wp/wp12657125.jpg",
+      title: "Grand theft auto v",
+      description:
+        "London, 1868. In the heart of the Industrial Revolution, lead your underworld organization and grow your influence to fight those who exploit the less privileged in the name of progress.",
+      gameIcon:
+        "https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fgrand-theft-auto-v%2Fhome%2FGTAV_EGS_Artwork_400x400_GameLogo-1000x1000-f6c47a98454049a5e63959f7b6f898c4fc22829c.png?resize=1&w=480&h=270&quality=medium",
     },
-    { dependencies: [currentIndex], revertOnUpdate: true }
-  );
+    {
+      id: 2,
+      img: "https://res.cloudinary.com/dwka0ok0n/image/upload/v1755163841/pubg_htvf7k.jpg",
+      title: "PUBG: battleground",
+      description:
+        "London, 1868. In the heart of the Industrial Revolution, lead your underworld organization and grow your influence to fight those who exploit the less privileged in the name of progress.",
+      gameIcon:
+        "https://cdn1.epicgames.com/spt-assets/53ec4985296b4facbe3a8d8d019afba9/pubg-battlegrounds-logo-5xma7.png?resize=1&w=480&h=270&quality=medium",
+    },
+    {
+      id: 3,
+      img: "https://wallpapercave.com/wp/wp4705321.jpg",
+      title: "GOD OF WAR",
+      description:
+        "God of War is an action-adventure game franchise created by David Jaffe and its become a flagship series for PlayStation, consisting of nine installments across multiple platforms.",
+      gameIcon:
+        "https://cdn2.unrealengine.com/egs-godofwar-santamonicastudio-ic1-400x400-5819bbf696c5.png?resize=1&w=480&h=270&quality=medium",
+    },
+    {
+      id: 4,
+      img: "https://wallpapercave.com/wp/wp14481597.jpg",
+      title: "Fifa 25",
+      description:
+        "Call of Duty: Modern Warfare III is the twentieth installment of the Call of Duty series and is the third entry in the rebooted Modern Warfare sub-series, following Call of Duty: Modern Warfare II.",
+      category: "FIRST PERSON SHOOTER",
+      gameIcon:
+        "https://cdn2.unrealengine.com/egs-easportsfc25standardedition-eacanada-ic1-400x400-ebb6decd53c9.png?resize=1&w=480&h=270&quality=medium",
+    },
+    {
+      id: 5,
+      img: "https://res.cloudinary.com/dwka0ok0n/image/upload/v1755165973/valhalla_cmayrg.jpg",
+      title: "AC: valhalla",
+      description:
+        "London, 1868. In the heart of the Industrial Revolution, lead your underworld organization and grow your influence to fight those who exploit the less privileged in the name of progress.",
+      gameIcon:
+        "https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fassassins-creed-valhalla%2Fhome%2FAC-KINGDOM-PREORDER_STANDARD-EDITION_EPIC_Game_Logo_whiteblue_1000x375-1000x375-baa332e9500ef71697f4a31924488fe309c4784d.png?resize=1&w=480&h=270&quality=medium",
+    },
+    {
+      id: 6,
+      img: "https://i.ibb.co/RkRqhP7C/wp9129545-playstation-4-4k-wallpapers.jpg",
+      title: "GOD OF WAR",
+      description:
+        "God of War is an action-adventure game franchise created by David Jaffe and its become a flagship series for PlayStation, consisting of nine installments across multiple platforms.",
+      gameIcon:
+        "https://cdn2.unrealengine.com/egs-godofwar-santamonicastudio-ic1-400x400-5819bbf696c5.png?resize=1&w=480&h=270&quality=medium",
+    },
+  ];
 
-  // useGSAP(() => {
-  //   gsap.set("#video-frame", {
-  //     clipPath: "polygon(14% 0%, 72% 0%, 90% 90%, 0% 100%)",
-  //     borderRadius: "0 0 40% 10%",
-  //   });
-  //   gsap.from("#video-frame", {
-  //     clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-  //     borderRadius: "0 0 0 0",
-  //     ease: "power1.inOut",
-  //     scrollTrigger: {
-  //       trigger: "#video-frame",
-  //       start: "center center",
-  //       end: "bottom center",
-  //       scrub: true,
-  //     },
-  //   });
-  // });
-
-  const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="relative h-dvh w-screen">
-      {loading && <Loader />}
-
-      <div
-        id="video-frame"
-        className="relative z-10 h-dvh w-screen overflow-hidden bg-white75"
+    <section className="w-full relative h-screen select-none">
+      <style>{`.swiper-slide .hero-zoom {
+          transform: scale(1);
+          transition: transform 4s ease-in;
+        }
+        .swiper-slide.swiper-slide-active .hero-zoom {
+          transform: scale(1.03);
+        }`}</style>
+      <Swiper
+        modules={[Autoplay, Navigation, EffectFade]}
+        effect="fade"
+        fadeEffect={{ crossFade: true }}
+        slidesPerView={1}
+        navigation={{
+          nextEl: ".hero-next",
+          prevEl: ".hero-prev",
+        }}
+        loop={true}
+        allowTouchMove={false}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        className="w-full h-full"
       >
-        <div>
-          <div className="mask-clip-path absolute bottom-20 right-10 z-50 size-64 cursor-pointer overflow-hidden">
-            <div
-              onClick={handleMiniVdClick}
-              className="origin-center scale-50 opacity-50 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
-            >
-              <video
-                ref={nextVideoRef}
-                src={getVideoSrc(upcomingVideoIndex)}
-                loop
-                muted
-                id="current-video"
-                className="size-64 rounded-sm origin-center scale-150 object-cover object-center"
-                onLoadedData={handleVideoLoad}
-              />
+        {slides.map((slide, index) => (
+          <SwiperSlide key={index}>
+            <div className="w-full h-full relative overflow-hidden">
+              {/* Background Image */}
+              <div
+                className="absolute w-full h-full top-0 left-0 bg-cover bg-center transform scale-100 hero-zoom"
+                style={{ backgroundImage: `url(${slide.img})` }}
+              ></div>
+              <div className="w-full h-full absolute top-0 left-0 bg-black/20"></div>
+
+              {/* Content */}
+              <div className="relative w-[88%] h-[88vh] mx-auto flex flex-col justify-center gap-4">
+                <h2 className="w-1/2 special-font font-zentry hero-heading text-7xl md:text-9xl lg:text-[10rem] text-white50">
+                  {slide.title}
+                </h2>
+                <p className="mb-5 text-lg md:w-96 font-robert-regular text-white50">
+                  Enter the Metagame Layer, Unleash the Play Economy...
+                </p>
+                <Button
+                  id="watch-details"
+                  title="Game Details"
+                  leftIcon={<TiLocationArrow className="text-lg" />}
+                  containerClass="bg-yellow300 text-black500"
+                />
+              </div>
             </div>
-          </div>
-          <video
-            ref={nextVideoRef}
-            src={getVideoSrc(currentIndex)}
-            loop
-            muted
-            id="next-video"
-            className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
-            onLoadedData={handleVideoLoad}
-          />
-          <video
-            src={getVideoSrc(
-              currentIndex === totalVideos - 1 ? 1 : currentIndex
-            )}
-            autoPlay
-            loop
-            muted
-            className="absolute left-0 top-0 size-full object-cover object-center"
-            onLoadedData={handleVideoLoad}
-          />
-        </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-        <h1 className="special-font font-zentry hero-heading top-40 left-20 text-7xl md:text-9xl lg:text-[12rem] absolute z-40 text-white50">
-          G<b>A</b>MING
-        </h1>
-
-        <div className="absolute left-10 top-60 z-50 size-40">
-          <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font font-zentry hero-heading text-7xl md:text-9xl lg:text-[12rem] text-white50">
-              VALORA<b>N</b>T
-            </h1>
-            <p className="mb-5 text-lg md:w-96 font-robert-regular text-white50">
-              Enter the Metagame Layer , Unleash the Play Economy enter the
-              Metagame Layer
-            </p>
-            <Button
-              id="watch-trailer"
-              title="Watch Trailer"
-              leftIcon={<TiLocationArrow className="text-lg" />}
-              containerClass="bg-primary text-black500"
-            />
-          </div>
-        </div>
+      <div id="yo" className="w-full absolute bottom-14">
+        <Swiper
+          modules={[Autoplay, Navigation]}
+          slidesPerView={3}
+          centeredSlides={true}
+          loop={true}
+          navigation={{
+            nextEl: ".hero-next",
+            prevEl: ".hero-prev",
+          }}
+          allowTouchMove={false}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+          className="w-3/5"
+        >
+          {slides.map((s, i) => (
+            <SwiperSlide key={i}>
+              <img
+                src={s.gameIcon}
+                alt="game-icon"
+                draggable="false"
+                className={`w-48 h-32 mx-auto object-contain ${
+                  i === activeIndex ? "scale-125" : "scale-80 opacity-60 mt-10"
+                }`}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <button className="hero-prev hero-arrow left-50 group">
+          <HiArrowLongLeft className="transition-transform duration-200 group-hover:-translate-x-1" />
+        </button>
+        <button className="hero-next hero-arrow right-50 group">
+          <HiArrowLongRight className="transition-transform duration-200 group-hover:translate-x-1" />
+        </button>
       </div>
-      {/* background text animation */}
-      {/* <h1 className="special-font font-zentry hero-heading mt-24 top-60 left-20 text-7xl md:text-9xl lg:text-[12rem] absolute text-black">
-        VALORA<b>N</b>T
-      </h1> */}
-    </div>
+    </section>
   );
 };
 

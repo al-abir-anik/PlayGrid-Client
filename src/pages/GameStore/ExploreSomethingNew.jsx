@@ -2,22 +2,23 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import GameCard1 from "../../components/Cards/GameCard1";
 
 const ExploreSomethingNew = () => {
-  const [categoryGames, setCategoryGames] = useState([]);
+  const [exploreNewGames, setExploreNewGames] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/category-games")
+    fetch("http://localhost:5000/explore-new-games")
       .then((res) => res.json())
-      .then((data) => setCategoryGames(data));
+      .then((data) => setExploreNewGames(data));
   }, []);
 
   return (
     <>
       <Swiper
-        modules={[Pagination, Navigation]}
+        key={exploreNewGames.length}
+        modules={[Navigation]}
         loop
         breakpoints={{
           320: {
@@ -41,18 +42,15 @@ const ExploreSomethingNew = () => {
             spaceBetween: 30,
           },
         }}
-        pagination={{
-          clickable: true,
-        }}
         navigation={{
-          nextEl: ".custom-next",
-          prevEl: ".custom-prev",
+          nextEl: ".esn-next",
+          prevEl: ".esn-prev",
         }}
         className="mySwiper"
       >
-        {categoryGames.map((game) => (
+        {exploreNewGames.map((game) => (
           <SwiperSlide key={game._id}>
-            <GameCard1 key={game._id} game={game}></GameCard1>
+            <GameCard1 game={game}></GameCard1>
           </SwiperSlide>
         ))}
       </Swiper>

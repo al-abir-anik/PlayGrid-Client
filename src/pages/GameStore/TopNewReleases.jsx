@@ -6,17 +6,18 @@ import { Navigation } from "swiper/modules";
 import GameCard1 from "../../components/Cards/GameCard1";
 
 const TopNewReleases = () => {
-  const [categoryGames, setCategoryGames] = useState([]);
+  const [newReleaseGames, setNewReleaseGames] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/category-games")
+    fetch("http://localhost:5000/new-release-games")
       .then((res) => res.json())
-      .then((data) => setCategoryGames(data));
+      .then((data) => setNewReleaseGames(data));
   }, []);
 
   return (
     <>
       <Swiper
+        key={newReleaseGames.length}
         modules={[Navigation]}
         loop
         breakpoints={{
@@ -42,14 +43,14 @@ const TopNewReleases = () => {
           },
         }}
         navigation={{
-          nextEl: ".custom-next",
-          prevEl: ".custom-prev",
+          nextEl: ".tnr-next",
+          prevEl: ".tnr-prev",
         }}
         className="mySwiper"
       >
-        {categoryGames.map((game) => (
+        {newReleaseGames.map((game) => (
           <SwiperSlide key={game._id}>
-            <GameCard1 key={game._id} game={game}></GameCard1>
+            <GameCard1 game={game}></GameCard1>
           </SwiperSlide>
         ))}
       </Swiper>

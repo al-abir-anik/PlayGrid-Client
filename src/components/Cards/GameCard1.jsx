@@ -23,14 +23,12 @@ const GameCard1 = ({ game }) => {
               {developer}
             </p>
             <span className="flex items-center gap-2 text-offWhite50">
-              {offerPrice > 0 && <p className="font-medium">${regularPrice}</p>}
-              <p
-                className={`${
-                  offerPrice === 0 ? "font-medium" : "text-sm line-through"
-                }`}
-              >
-                $ {offerPrice === 0 ? "FREE" : offerPrice}
+              <p className="font-medium">
+                {regularPrice > 0 ? `$${offerPrice}` : "FREE"}
               </p>
+              {regularPrice > 0 && (
+                <p className="text-sm line-through">${regularPrice}</p>
+              )}
             </span>
           </div>
         </div>

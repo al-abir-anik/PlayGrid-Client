@@ -1,6 +1,6 @@
-import ScrollToTop from "./ScrollToTop";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { FaXTwitter, FaGithub } from "react-icons/fa6";
+import { CgArrowTopLeftO } from "react-icons/cg";
 
 const Footer = () => {
   const socialLinks = [
@@ -25,7 +25,6 @@ const Footer = () => {
       textColor: "hover:text-gray-400",
     },
   ];
-
   const importantLinks = [
     {
       href: "#terms_of_service",
@@ -44,6 +43,10 @@ const Footer = () => {
       title: "Refund Policy",
     },
   ];
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <footer className="w-full py-10 text-white50 bg-black700 border-t-2 border-black500">
@@ -97,7 +100,14 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          <ScrollToTop />
+          {/* back to top btn */}
+          <button
+            onClick={scrollToTop}
+            className="h-fit px-3 py-2 flex items-center gap-2 text-sm lg:text-base rounded-lg text-white50 hover:text-primary border border-white50 hover:border-primary transition-colors ease-in-out duration-200 cursor-pointer"
+          >
+            <p>Back to Top</p>
+            <CgArrowTopLeftO className="rotate-45 text-lg" />
+          </button>
         </div>
       </div>
     </footer>

@@ -113,7 +113,7 @@ const PopularGenres = () => {
             spaceBetween: 20,
           },
           1280: {
-            slidesPerView: 7,
+            slidesPerView: 6,
             spaceBetween: 25,
           },
         }}
@@ -122,7 +122,7 @@ const PopularGenres = () => {
         {popularGenres.map((genre, index) => (
           <SwiperSlide
             key={index}
-            className="group md:py-4 md:px-2 bg-black500 rounded-xl cursor-pointer"
+            className="group md:py-4 md:px-4 bg-black500 rounded-xl cursor-pointer"
             onClick={() => {
               navigate(`/all-games/${genre.path}`);
               scrollTo(0, 0);

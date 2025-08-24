@@ -1,6 +1,5 @@
 import { TiLocationArrow } from "react-icons/ti";
 import { Link } from "react-router";
-import Button from "../../../components/Button";
 
 const BentoCard = ({ gameId, src, title, description }) => {
   return (
@@ -59,10 +58,11 @@ const Features = () => {
           {/* gta 5 */}
           <div className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard
-              src="videos/feature-2.mp4"
+              gameId="68867ad60cd22b41dfaa1989"
+              src="https://res.cloudinary.com/dwka0ok0n/video/upload/v1755236747/feature-2_vteaod.mp4"
               title={
                 <>
-                  gt<b>a</b> 5
+                  ap<b>e</b>x leg<b>e</b>nd
                 </>
               }
               description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
@@ -72,7 +72,7 @@ const Features = () => {
           {/* valorant */}
           <div className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
             <BentoCard
-              gameId="6877a8d22df792d7e17009fc"
+              gameId="6884d54c0cd22b41dfaa188f"
               src="https://res.cloudinary.com/dwka0ok0n/video/upload/v1753448386/feature-1_mizmsy.mp4"
               title={
                 <>
@@ -86,7 +86,7 @@ const Features = () => {
           {/* pubg */}
           <div className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
             <BentoCard
-              gameId="6877f8bd2df792d7e1700a91"
+              gameId="6886675b0cd22b41dfaa1967"
               src="https://res.cloudinary.com/dwka0ok0n/video/upload/v1753289717/feature-4_yptcjv.mp4"
               title={
                 <>
@@ -100,10 +100,11 @@ const Features = () => {
           {/* wild rift */}
           <div className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
             <BentoCard
+              gameId="689eba88211e3db3ac17d1cc"
               src="https://res.cloudinary.com/dwka0ok0n/video/upload/v1753448383/feature-3_a6wqp0.mp4"
               title={
                 <>
-                  wil<b>d</b> rift
+                  le<b>a</b>gue of leg<b>e</b>nd
                 </>
               }
               description="Team up with friends and test your skills in 5v5 MOBA combat."

@@ -216,7 +216,7 @@ const GameDetails = () => {
               </button>
             </div>
           </div>
-          <p className="text-lg lg:text-xl mb-8 lg:mb-12 text-offWhite50">
+          <p className="lg:text-lg mb-8 lg:mb-12 text-offWhite50">
             {summary}
           </p>
           {/* genres */}
@@ -333,13 +333,13 @@ const GameDetails = () => {
               id="buy-now"
               title={isNaN(discount) ? "Get" : "Buy Now"}
               // onClickFunc={() => setShowCheckout(true)}
-              containerClass="w-full !py-3 !rounded-2xl bg-yellow300 text-black500"
+              containerClass="w-full !py-3 bg-yellow300 text-black500"
             />
             <Button
               id="add-to-cart"
               title={
                 cartBtnLoading[_id] ? (
-                  <div className="w-5 h-5 mx-auto border-2 border-gray-700 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-5 h-5 mx-auto border-2 border-gray-700 border-t-transparent animate-spin"></div>
                 ) : isCarted ? (
                   "Added in cart"
                 ) : (
@@ -356,7 +356,7 @@ const GameDetails = () => {
               id="add-to-wishlist"
               title={
                 wishBtnLoading[_id] ? (
-                  <div className="w-5 h-5 mx-auto border-2 border-gray-700 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-5 h-5 mx-auto border-2 border-gray-700 border-t-transparent animate-spin"></div>
                 ) : isWished ? (
                   "Added in wishlist"
                 ) : (
@@ -408,10 +408,10 @@ const GameDetails = () => {
           </div>
           {/* share & report */}
           <div className="w-full mt-2 flex gap-8">
-            <button className="w-full py-3 rounded-2xl flex items-center justify-center gap-1 bg-black500 cursor-pointer">
+            <button className="w-full py-3 rounded-full flex items-center justify-center gap-1 bg-black500 cursor-pointer">
               <IoShareSocial /> <p>Share</p>
             </button>
-            <button className="w-full py-3 rounded-2xl flex items-center justify-center gap-1 bg-black500 cursor-pointer">
+            <button className="w-full py-3 rounded-full flex items-center justify-center gap-1 bg-black500 cursor-pointer">
               <MdOutlineReportGmailerrorred className="text-lg" /> <p>Report</p>
             </button>
           </div>

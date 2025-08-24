@@ -9,6 +9,7 @@ const UserReview = ({ reviews, gameId }) => {
   const { user } = useContext(AuthContext);
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
   const [ratingError, setRatingError] = useState("");
   const [allReviews, setAllReviews] = useState([]);
 
@@ -19,6 +20,10 @@ const UserReview = ({ reviews, gameId }) => {
 
   const handlePostReview = async (e) => {
     e.preventDefault();
+    if (!user) {
+      toast.error("Please login to review.");
+      return;
+    }
     if (rating === 0) {
       setRatingError("Please select a rating.");
       return;
@@ -75,7 +80,7 @@ const UserReview = ({ reviews, gameId }) => {
               className="mb-3 lg:mb-6 flex items-center-safe gap-3"
             >
               <p className="text-offWhite50">Rate this game:</p>
-              <span className="flex gap-1">
+              <span className="flex">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <FaStar
                     key={star}
@@ -83,8 +88,12 @@ const UserReview = ({ reviews, gameId }) => {
                       setRating(star);
                       setRatingError("");
                     }}
-                    className={`text-2xl cursor-pointer ${
-                      star <= rating ? "text-yellow300" : "text-yellow100/60"
+                    onMouseEnter={() => setHoverRating(star)}
+                    onMouseLeave={() => setHoverRating(0)}
+                    className={`px-0.5 text-2xl md:text-3xl cursor-pointer active:scale-90 ${
+                      star <= (hoverRating || rating)
+                        ? "text-yellow300"
+                        : "text-yellow100/60"
                     }`}
                   />
                 ))}

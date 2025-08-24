@@ -14,7 +14,6 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const {
@@ -22,7 +21,6 @@ const Register = () => {
     setUser,
     createUser,
     updateUserProfile,
-    authLoading,
     setAuthLoading,
   } = useContext(AuthContext);
 
@@ -112,7 +110,7 @@ const Register = () => {
     <div className="min-h-[80vh] mx-auto flex justify-between bg-black700 text-white50">
       <div className="w-full hidden lg:inline-block">
         <img
-          src="/public/img/gallery-5.webp"
+          src="/img/gallery-5.webp"
           alt="leftSideImage"
           className="h-full opacity-80 object-cover"
         />

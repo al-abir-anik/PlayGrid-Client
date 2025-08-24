@@ -73,7 +73,7 @@ const Navbar = ({ setShowSideMenu }) => {
 
         <div className="hidden lg:flex items-center gap-10 uppercase">
           {/* search */}
-          <Search />
+          <Search isHome={isHome} isScrolled={isScrolled} />
           <NavLink to={"/wishlist"} className="nav-hover-btn">
             Wishlist
           </NavLink>

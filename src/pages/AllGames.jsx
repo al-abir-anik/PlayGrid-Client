@@ -16,10 +16,16 @@ const AllGames = () => {
     price: false,
   });
   const toggleFilters = (section) => {
-    setOpenFilters((prev) => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
+    setOpenFilters((prev) => {
+      const isAlreadyOpen = prev[section];
+      return {
+        genre: false,
+        feature: false,
+        platform: false,
+        price: false,
+        [section]: !isAlreadyOpen,
+      };
+    });
   };
 
   const [filters, setFilters] = useState({
@@ -89,21 +95,34 @@ const AllGames = () => {
         </p>
       </div>
 
-      <div className="flex justify-between gap-10">
+      <div className="flex justify-between items-start gap-10">
         {/* Games */}
         {fetchLoading ? (
           <div className="w-full lg:w-5/6 flex items-center justify-center">
-            <div className="three-body">
-              <div className="three-body__dot"></div>
-              <div className="three-body__dot"></div>
-              <div className="three-body__dot"></div>
-            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 66 66"
+              className="spinner w-[210px] h-[140px] relative"
+            >
+              <circle
+                stroke="url(#gradient)"
+                r="20"
+                cy="33"
+                cx="33"
+                strokeWidth="1"
+                fill="transparent"
+                className="path"
+              ></circle>
+              <linearGradient id="gradient">
+                <stop stopOpacity="1" stopColor="#4fb7dd" offset="0%"></stop>
+                {/* fe0000 */}
+                <stop stopOpacity="0" stopColor="#af3dff" offset="100%"></stop>
+              </linearGradient>
+            </svg>
           </div>
         ) : games.length === 0 ? (
-          <div className="w-full lg:w-5/6 flex items-center justify-center">
-            <p className="text-xl text-gray-500 font-semibold">
-              No games found
-            </p>
+          <div className="w-full lg:w-5/7 h-[30vh] flex items-center justify-center">
+            <p className="text-xl text-black100 font-medium">No games found</p>
           </div>
         ) : (
           <div className="w-full md:w-5/6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 space-y-4">
@@ -114,7 +133,7 @@ const AllGames = () => {
         )}
 
         {/* Side Filters */}
-        <div className="md:w-1/5 lg:w-1/6 xl:w-1/7 hidden md:block space-y-3 sticky top-0">
+        <div className="md:w-1/5 lg:w-1/6 xl:w-1/7 hidden md:block space-y-3 sticky top-20">
           <div className="flex items-center justify-between">
             <div className="pb-3 flex flex-col items-end w-max">
               <p className="text-xl font-medium tracking-wide">Filters</p>

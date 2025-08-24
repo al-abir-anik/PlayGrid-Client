@@ -1,8 +1,12 @@
 import { useAppContext } from "../contexts/AppContext";
 import CartCard from "../components/Cards/CartCard";
 import Button from "../components/Button";
+import { useContext } from "react";
+import AuthContext from "../auth/AuthContext";
+import toast from "react-hot-toast";
 
 const Cart = () => {
+  const { user } = useContext(AuthContext);
   const { cartItems, setShowCheckout } = useAppContext();
 
   // cart summary calculation
@@ -14,6 +18,19 @@ const Cart = () => {
     (sum, item) => sum + (item.offerPrice || item.regularPrice || 0),
     0
   );
+
+  const openCheckout = () => {
+    if (!user) {
+      toast.error("Please login to Checkout.");
+      return;
+    }
+    if (cartItems.length === 0) {
+      toast.error("Your cart is empty.");
+      return;
+    }
+
+    setShowCheckout(true);
+  };
 
   return (
     <div className="w-3/4 mx-auto py-14 flex flex-col text-white50">

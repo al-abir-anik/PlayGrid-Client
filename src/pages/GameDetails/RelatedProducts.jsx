@@ -6,7 +6,7 @@ const RelatedProducts = ({ gameId }) => {
   const [relatedGames, setRelatedGames] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/related-games?id=${gameId}`)
+    fetch(`https://playgrid-server.vercel.app/related-games?id=${gameId}`)
       .then((res) => res.json())
       .then((data) => {
         setRelatedGames(data);

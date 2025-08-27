@@ -69,7 +69,7 @@ const AllGames = () => {
     });
 
     setFetchLoading(true);
-    fetch(`http://localhost:5000/all-games?${queryParams.toString()}`)
+    fetch(`https://playgrid-server.vercel.app/all-games?${queryParams.toString()}`)
       .then((res) => res.json())
       .then((data) => {
         setGames(data);

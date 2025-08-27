@@ -3,15 +3,28 @@ import AuthContext from "../../auth/AuthContext";
 import { FaUser } from "react-icons/fa6";
 import { FcCurrencyExchange } from "react-icons/fc";
 import { SlClose } from "react-icons/sl";
-import MultiOrder from "./MultiOrder";
 import CardPayment from "../payment-method/CardPayment";
+import { useAppContext } from "../../contexts/AppContext";
+import PaymentModal from "./PaymentModal";
 
 const CheckOut = ({ setShowCheckout }) => {
   const { user } = useContext(AuthContext);
+  const { cartItems } = useAppContext();
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  // cart summary calculation
+  const totalRegularPrice = cartItems.reduce(
+    (sum, item) => sum + (item.regularPrice || 0),
+    0
+  );
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + (item.offerPrice || item.regularPrice || 0),
+    0
+  );
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 z-999 flex items-center text-gray-800 bg-black/50">
-      <div className="w-3/5 h-screen flex m-auto items-start shadow-xl bg-white">
+      <div className="w-3/5 h-screen flex m-auto items-start shadow-xl bg-white relative">
         {/* Left Side */}
         <div className="w-[42%] h-full flex flex-col bg-violet-50">
           {/* nav */}
@@ -28,9 +41,43 @@ const CheckOut = ({ setShowCheckout }) => {
           </span>
 
           {/* dynamic summary */}
-          <MultiOrder />
+          <div className="px-6 pt-5 pb-10 flex-1 overflow-y-auto">
+            {/* order items */}
+            <div className="flex flex-col gap-3">
+              {cartItems.map((game) => (
+                <div key={game.name} className="flex gap-5">
+                  <img
+                    src={game.poster}
+                    alt="game poster"
+                    className="w-[22%] rounded object-cover"
+                  />
+                  <div className="space-y-1.5">
+                    <p className="text-lg font-semibold">{game.name}</p>
+                    <p>{game.developer}</p>
+                    <p>$ {game.offerPrice}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* price */}
+            <div className="mt-6 space-y-3">
+              <p className="flex justify-between text-gray-700">
+                <span>Price</span>
+                <span>$ {totalRegularPrice}</span>
+              </p>
+              <p className="flex justify-between text-gray-700">
+                <span>Sell Discount</span>
+                <span>- $ {(totalRegularPrice - subtotal).toFixed(2)}</span>
+              </p>
+              <hr className=" border-gray-300" />
+              <p className="flex justify-between text-lg font-medium mt-3">
+                <span>Total</span>
+                <span>$ {subtotal.toFixed(2)}</span>
+              </p>
+            </div>
+          </div>
 
-          {/* place order section */}
+          {/* privacy policy */}
           <div className="px-6 py-8 mt-auto [box-shadow:0_-5px_4px_rgba(0,0,0,0.1)]">
             <div className="space-y-4 text-xs text-black [&_a]:text-primary [&_a]:underline">
               <p>
@@ -38,9 +85,8 @@ const CheckOut = ({ setShowCheckout }) => {
                 terms, see <a href="#">purchase policy.</a>
               </p>
               <p>
-                By selecting ‘Place Order’, you certify that you are over
-                18 and an authorized user of this payment method, and agree to
-                the
+                By selecting ‘Place Order’, you certify that you are over 18 and
+                an authorized user of this payment method, and agree to the
                 <a href="#"> End User License Agreement.</a>
               </p>
             </div>
@@ -86,10 +132,18 @@ const CheckOut = ({ setShowCheckout }) => {
               <p className="text-sm font-semibold uppercase">
                 Other payment Methods
               </p>
-              <CardPayment />
+              <CardPayment setShowSuccessModal={setShowSuccessModal} />
             </div>
           </div>
         </div>
+
+        {/* Payment successful Modal */}
+        {showSuccessModal && (
+          <PaymentModal
+            setShowCheckout={setShowCheckout}
+            setShowSuccessModal={setShowSuccessModal}
+          />
+        )}
       </div>
     </div>
   );

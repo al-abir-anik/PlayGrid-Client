@@ -9,7 +9,7 @@ const MostPopular = () => {
   const [mostPopularGames, setMostPopularGames] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/most-popular-games")
+    fetch("https://playgrid-server.vercel.app/most-popular-games")
       .then((res) => res.json())
       .then((data) => setMostPopularGames(data));
   }, []);

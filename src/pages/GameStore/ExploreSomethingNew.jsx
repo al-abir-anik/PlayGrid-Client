@@ -9,7 +9,7 @@ const ExploreSomethingNew = () => {
   const [exploreNewGames, setExploreNewGames] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/explore-new-games")
+    fetch("https://playgrid-server.vercel.app/explore-new-games")
       .then((res) => res.json())
       .then((data) => setExploreNewGames(data));
   }, []);

@@ -42,14 +42,14 @@ const Routes = createBrowserRouter([
         path: "game/:id",
         element: <GameDetails></GameDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/game/${params.id}`),
+          fetch(`https://playgrid-server.vercel.app/game/${params.id}`),
       },
       {
         path: "news",
         element: <NewsPage></NewsPage>,
         loader: () =>
           Promise.all([
-            fetch("http://localhost:5000/upcoming-news").then((res) =>
+            fetch("https://playgrid-server.vercel.app/upcoming-news").then((res) =>
               res.json()
             ),
           ]),
@@ -58,7 +58,7 @@ const Routes = createBrowserRouter([
         path: "news/:id",
         element: <NewsDetails></NewsDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/news/${params.id}`),
+          fetch(`https://playgrid-server.vercel.app/news/${params.id}`),
       },
       {
         path: "library",
@@ -69,7 +69,7 @@ const Routes = createBrowserRouter([
         ),
         children: [
           {
-            path: "all",
+            path: "my-games",
             element: <UserGames />,
           },
           {

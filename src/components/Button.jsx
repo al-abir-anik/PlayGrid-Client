@@ -5,7 +5,7 @@ const Button = ({
   leftIcon,
   rightIcon,
   onClickFunc,
-  disableFunc
+  disableFunc,
 }) => {
   return (
     <button

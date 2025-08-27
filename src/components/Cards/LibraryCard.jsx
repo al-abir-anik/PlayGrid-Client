@@ -9,9 +9,9 @@ const LibraryCard = ({ game, handleFavourite, favourites, favLoading }) => {
   const isLoading = favLoading?.[_id];
 
   return (
-    <div className="w-60 bg-black500 rounded-xl overflow-hidden transition-all ">
+    <div className="w-56 bg-black500 rounded-xl overflow-hidden transition-all ">
       <div className="overflow-hidden relative">
-        <div className="relative pb-[130%] overflow-hidden">
+        <div className="relative pb-[120%] overflow-hidden">
           <img
             src={poster}
             alt="game poster"
@@ -22,7 +22,7 @@ const LibraryCard = ({ game, handleFavourite, favourites, favLoading }) => {
         {/* Favourite Toggle button */}
         <button
           onClick={() => handleFavourite(_id)}
-          title={isFavourite ? "Remove from Wishlist" : "Add to Wishlist"}
+          title={isFavourite ? "Remove from favourites" : "Add to favourites"}
           className="group w-8 h-8 bg-black200 rounded-full absolute top-3 right-3 flex justify-center items-center cursor-pointer"
         >
           {isLoading ? (
@@ -35,13 +35,13 @@ const LibraryCard = ({ game, handleFavourite, favourites, favLoading }) => {
         </button>
       </div>
 
-      <div className="p-4 space-y-6">
-        <h5 className="text-lg font-semibold text-white50">{name}</h5>
+      <div className="p-4 flex flex-col gap-3">
+        <h5 className="h-14 text-lg font-semibold text-white50">{name}</h5>
         <Button
           id="play-now"
           title="PLAY NOW"
           leftIcon={<IoPlay />}
-          containerClass="!w-full !py-3 border border-primary hover:bg-primary text-white50 transition-colors"
+          containerClass="!w-full !py-3 !mt-auto border border-primary hover:bg-primary text-white50 transition-colors"
         />
       </div>
     </div>

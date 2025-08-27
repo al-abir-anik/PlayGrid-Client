@@ -64,7 +64,7 @@ const Navbar = ({ setShowSideMenu }) => {
             </NavLink>
             {/* <NavLink to={"news"} className="nav-hover-btn">News</NavLink> */}
             {user && (
-              <NavLink to={"library/all"} className="nav-hover-btn">
+              <NavLink to={"library/my-games"} className="nav-hover-btn">
                 Library
               </NavLink>
             )}

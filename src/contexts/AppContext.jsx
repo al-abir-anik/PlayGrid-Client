@@ -11,12 +11,25 @@ export const AppContextProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   const [showCheckout, setShowCheckout] = useState(false);
 
+  // load user game-list
+  const [userGames, setUserGames] = useState([]);
+  useEffect(() => {
+    fetch(`https://playgrid-server.vercel.app/user-gamelist?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUserGames(data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, [user?.email]);
+
   // ..............CARTLIST...............
   // load user cartlist with game details
   const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
     if (!user) return;
-    fetch(`http://localhost:5000/user-cartlist?email=${user?.email}`)
+    fetch(`https://playgrid-server.vercel.app/user-cartlist?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setCartItems(data);
@@ -36,14 +49,14 @@ export const AppContextProvider = ({ children }) => {
         return;
       }
 
-      const res = await axios.post(`http://localhost:5000/add-to-cart`, {
+      const res = await axios.post(`https://playgrid-server.vercel.app/add-to-cart`, {
         email: user?.email,
         gameId: id,
       });
 
       if (res.data.modifiedCount > 0 || res.data.insertedId) {
         const updated = await fetch(
-          `http://localhost:5000/user-cartlist?email=${user?.email}`
+          `https://playgrid-server.vercel.app/user-cartlist?email=${user?.email}`
         );
         const newData = await updated.json();
         setCartItems(newData);
@@ -64,7 +77,7 @@ export const AppContextProvider = ({ children }) => {
   const removeCartItem = async (id) => {
     setRmvBtnLoading((prev) => ({ ...prev, [id]: true }));
     try {
-      const res = await axios.patch(`http://localhost:5000/delete-cartItem`, {
+      const res = await axios.patch(`https://playgrid-server.vercel.app/delete-cartItem`, {
         email: user?.email,
         cartItem: id,
       });
@@ -89,7 +102,7 @@ export const AppContextProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState([]);
   useEffect(() => {
     if (!user) return;
-    fetch(`http://localhost:5000/user-wishlist?email=${user?.email}`)
+    fetch(`https://playgrid-server.vercel.app/user-wishlist?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setWishlist(data);
@@ -109,14 +122,14 @@ export const AppContextProvider = ({ children }) => {
         return;
       }
 
-      const res = await axios.post(`http://localhost:5000/add-to-wishlist`, {
+      const res = await axios.post(`https://playgrid-server.vercel.app/add-to-wishlist`, {
         email: user?.email,
         gameId: id,
       });
 
       if (res.data.modifiedCount > 0 || res.data.insertedId) {
         const updated = await fetch(
-          `http://localhost:5000/user-wishlist?email=${user?.email}`
+          `https://playgrid-server.vercel.app/user-wishlist?email=${user?.email}`
         );
         const newData = await updated.json();
         setWishlist(newData);
@@ -136,7 +149,7 @@ export const AppContextProvider = ({ children }) => {
   const removeWishlistItem = async (id) => {
     setRmvBtnLoading((prev) => ({ ...prev, [id]: true }));
     try {
-      const res = await axios.patch(`http://localhost:5000/delete-wishItem`, {
+      const res = await axios.patch(`https://playgrid-server.vercel.app/delete-wishItem`, {
         email: user?.email,
         wishItem: id,
       });
@@ -160,7 +173,7 @@ export const AppContextProvider = ({ children }) => {
   const moveToWishlist = async (id) => {
     setWishBtnLoading((prev) => ({ ...prev, [id]: true }));
     try {
-      const res = await axios.patch(`http://localhost:5000/move-to-wishlist`, {
+      const res = await axios.patch(`https://playgrid-server.vercel.app/move-to-wishlist`, {
         email: user?.email,
         gameId: id,
       });
@@ -170,7 +183,7 @@ export const AppContextProvider = ({ children }) => {
         toast.success("Moved to Wishlist.");
 
         const updated = await fetch(
-          `http://localhost:5000/user-wishlist?email=${user?.email}`
+          `https://playgrid-server.vercel.app/user-wishlist?email=${user?.email}`
         );
         const newData = await updated.json();
         setWishlist(newData);
@@ -195,6 +208,9 @@ export const AppContextProvider = ({ children }) => {
     showCheckout,
     setShowCheckout,
 
+    userGames,
+    setUserGames,
+
     cartItems,
     setCartItems,
     handleAddToCart,
@@ -205,7 +221,6 @@ export const AppContextProvider = ({ children }) => {
     setRmvBtnLoading,
 
     moveToWishlist,
-
     wishlist,
     setWishlist,
     handleAddToWishlist,

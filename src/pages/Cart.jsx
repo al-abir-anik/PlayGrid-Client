@@ -21,7 +21,7 @@ const Cart = () => {
 
   const openCheckout = () => {
     if (!user) {
-      toast.error("Please login to Checkout.");
+      toast.error("Login required.");
       return;
     }
     if (cartItems.length === 0) {
@@ -82,7 +82,7 @@ const Cart = () => {
           <Button
             id="checkout"
             title="Check Out"
-            onClickFunc={() => setShowCheckout(true)}
+            onClickFunc={openCheckout}
             containerClass="w-full mt-5 !py-3 !rounded-lg bg-primary text-black500"
           />
         </div>

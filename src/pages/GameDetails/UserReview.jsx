@@ -37,7 +37,7 @@ const UserReview = ({ reviews, gameId }) => {
     };
 
     try {
-      const res = await axios.patch(`http://localhost:5000/post-reviews`, {
+      const res = await axios.patch(`https://playgrid-server.vercel.app/post-reviews`, {
         gameId,
         newReview,
       });

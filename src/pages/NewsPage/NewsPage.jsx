@@ -22,7 +22,7 @@ const NewsPage = () => {
       newsGenres.length > 0 ? `genre=${newsGenres.join(",")}` : "";
 
     fetch(
-      `http://localhost:5000/all-news?search=${searchNews}&${genreParam}&page=${currentPage}&size=${itemsPerPage}`
+      `https://playgrid-server.vercel.app/all-news?search=${searchNews}&${genreParam}&page=${currentPage}&size=${itemsPerPage}`
     )
       .then((res) => res.json())
       .then((data) => {

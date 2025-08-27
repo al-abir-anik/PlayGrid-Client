@@ -9,7 +9,7 @@ const LatestNews = () => {
   const [latestNews, setLatestNews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/latest-news")
+    fetch("https://playgrid-server.vercel.app/latest-news")
       .then((res) => res.json())
       .then((data) => setLatestNews(data));
   }, []);

@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { IoIosCard } from "react-icons/io";
-import { CardElement, Elements } from "@stripe/react-stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CardInputForm from "./CardInputForm";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
-const CardPayment = () => {
+const CardPayment = ({ setShowSuccessModal }) => {
   const [showCardPaymentForm, setShowCardPaymentForm] = useState(false);
 
   return (
@@ -18,8 +17,12 @@ const CardPayment = () => {
       />
       <div className="w-[88%] flex flex-col">
         <div className="flex items-center gap-5">
-          <span className="py-2 px-5 rounded-lg bg-white border border-gray-300">
-            <IoIosCard className="text-3xl" />
+          <span className="px-2.5 py-1 rounded bg-white border border-gray-300">
+            <img
+              src="/img/credit-card.png"
+              alt="card-image"
+              className="w-9"
+            />
           </span>
           <p>Credit Card / &nbsp;Debit Card</p>
         </div>
@@ -33,18 +36,13 @@ const CardPayment = () => {
               <div className="w-fit h-10 flex">
                 <img src="/img/visa.png" alt="card-image" />
                 <img src="/img/mastercard.png" alt="card-image" />
-                {/* <img
-                  src="/img/american-express.png"
-                  alt="card-image"
-                  className="w-8 h-full object-cover"
-                /> */}
               </div>
             </div>
 
             {/* card inputs */}
             <div>
               <Elements stripe={stripePromise}>
-                <CardInputForm />
+                <CardInputForm setShowSuccessModal={setShowSuccessModal} />
               </Elements>
             </div>
           </div>

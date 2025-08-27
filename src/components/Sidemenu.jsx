@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import AuthContext from "../auth/AuthContext";
 import toast from "react-hot-toast";
 import { RxCross2 } from "react-icons/rx";

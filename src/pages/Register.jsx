@@ -79,7 +79,7 @@ const Register = () => {
         toast.success("Signup Successful!");
 
         axios
-          .post(`http://localhost:5000/new-user`, {
+          .post(`https://playgrid-server.vercel.app/new-user`, {
             email: updateUser?.email,
             cartItems: [],
             wishItems: [],

@@ -9,7 +9,7 @@ const TopNewReleases = () => {
   const [newReleaseGames, setNewReleaseGames] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/new-release-games")
+    fetch("https://playgrid-server.vercel.app/new-release-games")
       .then((res) => res.json())
       .then((data) => setNewReleaseGames(data));
   }, []);

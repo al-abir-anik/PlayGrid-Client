@@ -8,8 +8,6 @@ import RelatedProducts from "./RelatedProducts";
 import UserReview from "./UserReview";
 import Button from "../../components/Button";
 import { FaStar } from "react-icons/fa6";
-import { TbShoppingBagPlus } from "react-icons/tb";
-import { TbShoppingBagCheck } from "react-icons/tb";
 import { TbHeartPlus } from "react-icons/tb";
 import { TbHeartCheck } from "react-icons/tb";
 
@@ -42,6 +40,7 @@ const GameDetails = () => {
   // }
 
   const {
+    userGames,
     cartItems,
     handleAddToCart,
     cartBtnLoading,
@@ -53,6 +52,9 @@ const GameDetails = () => {
   const [thumbnail, setThumbnail] = useState(screenshots[0]);
   const isCarted = cartItems?.some((g) => String(g._id) === String(_id));
   const isWished = wishlist?.some((g) => String(g._id) === String(_id));
+  const gameOwned = userGames?.ownedGames?.some(
+    (g) => String(g._id) === String(_id)
+  );
 
   const discount = Math.round(
     ((regularPrice - offerPrice) / regularPrice) * 100
@@ -127,47 +129,51 @@ const GameDetails = () => {
               )}
             </div>
             {/* buttons */}
-            <div className="flex justify-center sm:justify-start gap-3 my-4 !text-sm">
-              <Button
-                id="buy-now"
-                title={isNaN(discount) ? "Get" : "Buy Now"}
-                // onClickFunc={() => setShowCheckout(true)}
-                containerClass="!px-6 sm:!px-8 !py-2 bg-yellow300 text-black500"
-              />
-              <Button
-                id="add-to-cart"
-                title={
-                  cartBtnLoading[_id] ? (
-                    <div className="w-4 h-4 mx-auto border-1 border-white50 border-t-transparent rounded-full animate-spin"></div>
-                  ) : isCarted ? (
-                    <TbShoppingBagCheck className="text-2xl" />
-                  ) : (
-                    <TbShoppingBagPlus className="text-2xl" />
-                  )
-                }
-                onClickFunc={() => handleAddToCart(_id)}
-                disableFunc={isCarted || cartBtnLoading[_id]}
-                containerClass={`!p-4 !rounded-full bg-black500 text-white50 ${
-                  isCarted ? "!cursor-not-allowed" : ""
-                }`}
-              />
-              <Button
-                id="add-to-wishlist"
-                title={
-                  wishBtnLoading[_id] ? (
-                    <div className="w-4 h-4 mx-auto border-1 border-white50 border-t-transparent rounded-full animate-spin"></div>
-                  ) : isWished ? (
-                    <TbHeartCheck className="text-2xl" />
-                  ) : (
-                    <TbHeartPlus className="text-2xl" />
-                  )
-                }
-                onClickFunc={() => handleAddToWishlist(_id)}
-                disableFunc={isWished || wishBtnLoading[_id]}
-                containerClass={`!p-4 !rounded-full bg-black500 text-white50 ${
-                  isWished ? "!cursor-not-allowed" : ""
-                }`}
-              />
+            <div className="flex justify-center sm:justify-start gap-3 my-4">
+              {gameOwned ? (
+                <Button
+                  id="in-library"
+                  title="In Library"
+                  containerClass="!px-6 sm:!px-8 !py-4 bg-yellow300 text-black500 !cursor-not-allowed"
+                />
+              ) : (
+                <>
+                  <Button
+                    id="add-to-cart"
+                    title={
+                      cartBtnLoading[_id] ? (
+                        <div className="w-4 h-4 mx-auto border-1 border-white50 border-t-transparent rounded-full animate-spin"></div>
+                      ) : isCarted ? (
+                        "Added in Cart"
+                      ) : (
+                        "Add to cart"
+                      )
+                    }
+                    onClickFunc={() => handleAddToCart(_id)}
+                    disableFunc={isCarted || cartBtnLoading[_id]}
+                    containerClass={`!px-6 sm:!px-8 !py-4 !rounded-full bg-yellow300 text-black500 ${
+                      isCarted ? "!cursor-not-allowed" : ""
+                    }`}
+                  />
+                  <Button
+                    id="add-to-wishlist"
+                    title={
+                      wishBtnLoading[_id] ? (
+                        <div className="w-4 h-4 mx-auto border-1 border-white50 border-t-transparent rounded-full animate-spin"></div>
+                      ) : isWished ? (
+                        <TbHeartCheck className="text-2xl" />
+                      ) : (
+                        <TbHeartPlus className="text-2xl" />
+                      )
+                    }
+                    onClickFunc={() => handleAddToWishlist(_id)}
+                    disableFunc={isWished || wishBtnLoading[_id]}
+                    containerClass={`!p-3 !rounded-full text-white50 border border-yellow300  ${
+                      isWished ? "!cursor-not-allowed" : ""
+                    }`}
+                  />
+                </>
+              )}
             </div>
             {/* infos */}
             <div className="sm:w-3/4">
@@ -216,9 +222,7 @@ const GameDetails = () => {
               </button>
             </div>
           </div>
-          <p className="lg:text-lg mb-8 lg:mb-12 text-offWhite50">
-            {summary}
-          </p>
+          <p className="lg:text-lg mb-8 lg:mb-12 text-offWhite50">{summary}</p>
           {/* genres */}
           <div className="space-y-8 text-offWhite50">
             <div>
@@ -329,46 +333,57 @@ const GameDetails = () => {
           </div>
           {/* buttons */}
           <div className="flex flex-col gap-3 my-4">
-            <Button
+            {/* <Button
               id="buy-now"
               title={isNaN(discount) ? "Get" : "Buy Now"}
-              // onClickFunc={() => setShowCheckout(true)}
+              onClickFunc={() => setShowCheckout(true)}
               containerClass="w-full !py-3 bg-yellow300 text-black500"
-            />
-            <Button
-              id="add-to-cart"
-              title={
-                cartBtnLoading[_id] ? (
-                  <div className="w-5 h-5 mx-auto border-2 border-gray-700 border-t-transparent animate-spin"></div>
-                ) : isCarted ? (
-                  "Added in cart"
-                ) : (
-                  "Add to Cart"
-                )
-              }
-              onClickFunc={() => handleAddToCart(_id)}
-              disableFunc={isCarted || cartBtnLoading[_id]}
-              containerClass={`w-full !py-3 !rounded-2xl bg-black500 text-white50 ${
-                isCarted ? "!cursor-not-allowed" : ""
-              }`}
-            />
-            <Button
-              id="add-to-wishlist"
-              title={
-                wishBtnLoading[_id] ? (
-                  <div className="w-5 h-5 mx-auto border-2 border-gray-700 border-t-transparent animate-spin"></div>
-                ) : isWished ? (
-                  "Added in wishlist"
-                ) : (
-                  "Add to Wishlist"
-                )
-              }
-              onClickFunc={() => handleAddToWishlist(_id)}
-              disableFunc={isWished || wishBtnLoading[_id]}
-              containerClass={`w-full !py-3 !rounded-2xl bg-black500 text-white50 ${
-                isWished ? "!cursor-not-allowed" : ""
-              }`}
-            />
+            /> */}
+            {gameOwned ? (
+              <Button
+                id="in-library"
+                title="In Library"
+                containerClass="w-full !py-4 bg-yellow300 text-black500 !cursor-not-allowed"
+              />
+            ) : (
+              <>
+                <Button
+                  id="add-to-cart"
+                  title={
+                    cartBtnLoading[_id] ? (
+                      <div className="w-5 h-5 mx-auto rounded-full border-2 border-gray-700 border-t-transparent animate-spin"></div>
+                    ) : isCarted ? (
+                      "Added in cart"
+                    ) : (
+                      "Add to Cart"
+                    )
+                  }
+                  onClickFunc={() => handleAddToCart(_id)}
+                  disableFunc={isCarted || cartBtnLoading[_id]}
+                  containerClass={`w-full !py-3.5 bg-yellow300 text-black500 ${
+                    isCarted ? "!cursor-not-allowed" : ""
+                  }`}
+                />
+
+                <Button
+                  id="add-to-wishlist"
+                  title={
+                    wishBtnLoading[_id] ? (
+                      <div className="w-5 h-5 mx-auto rounded-full border-2 border-gray-700 border-t-transparent animate-spin"></div>
+                    ) : isWished ? (
+                      "Added in wishlist"
+                    ) : (
+                      "Add to Wishlist"
+                    )
+                  }
+                  onClickFunc={() => handleAddToWishlist(_id)}
+                  disableFunc={isWished || wishBtnLoading[_id]}
+                  containerClass={`w-full !py-3.5 text-white50 border border-yellow300 ${
+                    isWished ? "!cursor-not-allowed" : ""
+                  }`}
+                />
+              </>
+            )}
           </div>
           {/* infos */}
           <div className="">

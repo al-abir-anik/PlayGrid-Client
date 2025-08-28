@@ -35,16 +35,19 @@ const CardInputForm = ({ setShowSuccessModal }) => {
       console.log("[PaymentMethod]", paymentMethod);
       setCardError("");
       try {
-        const res = await axios.patch("https://playgrid-server.vercel.app/purchase-game", {
-          email: user?.email,
-        });
+        const res = await axios.patch(
+          "https://playgrid-server.vercel.app/purchase-game",
+          {
+            email: user?.email,
+          }
+        );
 
         if (res.data.modifiedCount > 0) {
           setShowSuccessModal(true);
         }
       } catch (error) {
         console.error("Purchase error:", error);
-        toast.error("Failed to place order");
+        toast.error(error.message);
       }
       setOrderBtnLoading(false);
     }

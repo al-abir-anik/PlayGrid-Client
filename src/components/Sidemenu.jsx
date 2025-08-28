@@ -46,7 +46,7 @@ const Sidemenu = ({ setShowSideMenu }) => {
       >
         <div className="w-full px-4 flex justify-between items-center">
           <img
-            src="/public/img/logoDark.png"
+            src="/img/logoDark.png"
             alt="logo"
             className="w-18 lg:w-28 h-fit"
           />

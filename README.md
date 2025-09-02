@@ -1,14 +1,17 @@
-# 🎮 PLAYGRID – A Gaming Portal
+# 🎮 PLAYGRID – A Digital Game Store  
 
-**PLAYGRID** is a modern and responsive **gaming portal** built with React, where users can explore games, purchase them, manage their library, and interact with a smooth UI/UX.  
-This project demonstrates my **frontend development skills**, integration with **payment systems**, and ability to create **scalable web applications**.
+**PlayGrid** is a full-featured digital game store inspired by Epic Games Store, where users can browse and purchase games — showcasing my ability to build scalable, modern, and user-friendly web applications with React JS.
 
 ---
 
-## 🌍 Live Website
+## 🌍 Live Demo  
 
-Visit the live website here: [PlayGrid](https://playgrid-aaa.surge.sh/)
-(https://i.ibb.co.com/mC0sHqGz/Screenshot-96.png)
+🔗 **Live Website:** [PLAYGRID](https://playgrid-aaa.surge.sh/)  
+🔗 **Server Repository:** [PlayGrid-Server](https://github.com/al-abir-anik/PlayGrid-Server)  
+
+![Homepage Screenshot](https://i.ibb.co/mC0sHqGz/Screenshot-96.png)
+
+<img src="https://i.ibb.co.com/mC0sHqGz/Screenshot-96.png" alt="Homepage Screenshot" width="800"/>
 
 ---
 

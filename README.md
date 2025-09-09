@@ -9,7 +9,6 @@
 🔗 **Live Website:** [PLAYGRID](https://playgrid-aaa.surge.sh/)  
 🔗 **Server Repository:** [PlayGrid-Server](https://github.com/al-abir-anik/PlayGrid-Server)
 
-![Homepage Screenshot](https://i.ibb.co/mC0sHqGz/Screenshot-96.png)
 
 <img src="https://i.ibb.co.com/mC0sHqGz/Screenshot-96.png" alt="Homepage Screenshot" className="w-full bg-no-repeat" />
 
@@ -93,6 +92,7 @@ PLAYGRID is a **digital game store platform** inspired by Epic Games Store. It a
 
 ## 📂 Project Structure
 
+```
 PLAYGRID/
 │── public/ # Static assets (images, icons, etc.)
 │── src/
@@ -107,3 +107,4 @@ PLAYGRID/
 │── package.json # Project dependencies
 │── tailwind.config.js # TailwindCSS configuration
 │── README.md # Project documentation
+```

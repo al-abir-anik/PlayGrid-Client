@@ -15,7 +15,7 @@ const LatestNews = () => {
   }, []);
 
   return (
-    <div className="w-3/4 mx-auto my-28 pb-28 flex justify-between items-start">
+    <div className="w-3/4 mx-auto my-28 pb-28 hidden md:flex justify-between items-start">
       {/* Heading */}
       <div className="w-2/5 pt-10 space-y-8 sticky top-0">
         <AnimatedTitle

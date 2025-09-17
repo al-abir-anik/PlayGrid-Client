@@ -24,12 +24,12 @@ const NewsCard1 = ({ news }) => {
         <p className="text-lg opacity-70 font-robert-regular">{summary}</p>
       </div>
 
-      <Link to={`/news/${_id}`}>
+      {/* <Link to={`/news/${_id}`}>
         <button className="mt-3 flex items-end gap-1.5 group transition-all hover:text-[#45F882] duration-300 cursor-pointer">
           <span className="text-lg font-semibold">Read More</span>{" "}
           <IoMdArrowForward className="font-light text-2xl text-[#45F882] -rotate-45 group-hover:rotate-0 duration-300 transition-transform" />
         </button>
-      </Link>
+      </Link> */}
     </div>
   );
 };

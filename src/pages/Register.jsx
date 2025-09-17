@@ -133,21 +133,21 @@ const Register = () => {
           </div>
 
           {/* social login */}
-          <button
+          {/* <button
             type="button"
             className="w-full p-2.5 mt-2 flex items-center justify-center gap-3 rounded-2xl bg-black500 border border-transparent hover:border-primary transition-colors cursor-pointer"
           >
             <FcGoogle className="text-lg" />
             Continue with Google
-          </button>
+          </button> */}
 
-          <div className="flex items-center gap-4 w-full mb-4">
+          {/* <div className="flex items-center gap-4 w-full mb-4">
             <div className="w-full h-px bg-black100"></div>
             <p className="w-fit text-nowrap text-sm text-black100">
               or login with email
             </p>
             <div className="w-full h-px bg-black100"></div>
-          </div>
+          </div> */}
 
           {/* name */}
           {state === "signup" && (

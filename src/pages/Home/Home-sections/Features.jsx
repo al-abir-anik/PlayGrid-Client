@@ -41,7 +41,7 @@ const Features = () => {
         </div>
 
         {/* Fall guyz */}
-        <div className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-xl md:h-[65vh] xl:h-[75vh]">
+        <div className="border-hsla relative mb-7 h-64 md:h-96 w-full overflow-hidden rounded-xl md:h-[65vh] xl:h-[75vh]">
           <BentoCard
             gameId="688385fa0cd22b41dfaa17c2"
             src="https://res.cloudinary.com/dwka0ok0n/video/upload/v1753448638/hero-1_wmekwi.mp4"
@@ -54,7 +54,10 @@ const Features = () => {
           />
         </div>
 
-        <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
+        <div
+          className="grid h-[155vh] md:h-[135vh] w-full grid-cols-1 gap-7 
+                md:grid-cols-2 md:grid-rows-3"
+        >
           {/* gta 5 */}
           <div className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard
@@ -70,7 +73,7 @@ const Features = () => {
           </div>
 
           {/* valorant */}
-          <div className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+          <div className="bento-tilt_1 row-span-1 ms-0 md:col-span-1 md:ms-0">
             <BentoCard
               gameId="6884d54c0cd22b41dfaa188f"
               src="https://res.cloudinary.com/dwka0ok0n/video/upload/v1753448386/feature-1_mizmsy.mp4"
@@ -83,8 +86,9 @@ const Features = () => {
               isComingSoon
             />
           </div>
+
           {/* pubg */}
-          <div className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+          <div className="bento-tilt_1 me-0 md:col-span-1 md:me-0">
             <BentoCard
               gameId="6886675b0cd22b41dfaa1967"
               src="https://res.cloudinary.com/dwka0ok0n/video/upload/v1753289717/feature-4_yptcjv.mp4"
@@ -97,8 +101,9 @@ const Features = () => {
               isComingSoon
             />
           </div>
+
           {/* wild rift */}
-          <div className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+          <div className="bento-tilt_1 me-0 md:col-span-1 md:me-0">
             <BentoCard
               gameId="689eba88211e3db3ac17d1cc"
               src="https://res.cloudinary.com/dwka0ok0n/video/upload/v1753448383/feature-3_a6wqp0.mp4"
@@ -111,7 +116,8 @@ const Features = () => {
             />
           </div>
 
-          <Link to={"/store"} className="bento-tilt_2 ">
+          {/* explore more */}
+          <Link to={"/store"} className="bento-tilt_2">
             <div className="group p-5 flex size-full flex-col justify-between text-black500 bg-primary hover:bg-primary/90 duration-300 ease-in-out cursor-pointer">
               <h1 className="bento-title special-font max-w-64">
                 expl<b>o</b>re m<b>o</b>re g<b>a</b>mes.

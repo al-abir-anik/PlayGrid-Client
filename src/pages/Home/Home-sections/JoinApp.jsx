@@ -9,9 +9,9 @@ const JoinApp = () => {
     </div>
   );
   return (
-    <div id="app-poster" className="relative my-40 min-h-96 w-11/12 mx-auto">
-      <div className="relative rounded-lg bg-black pt-24 pb-32 text-white50 sm:overflow-hidden">
-        <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-40 lg:w-96">
+    <div id="app-poster" className="relative my-20 lg:my-40 min-h-96 w-11/12 mx-auto">
+      <div className="relative rounded-lg bg-black pt-14 lg:pt-24 pb-18 lg:pb-32 text-white50 lg:overflow-hidden">
+        <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden lg:block lg:left-40 lg:w-96">
           <ImageClipBox
             clipClass="contact-clip-path-1 md:scale-125"
             src="img/contact-1.webp"
@@ -36,13 +36,13 @@ const JoinApp = () => {
           />
         </div>
       </div>
-      <div className="absolute -top-40 left-20 w-60 sm:top-1/2 md:left-auto md:right-24 lg:top-0 lg:w-80">
+      <div className="hidden lg:block absolute -top-40 left-20 w-60 sm:top-1/2 lg:left-auto md:right-4 xl:right-24 lg:top-0 lg:w-80">
         <ImageClipBox
-          clipClass="absolute md:scale-200"
+          clipClass="absolute lg:scale-150 2xl:scale-200"
           src="img/swordman-partial.webp"
         />
         <ImageClipBox
-          clipClass="swordman-clip-path md:scale-200"
+          clipClass="swordman-clip-path lg:scale-150 2xl:scale-200"
           src="img/swordman.webp"
         />
       </div>

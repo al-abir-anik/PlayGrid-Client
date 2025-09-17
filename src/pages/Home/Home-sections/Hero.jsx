@@ -88,7 +88,7 @@ const Hero = () => {
                 alt="game-icon"
                 draggable="false"
                 className={`w-48 h-32 mx-auto object-contain ${
-                  i === activeIndex ? "scale-125" : "scale-80 opacity-0 md:opacity-60 mt-10"
+                  i === activeIndex ? "scale-125" : "scale-80 opacity-0 lg:opacity-60 mt-10"
                 }`}
               />
             </SwiperSlide>

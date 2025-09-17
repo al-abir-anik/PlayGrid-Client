@@ -18,30 +18,28 @@
 
 PLAYGRID is a **digital game store platform** inspired by Epic Games Store. It allows users to **explore games, purchase them securely, manage their personal game library, and add favourites/wishlist** for a personalized experience.
 
-### 🔧 Why These Technologies?
+### 🔧 Why These Technologies
 
 - **React (with Vite):** For fast development, component reusability, and a modern SPA experience.
-- **Tailwind CSS + DaisyUI:** To build a fully responsive and attractive UI quickly.
+- **Tailwind CSS + prebuiltUi:** To build a fully responsive and attractive UI quickly.
 - **React Router:** For smooth client-side navigation.
 - **Stripe Integration:** To handle secure and real-world payment flows.
 - **React Context API & Hooks:** For state management and clean, scalable architecture.
+- **Firebase Authentication:** To enable secure and easy user sign-up, login, and identity management.
 
 ### 📦 NPM Packages Used
 
 - `react-router-dom` → Client-side routing
 - `@stripe/react-stripe-js` & `@stripe/stripe-js` → Payment gateway integration
 - `axios` → Handling API requests
-- `react-toastify` → Notifications & alerts
-- `recharts` → Data visualization (stats/graphs)
-- `tailwindcss` & `daisyui` → Styling and prebuilt components
+- `react-hot-toast` → Notifications & alerts
 
 
 ### ⚡ Challenges Faced
 
 - Integrating the **Stripe payment gateway** smoothly in a React application.
 - Managing **state across multiple components** like Library, Cart, and Wishlist.
-- Designing a **responsive layout** that works seamlessly on desktop and mobile.
-- Handling **toast notifications, modals, and loading states** for better UX.
+- Implementing **complex server-side filtering** to ensure efficient data handling and performance.
 
 
 ## ✅ Current Features
@@ -54,15 +52,12 @@ PLAYGRID is a **digital game store platform** inspired by Epic Games Store. It a
 - Fully **responsive design** for mobile, tablet, and desktop
 - Clean and scalable **component-based architecture**
 - Dashboard to view and manage user activities
+- **Game Reviews & Ratings** from users
 
 
 ## 🚀 Future Features
-
-- **User Authentication & Profiles** with JWT/OAuth
-- **Game Reviews & Ratings** from users
 - **Multiplayer Community Features** (friends, chat, achievements)
 - **Dark Mode** toggle for accessibility
-- **Backend with Node.js & MongoDB** for advanced scalability
 - **Admin Panel** for game management and analytics
 
 <!-- ## 🚀 Features
